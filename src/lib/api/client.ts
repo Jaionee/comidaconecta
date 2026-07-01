@@ -1,7 +1,7 @@
 // Client-side API client for ComidaConecta Worker API
 // Works in both server and browser contexts
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://comidaconecta-worker.jaione-garay.workers.dev'
 
 interface ApiResponse<T = any> {
   success: boolean
@@ -11,8 +11,6 @@ interface ApiResponse<T = any> {
 
 function getBaseUrl(): string {
   if (API_URL) return API_URL
-  // In development, use localhost
-  if (typeof window === 'undefined') return 'http://localhost:8787'
   return ''
 }
 
