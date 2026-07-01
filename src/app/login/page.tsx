@@ -1,25 +1,58 @@
 'use client'
 
 import { useState, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Leaf, Store, Building2 } from 'lucide-react'
-import { login } from '@/app/actions/auth'
+import { Leaf, Store, Building2, Eye, EyeOff } from 'lucide-react'
+
+const WORKER_URL = 'https://comidaconecta-worker.jaione-garay.workers.dev'
 
 function LoginForm() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const role = searchParams.get('role')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError('')
     setLoading(true)
+
     const form = new FormData(e.currentTarget)
-    const result = await login(form)
-    setLoading(false)
-    if (result?.error) setError(result.error)
+    const email = form.get('email') as string
+    const password = form.get('password') as string
+
+    try {
+      const res = await fetch(`${WORKER_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
+
+      const data = await res.json()
+
+      if (!data.success || !data.data?.token) {
+        setError(data?.error || 'Email o contraseña incorrectos')
+        setLoading(false)
+        return
+      }
+
+      const token = data.data.token
+      const user = data.data.user
+
+      // Store token in cookie (accessible from JS middleware)
+      document.cookie = `token=${token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax; Secure`
+
+      // Redirect based on role
+      if (user.role === 'admin') router.push('/admin/dashboard')
+      else if (user.role === 'commerce') router.push('/comercio/dashboard')
+      else router.push('/ong/dashboard')
+    } catch (err: any) {
+      setError('Error de conexión con el servidor. ¿Estás conectado a internet?')
+      setLoading(false)
+    }
   }
 
   return (
@@ -58,13 +91,22 @@ function LoginForm() {
           </div>
           <div>
             <label className="block text-sm font-medium mb-1.5 text-zinc-300">Contraseña</label>
-            <input
-              name="password"
-              type="password"
-              required
-              placeholder="••••••••"
-              className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-600/50 text-sm"
-            />
+            <div className="relative">
+              <input
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                required
+                placeholder="••••••••"
+                className="w-full px-3.5 py-2.5 pr-10 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-600/50 text-sm"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300"
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
           </div>
 
           {error && (
