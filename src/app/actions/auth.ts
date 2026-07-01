@@ -87,7 +87,7 @@ export async function login(formData: FormData) {
 
   if (user.role === 'commerce') redirect('/comercio/dashboard')
   else if (user.role === 'ngo') redirect('/ong/dashboard')
-  else if (user.role === 'admin') redirect('/admin')
+  else if (user.role === 'admin') redirect('/admin/dashboard')
   else redirect('/')
 }
 
