@@ -1,27 +1,129 @@
-import { redirect } from 'next/navigation'
-import { requireAuth } from '@/lib/api/auth-helper'
-import { api } from '@/lib/api/client'
+'use client'
+
+import { useState, useEffect, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import {
   Leaf, Users, Package, Shield, LogOut, CheckCircle, XCircle,
-  AlertCircle, TrendingUp, Store, Building2
+  AlertCircle, TrendingUp, Store, Building2, Loader2
 } from 'lucide-react'
-import { logout } from '@/app/actions/auth'
-import { verifyCommerce, verifyNgo } from '@/app/actions/admin'
-import AdminActions from './admin-actions'
 
-export default async function AdminDashboard() {
-  const user = await requireAuth()
-  if (user.role !== 'admin') redirect('/')
+const WORKER_URL = 'https://comidaconecta-worker.jaione-garay.workers.dev'
 
-  const { data: dashboardData } = await api.admin.dashboard(user.token)
+function getToken(): string | null {
+  const m = document.cookie.match(/(?:^|;\s*)token=([^;]*)/)
+  return m ? decodeURIComponent(m[1]) : null
+}
 
-  const pendingCommerces = dashboardData?.pendingCommerces || []
-  const pendingNgos = dashboardData?.pendingNgos || []
-  const totalCommerces = dashboardData?.totalCommerces || 0
-  const totalNgos = dashboardData?.totalNgos || 0
-  const totalDonations = dashboardData?.totalDonations || 0
-  const completedDonations = dashboardData?.completedDonations || 0
+export default function AdminDashboard() {
+  const router = useRouter()
+  const [user, setUser] = useState<any>(null)
+  const [dashboard, setDashboard] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [actionLoading, setActionLoading] = useState<string | null>(null)
+
+  const fetchDashboard = useCallback(async () => {
+    const token = getToken()
+    if (!token) {
+      router.push('/login')
+      return
+    }
+
+    // Decode JWT payload for user info
+    try {
+      const parts = token.split('.')
+      const payload = JSON.parse(atob(parts[1]))
+      if (payload.role !== 'admin') {
+        router.push('/')
+        return
+      }
+      setUser(payload)
+    } catch {
+      router.push('/login')
+      return
+    }
+
+    // Fetch dashboard data from Worker
+    try {
+      const res = await fetch(`${WORKER_URL}/api/admin/dashboard`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      const data = await res.json()
+      if (data.success && data.data) {
+        const stats = data.data.stats || {}
+        setDashboard({
+          totalCommerces: stats.total_commerces || 0,
+          totalNgos: stats.total_ngos || 0,
+          totalDonations: stats.total_donations || 0,
+          completedDonations: stats.collected_donations || 0,
+          pendingCommerces: data.data.pending_commerces || [],
+          pendingNgos: data.data.pending_ngos || [],
+        })
+      }
+    } catch (err) {
+      console.error('Dashboard error:', err)
+    }
+    setLoading(false)
+  }, [router])
+
+  useEffect(() => { fetchDashboard() }, [fetchDashboard])
+
+  const handleVerify = async (userId: string, type: 'commerce' | 'ngo', action: 'approve' | 'reject') => {
+    const token = getToken()
+    if (!token || action !== 'approve') return
+    setActionLoading(`${userId}-${action}`)
+
+    try {
+      const res = await fetch(`${WORKER_URL}/api/admin/${type}s/${userId}/verify`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      const data = await res.json()
+      if (data.success) {
+        setDashboard((prev: any) => {
+          if (!prev) return prev
+          return {
+            ...prev,
+            pendingCommerces: type === 'commerce'
+              ? prev.pendingCommerces.filter((c: any) => c.id !== userId)
+              : prev.pendingCommerces,
+            pendingNgos: type === 'ngo'
+              ? prev.pendingNgos.filter((n: any) => n.id !== userId)
+              : prev.pendingNgos,
+          }
+        })
+      }
+    } catch (err) {
+      console.error(`Verify ${action} error:`, err)
+    }
+    setActionLoading(null)
+  }
+
+  const handleLogout = () => {
+    document.cookie = 'token=; path=/; max-age=0'
+    router.push('/login')
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-svh bg-zinc-950 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
+      </div>
+    )
+  }
+
+  if (!user) return null
+
+  const pendingCommerces = dashboard?.pendingCommerces || []
+  const pendingNgos = dashboard?.pendingNgos || []
+  const totalCommerces = dashboard?.totalCommerces || 0
+  const totalNgos = dashboard?.totalNgos || 0
+  const totalDonations = dashboard?.totalDonations || 0
+  const completedDonations = dashboard?.completedDonations || 0
+
+  const isLoading = (id: string, a: string) => actionLoading === `${id}-${a}`
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -50,17 +152,20 @@ export default async function AdminDashboard() {
               <Leaf className="w-3.5 h-3.5" /> Volver a la web
             </Link>
           </div>
-          <form action={logout}>
-            <button type="submit" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-500 hover:text-red-400 hover:bg-zinc-800/50 text-sm w-full transition-colors">
-              <LogOut className="w-4 h-4" /> Cerrar sesión
-            </button>
-          </form>
+          <button onClick={handleLogout} className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-500 hover:text-red-400 hover:bg-zinc-800/50 text-sm w-full transition-colors">
+            <LogOut className="w-4 h-4" /> Cerrar sesión
+          </button>
         </div>
       </aside>
 
       <main className="md:ml-64 pt-14 md:pt-0">
         <div className="max-w-5xl mx-auto p-4 md:p-8">
-          <h1 className="text-2xl font-bold mb-6">Panel de administración</h1>
+          {/* Mobile header */}
+          <div className="flex items-center justify-between mb-6 md:hidden">
+            <h1 className="text-xl font-bold">Panel de admin</h1>
+            <button onClick={handleLogout} className="text-sm text-zinc-500 hover:text-red-400">Cerrar sesión</button>
+          </div>
+          <h1 className="text-2xl font-bold mb-6 hidden md:block">Panel de administración</h1>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -103,8 +208,22 @@ export default async function AdminDashboard() {
                       <div className="font-medium text-sm">{c.business_name}</div>
                       <div className="text-xs text-zinc-500 mt-1">{c.email} · {c.city} · {c.contact_person}</div>
                       <div className="flex items-center gap-2 mt-2">
-                        <AdminActions userId={c.id} type="commerce" action="approve" serverAction={verifyCommerce} />
-                        <AdminActions userId={c.id} type="commerce" action="reject" serverAction={verifyCommerce} />
+                        <button
+                          onClick={() => handleVerify(c.id, 'commerce', 'approve')}
+                          disabled={isLoading(c.id, 'approve')}
+                          className="flex items-center gap-1 px-3 py-1.5 text-xs bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white rounded-lg transition-colors"
+                        >
+                          {isLoading(c.id, 'approve') ? <Loader2 className="w-3 h-3 animate-spin" /> : <CheckCircle className="w-3 h-3" />}
+                          Aprobar
+                        </button>
+                        <button
+                          onClick={() => handleVerify(c.id, 'commerce', 'reject')}
+                          disabled={isLoading(c.id, 'reject')}
+                          className="flex items-center gap-1 px-3 py-1.5 text-xs bg-red-600/60 hover:bg-red-600 disabled:opacity-50 text-white rounded-lg transition-colors"
+                        >
+                          {isLoading(c.id, 'reject') ? <Loader2 className="w-3 h-3 animate-spin" /> : <XCircle className="w-3 h-3" />}
+                          Rechazar
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -127,8 +246,22 @@ export default async function AdminDashboard() {
                       <div className="font-medium text-sm">{n.organization_name}</div>
                       <div className="text-xs text-zinc-500 mt-1">{n.email} · {n.city}</div>
                       <div className="flex items-center gap-2 mt-2">
-                        <AdminActions userId={n.id} type="ngo" action="approve" serverAction={verifyNgo} />
-                        <AdminActions userId={n.id} type="ngo" action="reject" serverAction={verifyNgo} />
+                        <button
+                          onClick={() => handleVerify(n.id, 'ngo', 'approve')}
+                          disabled={isLoading(n.id, 'approve')}
+                          className="flex items-center gap-1 px-3 py-1.5 text-xs bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white rounded-lg transition-colors"
+                        >
+                          {isLoading(n.id, 'approve') ? <Loader2 className="w-3 h-3 animate-spin" /> : <CheckCircle className="w-3 h-3" />}
+                          Aprobar
+                        </button>
+                        <button
+                          onClick={() => handleVerify(n.id, 'ngo', 'reject')}
+                          disabled={isLoading(n.id, 'reject')}
+                          className="flex items-center gap-1 px-3 py-1.5 text-xs bg-red-600/60 hover:bg-red-600 disabled:opacity-50 text-white rounded-lg transition-colors"
+                        >
+                          {isLoading(n.id, 'reject') ? <Loader2 className="w-3 h-3 animate-spin" /> : <XCircle className="w-3 h-3" />}
+                          Rechazar
+                        </button>
                       </div>
                     </div>
                   ))}
