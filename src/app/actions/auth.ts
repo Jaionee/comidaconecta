@@ -11,10 +11,13 @@ async function getToken(): Promise<string | null> {
 }
 
 // Helper: set token cookie
+// NOT httpOnly because client components read it via document.cookie
+// Secure only in production (localhost HTTP can't set Secure cookies)
 async function setToken(token: string) {
   const c = await cookies()
   c.set('token', token, {
-    httpOnly: true, secure: true, sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
     path: '/', maxAge: 60 * 60 * 24 * 7, // 7 days
   })
 }

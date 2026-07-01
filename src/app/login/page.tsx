@@ -1,14 +1,12 @@
 'use client'
 
 import { useState, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Leaf, Store, Building2, Eye, EyeOff } from 'lucide-react'
-
-const WORKER_URL = 'https://comidaconecta-worker.jaione-garay.workers.dev'
+import { login } from '@/app/actions/auth'
 
 function LoginForm() {
-  const router = useRouter()
   const searchParams = useSearchParams()
   const role = searchParams.get('role')
   const [error, setError] = useState('')
@@ -21,35 +19,26 @@ function LoginForm() {
     setLoading(true)
 
     const form = new FormData(e.currentTarget)
-    const email = form.get('email') as string
-    const password = form.get('password') as string
 
     try {
-      const res = await fetch(`${WORKER_URL}/api/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      })
+      // Use the server action which sets the cookie in the response and does a proper redirect
+      const result = await login(form)
 
-      const data = await res.json()
-
-      if (!data.success || !data.data?.token) {
-        setError(data?.error || 'Email o contraseña incorrectos')
-        setLoading(false)
+      // If we get here, login didn't redirect (error case)
+      if (result?.error) {
+        setError(result.error)
+      } else {
+        setError('Error al iniciar sesión')
+      }
+      setLoading(false)
+    } catch (err: any) {
+      // Server action redirect() throws a redirect error — ignore it
+      // If it's a real error, show it
+      if (err?.digest?.startsWith('NEXT_REDIRECT')) {
+        // Successful login — the redirect is handled by Next.js
+        // No need to do anything else
         return
       }
-
-      const token = data.data.token
-      const user = data.data.user
-
-      // Store token in cookie (accessible from JS middleware)
-      document.cookie = `token=${token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax; Secure`
-
-      // Redirect based on role
-      if (user.role === 'admin') router.push('/admin/dashboard')
-      else if (user.role === 'commerce') router.push('/comercio/dashboard')
-      else router.push('/ong/dashboard')
-    } catch (err: any) {
       setError('Error de conexión con el servidor. ¿Estás conectado a internet?')
       setLoading(false)
     }
