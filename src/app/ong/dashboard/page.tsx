@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import {
   Leaf, Package, Search, History, User, LogOut, Clock,
@@ -10,38 +11,18 @@ import { reserveDonation, markAsPickedUp } from '@/app/actions/reservations'
 import NgoActions from './ngo-actions'
 
 export default async function NgoDashboard() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
 
-  const { data: ngo } = await supabase
-    .from('ngos')
-    .select('*')
-    .eq('user_id', user.id)
-    .single()
+  const { data: dashboardData } = await api.dashboards.ngo(user.token)
+  const ngo = dashboardData?.ngo || null
+  const availableDonations = dashboardData?.availableDonations || []
+  const reservations = dashboardData?.reservations || []
 
   if (!ngo) redirect('/ong/perfil')
 
-  // Get available donations
-  const { data: availableDonations } = await supabase
-    .from('donations')
-    .select('*, commerces(business_name, city)')
-    .eq('status', 'available')
-    .gte('pickup_deadline', new Date().toISOString())
-    .order('created_at', { ascending: false })
-    .limit(20)
-
-  // Get NGO reservations
-  const { data: reservations } = await supabase
-    .from('reservations')
-    .select('*, donations(*, commerces(business_name, city))')
-    .eq('ngo_id', ngo.id)
-    .order('reserved_at', { ascending: false })
-    .limit(20)
-
-  const pendingConfirm = reservations?.filter(r => r.status === 'picked_up') || []
-  const activeReservations = reservations?.filter(r => r.status === 'reserved' || r.status === 'picked_up') || []
-  const completedCount = reservations?.filter(r => r.status === 'collected').length || 0
+  const pendingConfirm = reservations?.filter((r: any) => r.status === 'picked_up') || []
+  const activeReservations = reservations?.filter((r: any) => r.status === 'reserved' || r.status === 'picked_up') || []
+  const completedCount = reservations?.filter((r: any) => r.status === 'collected').length || 0
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -129,7 +110,7 @@ export default async function NgoDashboard() {
                 <Clock className="w-4 h-4 text-amber-400" /> Pendientes de confirmación
               </h2>
               <div className="space-y-3">
-                {pendingConfirm.map(r => (
+                {pendingConfirm.map((r: any) => (
                   <div key={r.id} className="bg-amber-900/10 border border-amber-700/20 rounded-xl p-4">
                     <div className="flex items-start justify-between">
                       <div>
@@ -157,7 +138,7 @@ export default async function NgoDashboard() {
               </div>
             ) : (
               <div className="space-y-3">
-                {activeReservations.map(r => (
+                {activeReservations.map((r: any) => (
                   <div key={r.id} className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
                     <div className="flex items-start justify-between mb-2">
                       <div>
@@ -202,7 +183,7 @@ export default async function NgoDashboard() {
               </div>
             ) : (
               <div className="grid md:grid-cols-2 gap-3">
-                {availableDonations.slice(0, 4).map(d => (
+                {availableDonations.slice(0, 4).map((d: any) => (
                   <div key={d.id} className="bg-zinc-800/20 border border-zinc-700/20 rounded-xl p-3">
                     <h3 className="font-medium text-sm">{d.title}</h3>
                     <p className="text-xs text-zinc-500 mt-1">

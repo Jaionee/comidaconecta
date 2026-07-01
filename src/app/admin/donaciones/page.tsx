@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import { Leaf, Package, Shield, LogOut, TrendingUp, Calendar, MapPin, Store, Building2 } from 'lucide-react'
 import { logout } from '@/app/actions/auth'
@@ -7,23 +8,10 @@ import { deleteDonation } from '@/app/actions/admin'
 import DonationRow from './donation-row'
 
 export default async function AdminDonationsPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
+  if (user.role !== 'admin') redirect('/')
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
-
-  if (profile?.role !== 'admin') redirect('/')
-
-  const { data: donations } = await supabase
-    .from('donations')
-    .select('*, commerces(business_name, city)')
-    .order('created_at', { ascending: false })
-    .limit(50)
+  const { data: donations } = await api.donations.list(user.token)
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -42,10 +30,10 @@ export default async function AdminDonationsPage() {
 
       <main className="md:ml-64 pt-14 md:pt-0">
         <div className="max-w-5xl mx-auto p-4 md:p-8">
-          <h1 className="text-2xl font-bold mb-6">Donaciones ({donations?.length || 0})</h1>
+          <h1 className="text-2xl font-bold mb-6">Donaciones ({(donations || []).length})</h1>
 
           <div className="space-y-2">
-            {donations?.map(d => (
+            {(donations || []).map((d: any) => (
               <DonationRow key={d.id} donation={d} deleteAction={deleteDonation} />
             ))}
           </div>

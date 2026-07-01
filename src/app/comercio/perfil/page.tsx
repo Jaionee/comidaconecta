@@ -1,20 +1,16 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import { Leaf, ArrowLeft, Store } from 'lucide-react'
 import ProfileForm from './profile-form'
 
 export default async function CommerceProfilePage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
 
-  // Get existing profile
-  const { data: profile } = await supabase
-    .from('commerces')
-    .select('*')
-    .eq('user_id', user.id)
-    .single()
+  // Get commerce profile for the authenticated user via dashboard endpoint
+  const { data: dashboardData } = await api.dashboards.commerce(user.token)
+  const profile = dashboardData?.commerce || null
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">

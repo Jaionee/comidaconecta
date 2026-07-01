@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import {
   Leaf, Plus, History, FileText, User, LogOut, Package, AlertCircle,
@@ -8,33 +9,6 @@ import {
 import { logout } from '@/app/actions/auth'
 import { cancelDonation, confirmCollection } from '@/app/actions/donations'
 import DashboardActions from './dashboard-actions'
-
-async function getCommerceData(userId: string) {
-  const supabase = await createClient()
-
-  const { data: commerce } = await supabase
-    .from('commerces')
-    .select('*')
-    .eq('user_id', userId)
-    .single()
-
-  if (!commerce) return { commerce: null, donations: [], reservations: [] }
-
-  const { data: donations } = await supabase
-    .from('donations')
-    .select('*')
-    .eq('commerce_id', commerce.id)
-    .order('created_at', { ascending: false })
-    .limit(20)
-
-  const { data: reservations } = await supabase
-    .from('reservations')
-    .select('*, donations!inner(title, food_type), ngos!inner(organization_name)')
-    .in('donation_id', donations?.map(d => d.id) || [])
-    .order('reserved_at', { ascending: false })
-
-  return { commerce, donations: donations || [], reservations: reservations || [] }
-}
 
 function getStatusBadge(status: string) {
   const config: Record<string, { color: string; icon: any; label: string }> = {
@@ -49,19 +23,20 @@ function getStatusBadge(status: string) {
 }
 
 export default async function CommerceDashboard() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
 
-  const { commerce, donations, reservations } = await getCommerceData(user.id)
+  const { data: dashboardData } = await api.dashboards.commerce(user.token)
+  const commerce = dashboardData?.commerce || null
+  const donations = dashboardData?.donations || []
+  const reservations = dashboardData?.reservations || []
 
   if (!commerce) {
     redirect('/comercio/perfil')
   }
 
-  const activeDonations = donations.filter(d => d.status === 'available' || d.status === 'reserved')
-  const completedCount = donations.filter(d => d.status === 'collected').length
-  const totalServings = donations.reduce((sum, d) => sum + (d.status === 'collected' ? d.estimated_servings : 0), 0)
+  const activeDonations = donations.filter((d: any) => d.status === 'available' || d.status === 'reserved')
+  const completedCount = donations.filter((d: any) => d.status === 'collected').length
+  const totalServings = donations.reduce((sum: number, d: any) => sum + (d.status === 'collected' ? d.estimated_servings : 0), 0)
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -175,10 +150,10 @@ export default async function CommerceDashboard() {
             </div>
           ) : (
             <div className="space-y-3">
-              {activeDonations.map(donation => {
+              {activeDonations.map((donation: any) => {
                 const badge = getStatusBadge(donation.status)
                 const Icon = badge.icon
-                const reservation = reservations.find(r => r.donation_id === donation.id)
+                const reservation = reservations.find((r: any) => r.donation_id === donation.id)
                 return (
                   <div key={donation.id} className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
                     <div className="flex items-start justify-between mb-2">

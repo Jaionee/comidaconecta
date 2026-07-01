@@ -1,18 +1,14 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import { Leaf, FileText, Calendar, TrendingUp, Scale, Heart } from 'lucide-react'
 
 export default async function CommerceMonthlyReport() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
 
-  const { data: commerce } = await supabase
-    .from('commerces')
-    .select('id, business_name')
-    .eq('user_id', user.id)
-    .single()
+  const { data: dashboardData } = await api.dashboards.commerce(user.token)
+  const commerce = dashboardData?.commerce || null
 
   if (!commerce) redirect('/comercio/perfil')
 
@@ -20,18 +16,22 @@ export default async function CommerceMonthlyReport() {
   const now = new Date()
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString()
 
-  const { data: donations } = await supabase
-    .from('donations')
-    .select('*, reservations(*, ngos(organization_name))')
-    .eq('commerce_id', commerce.id)
-    .gte('created_at', monthStart)
-    .order('created_at', { ascending: false })
+  const { data: donations } = await api.donations.list(user.token)
+  const donationsList = Array.isArray(donations) ? donations : []
 
-  const collected = donations?.filter(d => d.status === 'collected') || []
-  const totalDonations = donations?.length || 0
+  const currentMonthDonations = donationsList.filter((d: any) =>
+    d.created_at && d.created_at >= monthStart
+  )
+
+  const collected = currentMonthDonations.filter((d: any) => d.status === 'collected') || []
+  const totalDonations = currentMonthDonations.length
   const totalCollected = collected.length
-  const totalServings = collected.reduce((sum, d) => sum + d.estimated_servings, 0)
-  const uniqueNgos = new Set(collected.map(d => d.reservations?.[0]?.ngos?.organization_name).filter(Boolean))
+  const totalServings = collected.reduce((sum: number, d: any) => sum + (d.estimated_servings || 0), 0)
+  const uniqueNgos = new Set(
+    collected
+      .map((d: any) => d.ngo_name)
+      .filter(Boolean)
+  )
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -58,7 +58,7 @@ export default async function CommerceMonthlyReport() {
             <div>
               <h1 className="text-2xl font-bold">Informe de impacto mensual</h1>
               <p className="text-sm text-zinc-500">
-                {commerce.business_name} · {now.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}
+                {commerce.business_name || 'Comercio'} · {now.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}
               </p>
             </div>
           </div>
@@ -101,18 +101,18 @@ export default async function CommerceMonthlyReport() {
             <div>
               <h2 className="font-semibold mb-3">Donaciones recogidas este mes</h2>
               <div className="space-y-2">
-                {collected.map(d => (
+                {collected.map((d: any) => (
                   <div key={d.id} className="bg-zinc-800/20 border border-zinc-700/20 rounded-lg p-3 flex items-center justify-between">
                     <div>
-                      <div className="text-sm font-medium">{d.title}</div>
+                      <div className="text-sm font-medium">{d.title || d.description}</div>
                       <div className="text-xs text-zinc-500 mt-0.5">
-                        {d.estimated_servings} raciones · {d.quantity_text}
+                        {d.estimated_servings || 0} raciones · {d.quantity_text || d.amount}
                       </div>
                     </div>
                     <div className="text-xs text-zinc-500 text-right">
                       <div>{new Date(d.created_at).toLocaleDateString('es-ES')}</div>
-                      {d.reservations?.[0]?.ngos?.organization_name && (
-                        <div className="text-emerald-400">{d.reservations[0].ngos.organization_name}</div>
+                      {d.ngo_name && (
+                        <div className="text-emerald-400">{d.ngo_name}</div>
                       )}
                     </div>
                   </div>

@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import {
   Leaf, Users, Package, Shield, LogOut, CheckCircle, XCircle,
@@ -10,49 +11,17 @@ import { verifyCommerce, verifyNgo } from '@/app/actions/admin'
 import AdminActions from './admin-actions'
 
 export default async function AdminDashboard() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
+  if (user.role !== 'admin') redirect('/')
 
-  // Verify admin role
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { data: dashboardData } = await api.admin.dashboard(user.token)
 
-  if (profile?.role !== 'admin') redirect('/')
-
-  // Get pending verifications
-  const { data: pendingCommerces } = await supabase
-    .from('commerces')
-    .select('*')
-    .eq('status', 'pending')
-    .limit(20)
-
-  const { data: pendingNgos } = await supabase
-    .from('ngos')
-    .select('*')
-    .eq('status', 'pending')
-    .limit(20)
-
-  // Get stats
-  const { count: totalCommerces } = await supabase
-    .from('commerces')
-    .select('*', { count: 'exact', head: true })
-
-  const { count: totalNgos } = await supabase
-    .from('ngos')
-    .select('*', { count: 'exact', head: true })
-
-  const { count: totalDonations } = await supabase
-    .from('donations')
-    .select('*', { count: 'exact', head: true })
-
-  const { count: completedDonations } = await supabase
-    .from('donations')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'collected')
+  const pendingCommerces = dashboardData?.pendingCommerces || []
+  const pendingNgos = dashboardData?.pendingNgos || []
+  const totalCommerces = dashboardData?.totalCommerces || 0
+  const totalNgos = dashboardData?.totalNgos || 0
+  const totalDonations = dashboardData?.totalDonations || 0
+  const completedDonations = dashboardData?.completedDonations || 0
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -97,22 +66,22 @@ export default async function AdminDashboard() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
               <Store className="w-5 h-5 text-emerald-400 mb-2" />
-              <div className="text-2xl font-bold">{totalCommerces || 0}</div>
+              <div className="text-2xl font-bold">{totalCommerces}</div>
               <div className="text-xs text-zinc-400">Comercios registrados</div>
             </div>
             <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
               <Building2 className="w-5 h-5 text-amber-400 mb-2" />
-              <div className="text-2xl font-bold">{totalNgos || 0}</div>
+              <div className="text-2xl font-bold">{totalNgos}</div>
               <div className="text-xs text-zinc-400">Entidades sociales</div>
             </div>
             <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
               <Package className="w-5 h-5 text-blue-400 mb-2" />
-              <div className="text-2xl font-bold">{totalDonations || 0}</div>
+              <div className="text-2xl font-bold">{totalDonations}</div>
               <div className="text-xs text-zinc-400">Donaciones totales</div>
             </div>
             <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
               <CheckCircle className="w-5 h-5 text-emerald-400 mb-2" />
-              <div className="text-2xl font-bold">{completedDonations || 0}</div>
+              <div className="text-2xl font-bold">{completedDonations}</div>
               <div className="text-xs text-zinc-400">Donaciones completadas</div>
             </div>
           </div>
@@ -123,13 +92,13 @@ export default async function AdminDashboard() {
             <div>
               <h2 className="font-semibold mb-3 flex items-center gap-2">
                 <Store className="w-4 h-4 text-emerald-400" />
-                Comercios pendientes ({pendingCommerces?.length || 0})
+                Comercios pendientes ({pendingCommerces.length})
               </h2>
-              {!pendingCommerces || pendingCommerces.length === 0 ? (
+              {pendingCommerces.length === 0 ? (
                 <p className="text-zinc-500 text-sm">No hay comercios pendientes de verificación</p>
               ) : (
                 <div className="space-y-2">
-                  {pendingCommerces.map(c => (
+                  {pendingCommerces.map((c: any) => (
                     <div key={c.id} className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-3">
                       <div className="font-medium text-sm">{c.business_name}</div>
                       <div className="text-xs text-zinc-500 mt-1">{c.email} · {c.city} · {c.contact_person}</div>
@@ -147,13 +116,13 @@ export default async function AdminDashboard() {
             <div>
               <h2 className="font-semibold mb-3 flex items-center gap-2">
                 <Building2 className="w-4 h-4 text-amber-400" />
-                Entidades pendientes ({pendingNgos?.length || 0})
+                Entidades pendientes ({pendingNgos.length})
               </h2>
-              {!pendingNgos || pendingNgos.length === 0 ? (
+              {pendingNgos.length === 0 ? (
                 <p className="text-zinc-500 text-sm">No hay entidades pendientes de verificación</p>
               ) : (
                 <div className="space-y-2">
-                  {pendingNgos.map(n => (
+                  {pendingNgos.map((n: any) => (
                     <div key={n.id} className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-3">
                       <div className="font-medium text-sm">{n.organization_name}</div>
                       <div className="text-xs text-zinc-500 mt-1">{n.email} · {n.city}</div>

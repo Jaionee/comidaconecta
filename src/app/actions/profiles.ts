@@ -2,15 +2,15 @@
 
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { cookies } from 'next/headers'
 
 export async function createCommerceProfile(formData: FormData) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
+
+  const { api } = await import('@/lib/api/client')
 
   const profile = {
-    user_id: user.id,
     business_name: formData.get('business_name') as string,
     business_type: formData.get('business_type') as string,
     address: formData.get('address') as string,
@@ -26,42 +26,24 @@ export async function createCommerceProfile(formData: FormData) {
     return { error: 'Completa todos los campos obligatorios' }
   }
 
-  // Check if commerce profile already exists
-  const { data: existing } = await supabase
-    .from('commerces')
-    .select('id')
-    .eq('user_id', user.id)
-    .single()
-
-  if (existing) {
-    const { error } = await supabase
-      .from('commerces')
-      .update(profile)
-      .eq('id', existing.id)
-
-    if (error) return { error: error.message }
-  } else {
-    const { error } = await supabase
-      .from('commerces')
-      .insert(profile)
-
-    if (error) return { error: error.message }
-  }
+  // Create commerce profile via API
+  const result = await api.commerces.create(profile, token)
+  if (!result.success) return { error: result.error || 'Error al crear perfil' }
 
   revalidatePath('/comercio/perfil')
   redirect('/comercio/dashboard')
 }
 
 export async function createNgoProfile(formData: FormData) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
+
+  const { api } = await import('@/lib/api/client')
 
   const acceptedFoodTypesStr = formData.get('accepted_food_types') as string
   const acceptedFoodTypes = acceptedFoodTypesStr ? acceptedFoodTypesStr.split(',').filter(Boolean) : []
 
   const profile = {
-    user_id: user.id,
     organization_name: formData.get('organization_name') as string,
     organization_type: formData.get('organization_type') as string,
     address: formData.get('address') as string,
@@ -78,26 +60,8 @@ export async function createNgoProfile(formData: FormData) {
     return { error: 'Completa todos los campos obligatorios' }
   }
 
-  const { data: existing } = await supabase
-    .from('ngos')
-    .select('id')
-    .eq('user_id', user.id)
-    .single()
-
-  if (existing) {
-    const { error } = await supabase
-      .from('ngos')
-      .update(profile)
-      .eq('id', existing.id)
-
-    if (error) return { error: error.message }
-  } else {
-    const { error } = await supabase
-      .from('ngos')
-      .insert(profile)
-
-    if (error) return { error: error.message }
-  }
+  const result = await api.ngos.create(profile, token)
+  if (!result.success) return { error: result.error || 'Error al crear perfil' }
 
   revalidatePath('/ong/perfil')
   redirect('/ong/dashboard')

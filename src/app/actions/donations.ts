@@ -2,25 +2,15 @@
 
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { cookies } from 'next/headers'
 
 export async function createDonation(formData: FormData) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
 
-  // Get commerce id
-  const { data: commerce } = await supabase
-    .from('commerces')
-    .select('id, status')
-    .eq('user_id', user.id)
-    .single()
-
-  if (!commerce) return { error: 'Completa tu perfil de comercio primero' }
-  if (commerce.status !== 'active') return { error: 'Tu perfil está pendiente de verificación por el administrador' }
+  const { api } = await import('@/lib/api/client')
 
   const donation = {
-    commerce_id: commerce.id,
     title: formData.get('title') as string,
     description: formData.get('description') as string,
     food_type: formData.get('food_type') as string,
@@ -34,12 +24,8 @@ export async function createDonation(formData: FormData) {
     return { error: 'Completa todos los campos obligatorios' }
   }
 
-  const { error } = await supabase.from('donations').insert(donation)
-
-  if (error) {
-    console.error('Error creating donation:', error)
-    return { error: 'Error al publicar la donación' }
-  }
+  const result = await api.donations.create(donation, token)
+  if (!result.success) return { error: result.error || 'Error al publicar la donación' }
 
   revalidatePath('/comercio/dashboard')
   revalidatePath('/comercio/donaciones')
@@ -47,16 +33,12 @@ export async function createDonation(formData: FormData) {
 }
 
 export async function cancelDonation(donationId: string) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
 
-  const { error } = await supabase
-    .from('donations')
-    .update({ status: 'cancelled', updated_at: new Date().toISOString() })
-    .eq('id', donationId)
-
-  if (error) return { error: 'Error al cancelar' }
+  const { api } = await import('@/lib/api/client')
+  const result = await api.donations.delete(donationId, token)
+  if (!result.success) return { error: 'Error al cancelar' }
 
   revalidatePath('/comercio/dashboard')
   revalidatePath('/comercio/donaciones')
@@ -64,33 +46,12 @@ export async function cancelDonation(donationId: string) {
 }
 
 export async function confirmCollection(reservationId: string) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
 
-  const { error } = await supabase
-    .from('reservations')
-    .update({
-      status: 'collected',
-      commerce_confirmed_at: new Date().toISOString(),
-    })
-    .eq('id', reservationId)
-
-  if (error) return { error: 'Error al confirmar' }
-
-  // Also update donation status
-  const { data: res } = await supabase
-    .from('reservations')
-    .select('donation_id')
-    .eq('id', reservationId)
-    .single()
-
-  if (res) {
-    await supabase
-      .from('donations')
-      .update({ status: 'collected', updated_at: new Date().toISOString() })
-      .eq('id', res.donation_id)
-  }
+  const { api } = await import('@/lib/api/client')
+  const result = await api.donations.collect(reservationId, token)
+  if (!result.success) return { error: 'Error al confirmar' }
 
   revalidatePath('/comercio/dashboard')
   revalidatePath('/comercio/donaciones')

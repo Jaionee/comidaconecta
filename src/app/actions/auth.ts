@@ -2,11 +2,30 @@
 
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { cookies } from 'next/headers'
+
+// Helper: read token from cookie
+async function getToken(): Promise<string | null> {
+  const c = await cookies()
+  return c.get('token')?.value || null
+}
+
+// Helper: set token cookie
+async function setToken(token: string) {
+  const c = await cookies()
+  c.set('token', token, {
+    httpOnly: true, secure: true, sameSite: 'lax',
+    path: '/', maxAge: 60 * 60 * 24 * 7, // 7 days
+  })
+}
+
+// Helper: clear token cookie
+async function clearToken() {
+  const c = await cookies()
+  c.delete('token')
+}
 
 export async function signup(formData: FormData) {
-  const supabase = await createClient()
-
   const email = formData.get('email') as string
   const password = formData.get('password') as string
   const name = formData.get('name') as string
@@ -21,34 +40,21 @@ export async function signup(formData: FormData) {
     return { error: 'La contraseña debe tener al menos 6 caracteres' }
   }
 
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: { role, name },
-    },
-  })
+  const { api } = await import('@/lib/api/client')
+  const result = await api.auth.register(email, password, name, phone, role)
 
-  if (error) {
-    if (error.message.includes('already registered')) {
+  if (!result.success) {
+    const msg = result.error || ''
+    if (msg.toLowerCase().includes('already') || msg.toLowerCase().includes('exist')) {
       return { error: 'Este email ya está registrado' }
     }
-    return { error: error.message }
+    return { error: msg }
   }
 
-  if (data.user) {
-    // Crear perfil en la tabla profiles
-    const { error: profileError } = await supabase.from('profiles').insert({
-      id: data.user.id,
-      email,
-      role,
-      name,
-      phone: phone || null,
-    })
-
-    if (profileError) {
-      console.error('Error creating profile:', profileError)
-    }
+  // Auto-login after signup
+  const loginResult = await api.auth.login(email, password)
+  if (loginResult.success && loginResult.data?.token) {
+    await setToken(loginResult.data.token)
   }
 
   revalidatePath('/')
@@ -57,8 +63,6 @@ export async function signup(formData: FormData) {
 }
 
 export async function login(formData: FormData) {
-  const supabase = await createClient()
-
   const email = formData.get('email') as string
   const password = formData.get('password') as string
 
@@ -66,33 +70,29 @@ export async function login(formData: FormData) {
     return { error: 'Email y contraseña son obligatorios' }
   }
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  })
+  const { api } = await import('@/lib/api/client')
+  const result = await api.auth.login(email, password)
 
-  if (error) {
+  if (!result.success) {
     return { error: 'Email o contraseña incorrectos' }
   }
 
-  // Obtener el rol del usuario
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', data.user.id)
-    .single()
+  if (!result.data?.token) {
+    return { error: 'Error al obtener sesión' }
+  }
 
+  await setToken(result.data.token)
+  const user = result.data.user
   revalidatePath('/')
 
-  if (profile?.role === 'commerce') redirect('/comercio/dashboard')
-  else if (profile?.role === 'ngo') redirect('/ong/dashboard')
-  else if (profile?.role === 'admin') redirect('/admin')
+  if (user.role === 'commerce') redirect('/comercio/dashboard')
+  else if (user.role === 'ngo') redirect('/ong/dashboard')
+  else if (user.role === 'admin') redirect('/admin')
   else redirect('/')
 }
 
 export async function logout() {
-  const supabase = await createClient()
-  await supabase.auth.signOut()
+  await clearToken()
   revalidatePath('/')
   redirect('/')
 }

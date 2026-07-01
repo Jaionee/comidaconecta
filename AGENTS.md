@@ -25,18 +25,19 @@ src/
 │   │   ├── dashboard/        # Dashboard admin
 │   │   ├── donaciones/       # Gestión de donaciones
 │   │   └── usuarios/         # Gestión de usuarios
-│   ├── comercio/             # Panel comercio
-│   │   ├── dashboard/        # Dashboard comercio
-│   │   ├── donar/            # Publicar donación
-│   │   ├── historial/        # Historial de donaciones
-│   │   ├── informe/          # Informes/estadísticas
-│   │   └── perfil/           # Editar perfil comercio
-│   ├── ong/                  # Panel ONG
-│   │   ├── dashboard/        # Dashboard ONG
-│   │   ├── donaciones/       # Buscar donaciones
-│   │   ├── historial/        # Historial de reservas
-│   │   └── perfil/           # Editar perfil ONG
-│   └── actions/              # Server Actions
+├── comercio/             # Panel comercio
+│   ├── dashboard/        # Dashboard comercio
+│   ├── donar/            # Publicar donación
+│   ├── historial/        # Historial de donaciones
+│   ├── informe/          # Informes/estadísticas
+│   └── perfil/           # Editar perfil comercio
+├── ong/                  # Panel ONG
+│   ├── dashboard/        # Dashboard ONG
+│   ├── donaciones/       # Buscar donaciones
+│   ├── historial/        # Historial de reservas
+│   └── perfil/           # Editar perfil ONG
+├── colabora/             # Contribución voluntaria (Bizum + BEP20)
+└── actions/              # Server Actions
 │       ├── auth.ts           # Auth (login, register, logout)
 │       ├── profiles.ts       # CRUD perfiles
 │       ├── donations.ts      # CRUD donaciones

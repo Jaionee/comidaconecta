@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import {
   Leaf, Search, MapPin, Calendar, Store, LogOut, Heart, Filter,
@@ -9,33 +10,31 @@ import { reserveDonation } from '@/app/actions/reservations'
 import NgoActions from '../dashboard/ngo-actions'
 
 export default async function NgoDonationsPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
 
-  const { data: ngo } = await supabase
-    .from('ngos')
-    .select('id, status')
-    .eq('user_id', user.id)
-    .single()
+  const { data: ngoResult } = await api.ngos.get(user.id, user.token)
+  const ngo = ngoResult || null
 
   if (!ngo) redirect('/ong/perfil')
 
-  // Get all available donations, not yet expired
-  const { data: donations } = await supabase
-    .from('donations')
-    .select('*, commerces(business_name, city, address)')
-    .eq('status', 'available')
-    .gte('pickup_deadline', new Date().toISOString())
-    .order('created_at', { ascending: false })
+  // Get all available donations
+  const { data: donations } = await api.donations.list(user.token)
 
-  // Get NGO's existing reservations to know which are already reserved by them or others
-  const { data: allReservations } = await supabase
-    .from('reservations')
-    .select('donation_id, ngo_id')
-    .in('status', ['reserved', 'picked_up'])
+  // Filter to only available ones
+  const now = new Date().toISOString()
+  const availableList = (donations || []).filter(
+    (d: any) => d.status === 'available' && d.pickup_deadline >= now
+  )
 
-  const reservedIds = new Set(allReservations?.map(r => r.donation_id) || [])
+  // Get NGO's existing reservations to know which are already reserved
+  const { data: reservationsData } = await api.reservations.list(user.token)
+  const allReservations = reservationsData || []
+
+  const reservedIds = new Set(
+    allReservations
+      .filter((r: any) => r.status === 'reserved' || r.status === 'picked_up')
+      .map((r: any) => r.donation_id)
+  )
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -59,11 +58,11 @@ export default async function NgoDonationsPage() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h1 className="text-2xl font-bold">Donaciones disponibles</h1>
-              <p className="text-sm text-zinc-500 mt-1">{donations?.length || 0} donaciones ahora mismo</p>
+              <p className="text-sm text-zinc-500 mt-1">{availableList.length} donaciones ahora mismo</p>
             </div>
           </div>
 
-          {!donations || donations.length === 0 ? (
+          {availableList.length === 0 ? (
             <div className="bg-zinc-800/20 border border-dashed border-zinc-700/30 rounded-xl p-12 text-center">
               <Search className="w-12 h-12 text-zinc-600 mx-auto mb-3" />
               <p className="text-zinc-500">No hay donaciones disponibles ahora</p>
@@ -71,7 +70,7 @@ export default async function NgoDonationsPage() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {donations.map(d => {
+              {availableList.map((d: any) => {
                 const taken = reservedIds.has(d.id)
                 return (
                   <div key={d.id} className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-5 hover:border-emerald-700/30 transition-colors">

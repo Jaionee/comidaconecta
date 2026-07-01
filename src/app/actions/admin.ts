@@ -1,77 +1,40 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { createClient } from '@/lib/supabase/server'
+import { cookies } from 'next/headers'
 
 export async function verifyCommerce(commerceId: string, action: 'approve' | 'reject') {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
 
-  // Check admin role
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { api } = await import('@/lib/api/client')
+  const result = await api.admin.verifyCommerce(commerceId, token)
 
-  if (profile?.role !== 'admin') return { error: 'No autorizado' }
-
-  const { error } = await supabase
-    .from('commerces')
-    .update({
-      status: action === 'approve' ? 'active' : 'rejected',
-      verified_at: new Date().toISOString(),
-    })
-    .eq('id', commerceId)
-
-  if (error) return { error: 'Error al actualizar' }
+  if (!result.success) return { error: 'Error al actualizar' }
   revalidatePath('/admin/dashboard')
   return { success: true }
 }
 
 export async function verifyNgo(ngoId: string, action: 'approve' | 'reject') {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { api } = await import('@/lib/api/client')
+  const result = await api.admin.verifyCommerce(ngoId, token)
 
-  if (profile?.role !== 'admin') return { error: 'No autorizado' }
-
-  const { error } = await supabase
-    .from('ngos')
-    .update({
-      status: action === 'approve' ? 'active' : 'rejected',
-      verified_at: new Date().toISOString(),
-    })
-    .eq('id', ngoId)
-
-  if (error) return { error: 'Error al actualizar' }
+  if (!result.success) return { error: 'Error al actualizar' }
   revalidatePath('/admin/dashboard')
   return { success: true }
 }
 
 export async function deleteDonation(donationId: string) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado' }
+  const token = (await cookies()).get('token')?.value
+  if (!token) return { error: 'No autenticado' }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { api } = await import('@/lib/api/client')
+  const result = await api.donations.delete(donationId, token)
 
-  if (profile?.role !== 'admin') return { error: 'No autorizado' }
-
-  await supabase.from('reservations').delete().eq('donation_id', donationId)
-  await supabase.from('donations').delete().eq('id', donationId)
-
+  if (!result.success) return { error: 'Error al eliminar' }
   revalidatePath('/admin/donaciones')
   revalidatePath('/admin/dashboard')
   return { success: true }

@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api/auth-helper'
+import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import { Leaf, Users, Package, Shield, LogOut, TrendingUp, Store, Building2, Mail, Phone, MapPin } from 'lucide-react'
 import { logout } from '@/app/actions/auth'
@@ -7,20 +8,12 @@ import { verifyCommerce, verifyNgo } from '@/app/actions/admin'
 import AdminActions from '../dashboard/admin-actions'
 
 export default async function AdminUsersPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const user = await requireAuth()
+  if (user.role !== 'admin') redirect('/')
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
-
-  if (profile?.role !== 'admin') redirect('/')
-
-  const { data: commerces } = await supabase.from('commerces').select('*').order('created_at', { ascending: false }).limit(50)
-  const { data: ngos } = await supabase.from('ngos').select('*').order('created_at', { ascending: false }).limit(50)
+  const { data: dashboardData } = await api.admin.dashboard(user.token)
+  const commerces = dashboardData?.allCommerces || []
+  const ngos = dashboardData?.allNgos || []
 
   return (
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
@@ -42,9 +35,9 @@ export default async function AdminUsersPage() {
           <h1 className="text-2xl font-bold mb-6">Usuarios</h1>
 
           {/* Commerces */}
-          <h2 className="font-semibold mb-3 flex items-center gap-2"><Store className="w-4 h-4 text-emerald-400" /> Comercios ({commerces?.length || 0})</h2>
+          <h2 className="font-semibold mb-3 flex items-center gap-2"><Store className="w-4 h-4 text-emerald-400" /> Comercios ({commerces.length})</h2>
           <div className="space-y-2 mb-8">
-            {commerces?.map(c => (
+            {commerces.map((c: any) => (
               <div key={c.id} className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
                 <div className="flex items-start justify-between">
                   <div>
@@ -71,9 +64,9 @@ export default async function AdminUsersPage() {
           </div>
 
           {/* NGOs */}
-          <h2 className="font-semibold mb-3 flex items-center gap-2"><Building2 className="w-4 h-4 text-amber-400" /> Entidades sociales ({ngos?.length || 0})</h2>
+          <h2 className="font-semibold mb-3 flex items-center gap-2"><Building2 className="w-4 h-4 text-amber-400" /> Entidades sociales ({ngos.length})</h2>
           <div className="space-y-2">
-            {ngos?.map(n => (
+            {ngos.map((n: any) => (
               <div key={n.id} className="bg-zinc-800/30 border border-zinc-700/30 rounded-xl p-4">
                 <div className="flex items-start justify-between">
                   <div>
