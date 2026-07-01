@@ -11,42 +11,33 @@ import {
   Copy,
   Check,
   Shield,
-  Eye,
-  EyeOff,
 } from 'lucide-react'
 
-const BIZUM_NUMBER = '+34 639 17 54 46'
+const BIZUM_NUMBER = '639175446'
 const BEP20_ADDRESS = '0xd808Ff238e09FFb0243904b444f05d73f2Ce36C6'
 
 export default function ColaboraPage() {
   const [copiedBizum, setCopiedBizum] = useState(false)
   const [copiedCrypto, setCopiedCrypto] = useState(false)
-  const [showBizum, setShowBizum] = useState(false)
-  const [showCrypto, setShowCrypto] = useState(false)
 
-  const copyToClipboard = async (text: string, setter: (v: boolean) => void) => {
+  const copyBizum = async () => {
     try {
-      await navigator.clipboard.writeText(text)
-      setter(true)
-      setTimeout(() => setter(false), 2500)
+      await navigator.clipboard.writeText(BIZUM_NUMBER)
     } catch {
-      setter(true)
-      setTimeout(() => setter(false), 2500)
+      // fallback
     }
+    setCopiedBizum(true)
+    setTimeout(() => setCopiedBizum(false), 2000)
   }
 
-  const handleBizumReveal = () => {
-    if (!showBizum) {
-      setShowBizum(true)
-      copyToClipboard('639175446', setCopiedBizum)
+  const copyCrypto = async () => {
+    try {
+      await navigator.clipboard.writeText(BEP20_ADDRESS)
+    } catch {
+      // fallback
     }
-  }
-
-  const handleCryptoReveal = () => {
-    if (!showCrypto) {
-      setShowCrypto(true)
-      copyToClipboard(BEP20_ADDRESS, setCopiedCrypto)
-    }
+    setCopiedCrypto(true)
+    setTimeout(() => setCopiedCrypto(false), 2000)
   }
 
   return (
@@ -104,126 +95,78 @@ export default function ColaboraPage() {
           <div className="grid md:grid-cols-2 gap-8">
 
             {/* BIZUM */}
-            <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-2xl p-8 hover:border-emerald-700/30 transition-colors">
+            <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-2xl p-8 hover:border-emerald-700/30 transition-colors flex flex-col">
               <div className="w-14 h-14 rounded-full bg-emerald-900/40 border border-emerald-700/30 flex items-center justify-center mb-6">
                 <Smartphone className="w-7 h-7 text-emerald-400" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Bizum</h2>
-              <p className="text-zinc-400 text-sm mb-6">
+              <p className="text-zinc-400 text-sm mb-6 flex-1">
                 Desde tu app bancaria. Rápido, sin comisiones.
               </p>
 
-              {!showBizum ? (
-                <button
-                  onClick={handleBizumReveal}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-emerald-900/30 hover:shadow-emerald-700/30"
-                >
-                  <Smartphone className="w-5 h-5" />
-                  Donar con Bizum
-                </button>
-              ) : (
-                <div className="animate-fadeIn">
-                  <div className="bg-zinc-900/60 border border-emerald-600/30 rounded-xl p-5 mb-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <p className="text-xs text-zinc-500 uppercase tracking-wider">
-                        Número copiado al portapapeles
-                      </p>
-                      {copiedBizum ? (
-                        <span className="flex items-center gap-1 text-xs text-emerald-400">
-                          <Check className="w-3.5 h-3.5" /> Listo
-                        </span>
-                      ) : (
-                        <button
-                          onClick={() => copyToClipboard('639175446', setCopiedBizum)}
-                          className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200"
-                        >
-                          <Copy className="w-3.5 h-3.5" /> Copiar de nuevo
-                        </button>
-                      )}
-                    </div>
-                    <span className="text-2xl font-mono font-bold text-emerald-400 tracking-wider">
-                      {BIZUM_NUMBER}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => setShowBizum(false)}
-                    className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 border border-zinc-700 hover:border-zinc-500 rounded-xl text-sm text-zinc-400 hover:text-zinc-200 transition-all"
-                  >
-                    <EyeOff className="w-4 h-4" />
-                    Ocultar número
-                  </button>
-                </div>
-              )}
+              <button
+                onClick={copyBizum}
+                className={`w-full flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-xl transition-all duration-200 shadow-lg ${
+                  copiedBizum
+                    ? 'bg-emerald-600 text-white shadow-emerald-700/30'
+                    : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-900/30 hover:shadow-emerald-700/30'
+                }`}
+              >
+                {copiedBizum ? (
+                  <>
+                    <Check className="w-5 h-5" />
+                    ¡Número copiado!
+                  </>
+                ) : (
+                  <>
+                    <Smartphone className="w-5 h-5" />
+                    Donar con Bizum
+                  </>
+                )}
+              </button>
 
-              <div className="mt-6 bg-emerald-900/15 border border-emerald-700/15 rounded-xl p-4">
-                <div className="flex items-start gap-2">
-                  <Smartphone className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-emerald-300/70 leading-relaxed">
-                    Abre tu app bancaria → «Enviar dinero» → «A un número» →
-                    pega el número y elige cantidad. ¡Listo! 💚
-                  </p>
-                </div>
-              </div>
+              <p className="text-xs text-zinc-500 mt-4 text-center leading-relaxed">
+                Abre tu app bancaria → «Enviar dinero» → «A un número» → pega el número
+              </p>
             </div>
 
             {/* CRIPTO BEP20 */}
-            <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-2xl p-8 hover:border-emerald-700/30 transition-colors">
+            <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-2xl p-8 hover:border-emerald-700/30 transition-colors flex flex-col">
               <div className="w-14 h-14 rounded-full bg-blue-900/40 border border-blue-700/30 flex items-center justify-center mb-6">
                 <Wallet className="w-7 h-7 text-blue-400" />
               </div>
               <h2 className="text-2xl font-bold mb-2">Cripto (BEP20)</h2>
-              <p className="text-zinc-400 text-sm mb-6">
+              <p className="text-zinc-400 text-sm mb-6 flex-1">
                 USDT, BNB o cualquier token en <strong>Binance Smart Chain</strong>.
               </p>
 
-              {!showCrypto ? (
-                <button
-                  onClick={handleCryptoReveal}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-blue-900/30 hover:shadow-blue-700/30"
-                >
-                  <Wallet className="w-5 h-5" />
-                  Donar con Cripto
-                </button>
-              ) : (
-                <div className="animate-fadeIn">
-                  <div className="bg-zinc-900/60 border border-blue-600/30 rounded-xl p-5 mb-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <p className="text-xs text-zinc-500 uppercase tracking-wider">
-                        Dirección copiada al portapapeles
-                      </p>
-                      {copiedCrypto ? (
-                        <span className="flex items-center gap-1 text-xs text-emerald-400">
-                          <Check className="w-3.5 h-3.5" /> Listo
-                        </span>
-                      ) : (
-                        <button
-                          onClick={() => copyToClipboard(BEP20_ADDRESS, setCopiedCrypto)}
-                          className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200"
-                        >
-                          <Copy className="w-3.5 h-3.5" /> Copiar de nuevo
-                        </button>
-                      )}
-                    </div>
-                    <span className="text-xs font-mono text-blue-400 break-all leading-relaxed">
-                      {BEP20_ADDRESS}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => setShowCrypto(false)}
-                    className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 border border-zinc-700 hover:border-zinc-500 rounded-xl text-sm text-zinc-400 hover:text-zinc-200 transition-all"
-                  >
-                    <EyeOff className="w-4 h-4" />
-                    Ocultar dirección
-                  </button>
-                </div>
-              )}
+              <button
+                onClick={copyCrypto}
+                className={`w-full flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-xl transition-all duration-200 shadow-lg ${
+                  copiedCrypto
+                    ? 'bg-blue-600 text-white shadow-blue-700/30'
+                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/30 hover:shadow-blue-700/30'
+                }`}
+              >
+                {copiedCrypto ? (
+                  <>
+                    <Check className="w-5 h-5" />
+                    ¡Dirección copiada!
+                  </>
+                ) : (
+                  <>
+                    <Wallet className="w-5 h-5" />
+                    Donar con Cripto
+                  </>
+                )}
+              </button>
 
-              <div className="mt-6 bg-amber-900/20 border border-amber-700/20 rounded-xl p-4">
+              <div className="mt-4 bg-amber-900/20 border border-amber-700/20 rounded-xl p-4">
                 <div className="flex items-start gap-2">
                   <Shield className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
                   <p className="text-xs text-amber-300/80 leading-relaxed">
                     <strong>⚠️ Solo BEP20 (Binance Smart Chain).</strong> Otras redes
-                    (ERC20, TRC20) pueden resultar en pérdida de fondos.
+                    pueden resultar en pérdida de fondos.
                   </p>
                 </div>
               </div>
