@@ -63,10 +63,11 @@ export default function ColaboraPage() {
             <span className="text-emerald-400">ComidaConecta</span> activa
           </h1>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-8">
-            La plataforma es <strong>gratuita para entidades sociales</strong> y
-            de uso gratuito para comercios durante la fase inicial.{' '}
-            Si te resulta útil y quieres contribuir a que siga funcionando,
-            cualquier aportación voluntaria es bienvenida.
+            ComidaConecta es <strong>gratuita para entidades sociales</strong> y
+            de uso gratuito para comercios. Las contribuciones voluntarias ayudan
+            a mantener la plataforma y a conectar más donaciones. Si en el futuro
+            se estableciera algún modelo de suscripción, se comunicaría previamente
+            sin afectar a las donaciones ya realizadas.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <span className="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/30 rounded-full text-xs text-zinc-400">
@@ -208,9 +209,9 @@ export default function ColaboraPage() {
             <Heart className="w-6 h-6 text-emerald-400 mx-auto mb-3" />
             <h3 className="font-semibold mb-2">No olvides que lo esencial es gratis</h3>
             <p className="text-sm text-zinc-500 leading-relaxed">
-              ComidaConecta es <strong>gratuita para entidades sociales</strong> y de uso gratuito
-              para comercios durante la fase inicial. Más adelante podrá establecerse una
-              contribución voluntaria o plan de mantenimiento, siempre avisado previamente.{' '}
+              ComidaConecta es <strong>gratuita para entidades sociales</strong>. Para comercios el uso es gratuito
+              y las contribuciones son voluntarias. Si en el futuro se estableciera algún modelo de
+              suscripción, se comunicaría previamente sin afectar a las donaciones ya realizadas.{' '}
               <strong className="text-zinc-400"> Lo importante es que sigas conectando excedente con necesidad</strong>.
             </p>
           </div>

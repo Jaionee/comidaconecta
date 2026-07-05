@@ -27,7 +27,7 @@ const fr: Translations = {
     badges: ['✅ Gratuit pour les associations','🔓 Sans contrat ni engagement','📱 Publiez en moins de 5 minutes','📍 Géolocalisation en temps réel'],
     commerceBtn: 'Je suis un commerce — je veux donner',
     ngoBtn: 'Je suis une association — j\'ai besoin d\'aliments',
-    disclaimer: '✅ Gratuit pour les associations. ✅ Pour les commerces, usage gratuit en phase initiale. ✅ Contribution volontaire plus tard, toujours avec préavis.',
+    disclaimer: "✅ Gratuit pour les entités sociales. ✅ Pour les commerces, usage gratuit avec contribution volontaire. ✅ Tout changement futur de modèle serait communiqué à l'avance sans affecter les dons déjà effectués.",
     note: 'ComidaConecta ne manipule ni ne transporte les aliments : elle facilite la mise en relation et l\'enregistrement numérique entre les parties.',
   },
   howItWorks: {
@@ -55,7 +55,7 @@ const fr: Translations = {
     commerce: {
       title: 'Pour les commerces',
       subtitle: 'Réduisez vos coûts et générez un impact social',
-      items: ['Réduire le gaspillage et les coûts de gestion des déchets','Historique des dons consultable, utile pour le suivi interne','Label de commerce partenaire de ComidaConecta','Contribution volontaire — choisissez votre montant mensuel (5-10€)'],
+      items: ['Réduire le gaspillage et les coûts de gestion des déchets','Historique des dons consultable, utile pour le suivi interne','Badge de commerce partenaire ComidaConecta','Contribution volontaire — choisissez si vous voulez contribuer'],
     },
     ngo: {
       title: 'Pour les associations',
@@ -96,14 +96,16 @@ const fr: Translations = {
     title: 'Questions fréquentes',
     subtitle: 'Tout ce que vous devez savoir pour commencer à donner ou recevoir des excédents alimentaires.',
     items: [
-      { q: 'Est-ce vraiment gratuit ? Y a-t-il des frais cachés ?', a: 'Pour les associations, c\'est 100 % gratuit pour toujours, sans limites ni frais cachés. Pour les commerces, l\'usage est gratuit en phase initiale ; une contribution volontaire pourra être introduite plus tard, toujours avec préavis. Sans contrat, sans engagement.' },
+      { q: 'Est-ce vraiment gratuit ? Y a-t-il des frais cachés ?', a: 'ComidaConecta est gratuit pour les entités sociales. Pour les commerces, l\'utilisation est gratuite et les contributions sont volontaires — elles aident à maintenir la plateforme mais ne sont pas obligatoires. Si un modèle d\'abonnement était établi à l\'avenir, il serait communiqué à l\'avance et n\'affecterait pas les dons déjà effectués.' },
       { q: 'Quels types d\'aliments puis-je donner ?', a: 'Vous pouvez donner des excédents alimentaires en parfait état : produits frais (fruits, légumes), emballés non périssables, boulangerie et pâtisserie, produits laitiers, et plats préparés. Les aliments surgelés sont également acceptés à condition que la chaîne du froid soit respectée.' },
       { q: 'Comment fonctionne l\'inscription pour les commerces ?', a: 'Rendez-vous sur comidaconecta.org/register, sélectionnez « Je suis un commerce » et remplissez vos informations de base. En moins de 5 minutes, vous pouvez commencer à publier votre premier excédent.' },
       { q: 'Comment fonctionne l\'inscription pour les associations ?', a: 'Rendez-vous sur comidaconecta.org/register, sélectionnez « Je suis une association » et complétez les informations de votre organisation. Une fois inscrit, vous verrez tous les dons disponibles près de chez vous en temps réel.' },
-      { q: 'La contribution volontaire est-elle obligatoire ?', a: 'Non, elle est volontaire. Il n\'y a ni contrat ni engagement. Chaque commerce décide s\'il contribue et combien. Les 5-10€ recommandés aident à maintenir la plateforme active.' },
+      { q: 'La contribution volontaire est-elle obligatoire ?', a: 'Non, elle est entièrement volontaire. Il n\'y a ni contrat ni engagement. Chaque commerce décide s\'il contribue et combien. Les contributions aident à maintenir la plateforme active et à continuer à connecter les dons.' },
       { q: 'Y a-t-il un engagement ou une durée minimale ?', a: 'Aucun. Il n\'y a pas de contrat, d\'engagement ni d\'obligation à long terme. Vous pouvez publier des dons quand vous avez des excédents, sans aucune contrainte.' },
       { q: 'Comment fonctionne le système de bénévolat ?', a: 'Si une association ne peut pas se déplacer pour récupérer un don, elle peut faire appel à un bénévole. Toute personne inscrite comme bénévole peut accepter la collecte et l\'effectuer au nom de l\'association.' },
       { q: 'Quel est l\'impact environnemental du don alimentaire ?', a: 'Chaque don enregistré évite que les aliments finissent à la décharge, réduisant ainsi les émissions de CO₂ liées à leur décomposition. De plus, cela favorise l\'économie circulaire en redistribuant les ressources localement.' },
+      { q: 'Qui est responsable du transport ?', a: 'ComidaConecta n\'organise ni n\'effectue le transport des aliments. La collecte, le transport, la conservation et la livraison doivent être convenus directement entre le commerce donateur et l\'entité réceptrice. La plateforme facilite uniquement le contact et l\'enregistrement numérique du don.' },
+      { q: 'ComidaConecta garantit-elle la sécurité des aliments ?', a: 'Non. Le commerce donateur est responsable de publier uniquement des aliments propres à la consommation et correctement conservés. L\'entité réceptrice est responsable d\'évaluer le don, de le collecter, de le transporter et de le manipuler conformément à la réglementation applicable. ComidaConecta facilite le contact et l\'enregistrement mais ne manipule, n\'inspecte, ne transporte ni ne stocke les aliments.' },
     ],
   },
   about: {

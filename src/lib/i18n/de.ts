@@ -27,7 +27,7 @@ const de: Translations = {
     badges: ['✅ Kostenlos für soziale Einrichtungen','🔓 Keine Verträge oder Mindestlaufzeiten','📱 In weniger als 5 Minuten veröffentlichen','📍 Geolokalisierung in Echtzeit'],
     commerceBtn: 'Ich bin ein Geschäft — ich möchte spenden',
     ngoBtn: 'Ich bin eine soziale Einrichtung — ich brauche Lebensmittel',
-    disclaimer: '✅ Unverbindlich. ✅ Kostenlos für soziale Einrichtungen. ✅ Für Unternehmen, kostenlose Nutzung in der Anfangsphase. ✅ Freiwilliger Beitrag später, stets mit Vorankündigung.',
+    disclaimer: 'ComidaConecta ist kostenlos für soziale Einrichtungen. Für Geschäfte ist die Nutzung kostenlos und Beiträge sind freiwillig – sie helfen, die Plattform zu betreiben, sind aber nicht verpflichtend. Sollte in Zukunft ein Abonnement-Modell eingeführt werden, würde dies vorab kommuniziert und hätte keine Auswirkungen auf bereits getätigte Spenden.',
     note: 'ComidaConecta handhabt oder transportiert keine Lebensmittel: Die Plattform erleichtert die Kontaktaufnahme und die digitale Aufzeichnung zwischen den Parteien.',
   },
   howItWorks: {
@@ -55,7 +55,7 @@ const de: Translations = {
     commerce: {
       title: 'Für Geschäfte',
       subtitle: 'Kosten senken und soziale Wirkung erzielen',
-      items: ['Weniger Verschwendung und geringere Abfallentsorgungskosten','Einsehbarer Spendenverlauf, nützlich für internes Reporting','Siegel als ComidaConecta-Partnerbetrieb','Freiwilliger Beitrag — Sie entscheiden, wie viel Sie monatlich beisteuern (5–10 €)'],
+      items: ['Weniger Verschwendung und geringere Abfallentsorgungskosten','Einsehbarer Spendenverlauf, nützlich für internes Reporting','Siegel als ComidaConecta-Partnerbetrieb','Freiwilliger Beitrag — Sie entscheiden, ob Sie beitragen möchten'],
     },
     ngo: {
       title: 'Für soziale Einrichtungen',
@@ -96,14 +96,16 @@ const de: Translations = {
     title: 'Häufig gestellte Fragen',
     subtitle: 'Alles, was Sie wissen müssen, um mit dem Spenden oder Empfangen von Lebensmittelüberschüssen zu beginnen.',
     items: [
-      { q: 'Ist das wirklich kostenlos? Gibt es versteckte Kosten?', a: 'Für soziale Einrichtungen ist es dauerhaft zu 100 % kostenlos, ohne Limits oder versteckte Kosten. Für Geschäfte ist die Nutzung in der Anfangsphase kostenlos; später kann ein freiwilliger Beitrag eingeführt werden, stets mit Vorankündigung. Keine Verträge, keine Mindestlaufzeit.' },
+      { q: 'Ist das wirklich kostenlos? Gibt es versteckte Kosten?', a: 'ComidaConecta ist kostenlos für soziale Einrichtungen. Für Geschäfte ist die Nutzung kostenlos und Beiträge sind freiwillig – sie helfen, die Plattform zu betreiben, sind aber nicht verpflichtend. Sollte in Zukunft ein Abonnement-Modell eingeführt werden, würde dies vorab kommuniziert und hätte keine Auswirkungen auf bereits getätigte Spenden.' },
       { q: 'Welche Lebensmittel kann ich spenden?', a: 'Sie können einwandfreie Lebensmittelüberschüsse spenden: frische Produkte (Obst, Gemüse), haltbar Verpacktes, Backwaren, Milchprodukte und zubereitete Speisen. Auch tiefgekühlte Lebensmittel sind möglich, solange die Kühlkette eingehalten wird.' },
       { q: 'Wie funktioniert die Registrierung für Geschäfte?', a: 'Gehen Sie auf comidaconecta.org/register, wählen Sie „Ich bin ein Geschäft" und geben Sie Ihre grundlegenden Daten ein. In weniger als 5 Minuten können Sie Ihren ersten Überschuss veröffentlichen.' },
       { q: 'Wie funktioniert die Registrierung für soziale Einrichtungen?', a: 'Gehen Sie auf comidaconecta.org/register, wählen Sie „Ich bin eine soziale Einrichtung" und geben Sie die Daten Ihrer Organisation ein. Nach der Registrierung sehen Sie alle verfügbaren Spenden in Ihrer Nähe in Echtzeit.' },
-      { q: 'Ist der freiwillige Beitrag verpflichtend?', a: 'Nein, er ist freiwillig. Es gibt keinen Vertrag oder Mindestlaufzeit. Jedes Geschäft entscheidet selbst, ob und wie viel es beiträgt. Die empfohlenen 5–10 € helfen, die Plattform am Laufen zu halten.' },
+      { q: 'Ist der freiwillige Beitrag verpflichtend?', a: 'Nein, er ist freiwillig. Es gibt keinen Vertrag oder Mindestlaufzeit. Jedes Geschäft entscheidet selbst, ob und wie viel es beiträgt. Die Beiträge helfen, die Plattform am Laufen zu halten.' },
       { q: 'Gibt es eine Verpflichtung oder Mindestlaufzeit?', a: 'Überhaupt nicht. Es gibt keine Verträge, Mindestlaufzeiten oder langfristigen Verpflichtungen. Sie können Spenden veröffentlichen, wann immer Sie Überschüsse haben, ganz ohne Verpflichtungen.' },
       { q: 'Wie funktioniert das Freiwilligensystem?', a: 'Wenn eine soziale Einrichtung eine Spende nicht selbst abholen kann, kann sie einen Freiwilligen anfordern. Jede als Freiwilliger registrierte Person kann die Abholung übernehmen und im Namen der Einrichtung durchführen.' },
       { q: 'Welche Umweltwirkung hat das Spenden von Lebensmitteln?', a: 'Jede registrierte Spende verhindert, dass Lebensmittel auf der Deponie landen, und reduziert die mit der Zersetzung verbundenen CO₂-Emissionen. Darüber hinaus fördert es die Kreislaufwirtschaft, indem Ressourcen lokal umverteilt werden.' },
+      { q: 'Wer ist für den Transport verantwortlich?', a: 'ComidaConecta organisiert oder führt keinen Transport von Lebensmitteln durch. Die Abholung, der Transport, die Aufbewahrung und die Übergabe müssen direkt zwischen dem spendenden Geschäft und der empfangenden Einrichtung vereinbart werden. Die Plattform erleichtert lediglich den Kontakt und die digitale Erfassung der Spende.' },
+      { q: 'Garantiert ComidaConecta die Lebensmittelsicherheit?', a: 'Nein. Das spendende Geschäft ist dafür verantwortlich, nur zum Verzehr geeignete und ordnungsgemäß gelagerte Lebensmittel zu veröffentlichen. Die empfangende Einrichtung ist dafür verantwortlich, die Spende zu prüfen, abzuholen, zu transportieren und gemäß den geltenden Vorschriften zu handhaben. ComidaConecta erleichtert den Kontakt und die Registrierung, handhabt, prüft, transportiert oder lagert jedoch keine Lebensmittel.' },
     ],
   },
   about: {

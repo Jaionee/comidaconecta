@@ -27,7 +27,7 @@ const id: Translations = {
     badges: ['✅ Gratis untuk lembaga sosial','🔓 Tanpa kontrak atau ikatan','📱 Publikasikan dalam waktu kurang dari 5 menit','📍 Geolokasi waktu nyata'],
     commerceBtn: 'Saya tempat usaha — ingin donasi',
     ngoBtn: 'Saya lembaga sosial — butuh pangan',
-    disclaimer: '✅ Gratis untuk lembaga sosial. ✅ Untuk tempat usaha, gratis di fase awal. ✅ Kontribusi sukarela nanti, selalu dengan pemberitahuan sebelumnya.',
+    disclaimer: 'ComidaConecta gratis untuk lembaga sosial. Untuk tempat usaha, penggunaan gratis dan kontribusi bersifat sukarela — membantu menjaga platform tetap berjalan tetapi tidak wajib. Jika di masa depan ada model berlangganan yang ditetapkan, akan dikomunikasikan sebelumnya tanpa memengaruhi donasi yang sudah dilakukan.',
     note: 'ComidaConecta tidak menangani atau mengangkut pangan: kami memfasilitasi koneksi dan pencatatan digital antar pihak.',
   },
   howItWorks: {
@@ -55,7 +55,7 @@ const id: Translations = {
     commerce: {
       title: 'Untuk tempat usaha',
       subtitle: 'Kurangi biaya dan ciptakan dampak sosial',
-      items: ['Mengurangi limbah dan biaya pengelolaan sampah','Riwayat donasi yang bisa diakses, berguna untuk pemantauan internal','Lencana tempat usaha mitra ComidaConecta','Kontribusi sukarela — pilih sendiri jumlah iuran bulanan (5-10€)'],
+      items: ['Mengurangi limbah dan biaya pengelolaan sampah','Riwayat donasi yang bisa diakses, berguna untuk pemantauan internal','Lencana tempat usaha mitra ComidaConecta','Kontribusi sukarela — pilih sendiri apakah ingin berkontribusi'],
     },
     ngo: {
       title: 'Untuk lembaga sosial',
@@ -96,14 +96,16 @@ const id: Translations = {
     title: 'Pertanyaan yang sering diajukan',
     subtitle: 'Semua yang perlu kamu ketahui untuk mulai mendonasikan atau menerima surplus pangan.',
     items: [
-      { q: 'Apakah benar-benar gratis? Ada biaya tersembunyi?', a: 'Untuk lembaga sosial, 100% gratis selamanya, tanpa batas atau biaya tersembunyi. Untuk tempat usaha, penggunaan gratis selama fase awal; kontribusi sukarela dapat diperkenalkan nanti, selalu dengan pemberitahuan sebelumnya. Tanpa kontrak, tanpa ikatan.' },
+      { q: 'Apakah benar-benar gratis? Ada biaya tersembunyi?', a: 'ComidaConecta gratis untuk lembaga sosial. Untuk tempat usaha, penggunaan gratis dan kontribusi bersifat sukarela — membantu menjaga platform tetap berjalan tetapi tidak wajib. Jika di masa depan ada model berlangganan yang ditetapkan, akan dikomunikasikan sebelumnya tanpa memengaruhi donasi yang sudah dilakukan.' },
       { q: 'Jenis pangan apa saja yang bisa didonasikan?', a: 'Kamu bisa mendonasikan surplus pangan dalam kondisi baik: produk segar (buah, sayur), kemasan non-kadaluwarsa, roti dan kue kering, produk susu, serta makanan siap saji. Makanan beku juga diterima selama rantai dingin tetap terjaga.' },
       { q: 'Bagaimana cara pendaftaran untuk tempat usaha?', a: 'Kunjungi comidaconecta.org/register, pilih "Saya tempat usaha" dan lengkapi data dasar. Dalam waktu kurang dari 5 menit kamu bisa mulai mempublikasikan surplus pertamamu.' },
       { q: 'Bagaimana cara pendaftaran untuk lembaga sosial?', a: 'Kunjungi comidaconecta.org/register, pilih "Saya lembaga sosial" dan lengkapi data organisasimu. Setelah terdaftar, kamu akan melihat semua donasi yang tersedia di sekitarmu secara waktu nyata.' },
-      { q: 'Apakah kontribusi sukarela itu wajib?', a: 'Tidak, ini bersifat sukarela. Tidak ada kontrak atau ikatan. Setiap tempat usaha memutuskan apakah akan berkontribusi dan berapa jumlahnya. 5–10€ yang disarankan membantu menjaga platform tetap aktif.' },
+      { q: 'Apakah kontribusi sukarela itu wajib?', a: 'Tidak, ini bersifat sukarela. Tidak ada kontrak atau ikatan. Setiap tempat usaha memutuskan apakah akan berkontribusi dan berapa jumlahnya. Kontribusi membantu menjaga platform tetap aktif.' },
       { q: 'Apakah ada kewajiban atau ikatan?', a: 'Tidak ada sama sekali. Tidak ada kontrak, ikatan, atau komitmen jangka panjang. Kamu bisa mempublikasikan donasi saat memiliki surplus, tanpa kewajiban.' },
       { q: 'Bagaimana cara kerja sistem relawan?', a: 'Jika lembaga sosial tidak bisa menjemput donasi, mereka bisa meminta relawan. Siapa pun yang terdaftar sebagai relawan dapat menerima tugas pengambilan dan melakukannya atas nama lembaga tersebut.' },
       { q: 'Apa dampak lingkungan dari donasi pangan?', a: 'Setiap donasi yang tercatat mencegah pangan berakhir di tempat pembuangan, mengurangi emisi CO₂ yang terkait dengan pembusukan. Selain itu, ini mendorong ekonomi sirkular dengan mendistribusikan sumber daya secara lokal.' },
+      { q: 'Siapa yang bertanggung jawab atas transportasi?', a: 'ComidaConecta tidak mengatur atau melakukan transportasi pangan. Pengambilan, transportasi, penyimpanan, dan penyerahan harus diatur langsung antara tempat usaha donor dan lembaga penerima. Platform hanya memfasilitasi kontak dan pencatatan digital donasi.' },
+      { q: 'Apakah ComidaConecta menjamin keamanan pangan?', a: 'Tidak. Tempat usaha donor bertanggung jawab untuk mempublikasikan hanya pangan yang layak konsumsi dan disimpan dengan benar. Lembaga penerima bertanggung jawab untuk menilai donasi, mengambil, mengangkut, dan menanganinya sesuai peraturan yang berlaku. ComidaConecta memfasilitasi kontak dan pencatatan, tetapi tidak menangani, memeriksa, mengangkut, atau menyimpan pangan.' },
     ],
   },
   about: {

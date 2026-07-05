@@ -27,7 +27,7 @@ const en: Translations = {
     badges: ['✅ Free for social organizations','🔓 No contracts, no commitments','📱 Post in under 5 minutes','📍 Real-time geolocation'],
     commerceBtn: 'I\'m a business — I want to donate',
     ngoBtn: 'I\'m a social organization — I need food',
-    disclaimer: '✅ Free for social organizations. ✅ Free for businesses during the initial phase. ✅ Voluntary contribution later on, always with prior notice.',
+    disclaimer: '✅ Free for social organizations. ✅ Free for businesses with voluntary contribution. ✅ Any future model changes would be communicated in advance without affecting existing donations.',
     note: 'ComidaConecta does not handle or transport food — it facilitates the connection and digital record-keeping between both parties.',
   },
   howItWorks: {
@@ -55,7 +55,7 @@ const en: Translations = {
     commerce: {
       title: 'For businesses',
       subtitle: 'Reduce costs and create social impact',
-      items: ['Reduce waste and waste management costs','Searchable donation history for internal tracking','ComidaConecta partner business badge','Voluntary contribution — you choose how much to give per month (€5–10)'],
+      items: ['Reduce waste and waste management costs','Searchable donation history for internal tracking','ComidaConecta partner business badge','Voluntary contribution — you choose whether to contribute'],
     },
     ngo: {
       title: 'For social organizations',
@@ -96,14 +96,16 @@ const en: Translations = {
     title: 'Frequently asked questions',
     subtitle: 'Everything you need to know to start donating or receiving surplus food.',
     items: [
-      { q: 'Is it really free? Are there hidden costs?', a: 'For social organizations it is 100% free forever, with no limits or hidden costs. For businesses, use is free during the initial phase; a voluntary contribution may be introduced later, always with prior notice. No contracts, no commitment.' },
+      { q: 'Is it really free? Are there hidden costs?', a: 'ComidaConecta is free for social organizations. For businesses, usage is free and contributions are voluntary — they help keep the platform running but are not mandatory. If a subscription model were established in the future, it would be communicated in advance and would not affect donations already made.' },
       { q: 'What types of food can I donate?', a: 'You can donate surplus food in perfect condition: fresh produce (fruit, vegetables), non-perishable packaged goods, baked goods, dairy, and prepared products. Frozen food is also accepted as long as the cold chain is maintained.' },
       { q: 'How does business registration work?', a: 'Go to comidaconecta.org/register, select "I\'m a business" and fill in your basic details. In under 5 minutes you can start posting your first surplus.' },
       { q: 'How does social organization registration work?', a: 'Go to comidaconecta.org/register, select "I\'m a social organization" and fill in your organization\'s details. Once registered, you\'ll see all available donations near you in real time.' },
-      { q: 'Is the voluntary contribution mandatory?', a: 'No, it\'s voluntary. There\'s no contract or commitment. Each business decides whether to contribute and how much. The recommended €5–10 helps keep the platform running.' },
+      { q: 'Is the voluntary contribution mandatory?', a: 'No, it is entirely voluntary. There is no contract or commitment. Each business decides whether to contribute and how much. Contributions help keep the platform active and continue connecting donations.' },
       { q: 'Is there any commitment or minimum term?', a: 'None at all. No contracts, minimum terms, or long-term commitments. You can post donations whenever you have surplus, with no obligations.' },
       { q: 'How does the volunteer system work?', a: 'If a social organization can\'t travel to pick up a donation, they can request a volunteer. Anyone registered as a volunteer can accept the pickup and carry it out on behalf of the organization.' },
       { q: 'What environmental impact does food donation have?', a: 'Every registered donation prevents food from ending up in landfills, reducing the CO₂ emissions associated with its decomposition. It also promotes the circular economy by redistributing resources locally.' },
+      { q: 'Who is responsible for transportation?', a: 'ComidaConecta does not organize or carry out food transportation. Collection, transport, conservation, and delivery must be agreed upon directly between the donating business and the receiving organization. The platform only facilitates contact and digital donation registration.' },
+      { q: 'Does ComidaConecta guarantee food safety?', a: 'No. The donating business is responsible for posting only food fit for consumption that has been properly stored. The receiving organization is responsible for assessing the donation, collecting it, transporting it, and handling it in accordance with applicable regulations. ComidaConecta facilitates contact and registration but does not handle, inspect, transport, or store food.' },
     ],
   },
   about: {

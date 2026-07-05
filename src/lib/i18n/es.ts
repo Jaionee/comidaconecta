@@ -27,7 +27,7 @@ const es: Translations = {
     badges: ['✅ Gratis para entidades sociales','🔓 Sin contratos ni permanencia','📱 Publica en menos de 5 minutos','📍 Geolocalización en tiempo real'],
     commerceBtn: 'Soy comercio — quiero donar',
     ngoBtn: 'Soy entidad social — necesito alimentos',
-    disclaimer: '✅ Gratis para entidades sociales. ✅ Para comercios, uso gratuito en fase inicial. ✅ Contribución voluntaria más adelante, siempre avisado.',
+    disclaimer: '✅ Gratis para entidades sociales. ✅ Para comercios, uso gratuito con contribución voluntaria. ✅ Futuros cambios de modelo se avisarían previamente sin afectar a donaciones ya realizadas.',
     note: 'ComidaConecta no manipula ni transporta alimentos: facilita la conexión y el registro digital entre las partes.',
   },
   howItWorks: {
@@ -55,7 +55,7 @@ const es: Translations = {
     commerce: {
       title: 'Para comercios',
       subtitle: 'Reduce costes y genera impacto social',
-      items: ['Reducir desperdicio y costes de gestión de residuos','Historial de donaciones consultable, útil para seguimiento interno','Sello de comercio colaborador de ComidaConecta','Contribución voluntaria — elige cuánto aportar al mes (5-10€)'],
+      items: ['Reducir desperdicio y costes de gestión de residuos','Historial de donaciones consultable, útil para seguimiento interno','Sello de comercio colaborador de ComidaConecta','Contribución voluntaria — elige si quieres aportar'],
     },
     ngo: {
       title: 'Para entidades sociales',
@@ -96,14 +96,16 @@ const es: Translations = {
     title: 'Preguntas frecuentes',
     subtitle: 'Todo lo que necesitas saber para empezar a donar o recibir excedente alimentario.',
     items: [
-      { q: '¿Es realmente gratis? ¿Hay costes ocultos?', a: 'Para entidades sociales es 100% gratuito para siempre, sin límites ni costes ocultos. Para comercios, el uso es gratuito durante la fase inicial; más adelante podrá establecerse una contribución voluntaria, siempre avisado previamente. Sin contratos, sin permanencia.' },
+      { q: '¿Es realmente gratis? ¿Hay costes ocultos?', a: 'ComidaConecta es gratuita para entidades sociales. Para comercios, el uso es gratuito y las contribuciones son voluntarias — ayudan a mantener la plataforma pero no son obligatorias. Si en el futuro se estableciera algún modelo de suscripción, se comunicaría previamente y no afectaría a las donaciones ya realizadas.' },
       { q: '¿Qué tipos de alimentos puedo donar?', a: 'Puedes donar excedentes alimentarios en perfecto estado: productos frescos (fruta, verdura), envasados no perecederos, panadería y bollería, lácteos, y productos preparados. También se aceptan alimentos congelados siempre que se mantenga la cadena de frío.' },
       { q: '¿Cómo funciona el registro para comercios?', a: 'Entra en comidaconecta.org/register, selecciona «Soy comercio» y completa tus datos básicos. En menos de 5 minutos puedes empezar a publicar tu primer excedente.' },
       { q: '¿Cómo funciona el registro para entidades sociales?', a: 'Entra en comidaconecta.org/register, selecciona «Soy entidad social» y completa los datos de tu organización. Una vez registrado, verás todas las donaciones disponibles cerca de ti en tiempo real.' },
-      { q: '¿La contribución voluntaria es obligatoria?', a: 'No, es voluntaria. No hay contrato ni permanencia. Cada comercio decide si aporta y cuánto. Los 5-10€ recomendados ayudan a mantener la plataforma activa.' },
+      { q: '¿La contribución voluntaria es obligatoria?', a: 'No, es totalmente voluntaria. No hay contrato ni permanencia. Cada comercio decide si contribuye y cuánto. Las contribuciones ayudan a mantener la plataforma activa y a seguir conectando donaciones.' },
       { q: '¿Hay algún compromiso o permanencia?', a: 'Ninguno. No hay contratos, permanencias ni compromisos a largo plazo. Puedes publicar donaciones cuando tengas excedente, sin obligaciones.' },
       { q: '¿Cómo funciona el sistema de voluntariado?', a: 'Si una entidad social no puede desplazarse a recoger una donación, puede solicitar un voluntario. Cualquier persona registrada como voluntaria puede aceptar la recogida y realizarla en nombre de la entidad.' },
       { q: '¿Qué impacto ambiental tiene donar alimentos?', a: 'Cada donación registrada evita que los alimentos acaben en vertederos, reduciendo las emisiones de CO₂ asociadas a su descomposición. Además, fomenta la economía circular al redistribuir recursos localmente.' },
+      { q: '¿Quién se encarga del transporte?', a: 'ComidaConecta no organiza ni realiza el transporte de alimentos. La recogida, transporte, conservación y entrega deberán ser acordados directamente entre el comercio donante y la entidad receptora. La plataforma solo facilita el contacto y el registro digital de la donación.' },
+      { q: '¿ComidaConecta garantiza la seguridad de los alimentos?', a: 'No. El comercio donante es responsable de publicar únicamente alimentos aptos para el consumo y correctamente conservados. La entidad receptora es responsable de valorar la donación, recogerla, transportarla y manipularla conforme a la normativa aplicable. ComidaConecta facilita el contacto y el registro, pero no manipula, revisa, transporta ni almacena alimentos.' },
     ],
   },
   about: {
