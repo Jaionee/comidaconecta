@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Leaf, ArrowLeft, Store, Utensils } from 'lucide-react'
+import { Leaf, ArrowLeft, Store, Utensils, MapPin, Crosshair } from 'lucide-react'
 import { createDonation } from '@/app/actions/donations'
 
 const FOOD_TYPES = [
@@ -19,16 +19,40 @@ export default function NewDonationPage() {
   const router = useRouter()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [geoStatus, setGeoStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null)
 
   // Default pickup deadline to tomorrow at closing time
   const tomorrow = new Date(Date.now() + 86400000)
   const defaultDeadline = tomorrow.toISOString().slice(0, 16)
+
+  async function detectLocation() {
+    if (!navigator.geolocation) {
+      setGeoStatus('error')
+      return
+    }
+    setGeoStatus('loading')
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude })
+        setGeoStatus('success')
+      },
+      () => {
+        setGeoStatus('error')
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    )
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError('')
     setLoading(true)
     const form = new FormData(e.currentTarget)
+    if (coords) {
+      form.set('latitude', String(coords.lat))
+      form.set('longitude', String(coords.lng))
+    }
     const result = await createDonation(form)
     setLoading(false)
     if (result?.error) setError(result.error)
@@ -90,6 +114,31 @@ export default function NewDonationPage() {
             <label className="block text-sm font-medium mb-1 text-zinc-300">Dirección de recogida *</label>
             <input name="pickup_address" type="text" required placeholder="Dirección donde recoger"
               className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600/50" />
+          </div>
+
+          <div className="border border-zinc-700/30 rounded-lg p-3">
+            <label className="block text-sm font-medium mb-2 text-zinc-300 flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-emerald-400" /> Ubicación (GPS)
+            </label>
+            <input type="hidden" name="latitude" value={coords?.lat ?? ''} />
+            <input type="hidden" name="longitude" value={coords?.lng ?? ''} />
+            <button type="button" onClick={detectLocation} disabled={geoStatus === 'loading'}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors w-full
+                disabled:opacity-50
+                ${geoStatus === 'success'
+                  ? 'bg-emerald-900/30 text-emerald-300 border border-emerald-700/30'
+                  : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700'}"
+            >
+              <Crosshair className={`w-4 h-4 ${geoStatus === 'loading' ? 'animate-spin' : ''}`} />
+              {geoStatus === 'idle' && 'Detectar ubicación actual'}
+              {geoStatus === 'loading' && 'Detectando ubicación...'}
+              {geoStatus === 'success' && `📍 ${coords!.lat.toFixed(5)}, ${coords!.lng.toFixed(5)}`}
+              {geoStatus === 'error' && 'No se pudo obtener la ubicación — pulsa para reintentar'}
+            </button>
+            <p className="text-[10px] text-zinc-600 mt-1.5 leading-tight">
+              La ubicación ayuda a las ONGs a encontrar tu donación más fácilmente.
+              Solo se envía al publicar la donación.
+            </p>
           </div>
 
           <div>

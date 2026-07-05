@@ -4,11 +4,12 @@ import { api } from '@/lib/api/client'
 import Link from 'next/link'
 import {
   Leaf, Plus, History, FileText, User, LogOut, Package, AlertCircle,
-  CheckCircle, Clock, XCircle, Calendar, Eye, TrendingUp
+  CheckCircle, Clock, XCircle, Calendar, Eye, TrendingUp, MapPin
 } from 'lucide-react'
 import { logout } from '@/app/actions/auth'
 import { cancelDonation, confirmCollection } from '@/app/actions/donations'
 import DashboardActions from './dashboard-actions'
+import DonationMap from '@/components/DonationMap'
 
 function getStatusBadge(status: string) {
   const config: Record<string, { color: string; icon: any; label: string }> = {
@@ -128,6 +129,28 @@ export default async function CommerceDashboard() {
               <div className="text-xs text-zinc-400 mt-1">Total donaciones</div>
             </div>
           </div>
+
+          {/* Active donations map */}
+          {activeDonations.length > 0 && (
+            <div className="mb-6">
+              <h2 className="text-lg font-semibold mb-3 flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-emerald-400" /> Mapa de donaciones activas
+              </h2>
+              <DonationMap
+                donations={activeDonations.map((d: any) => ({
+                  id: d.id,
+                  commerce_name: commerce.business_name,
+                  commerce_city: commerce.city || '',
+                  commerce_address: d.pickup_address || '',
+                  food_type: d.food_type || '',
+                  amount: d.estimated_servings || 0,
+                  created_at: d.created_at,
+                }))}
+                height="280px"
+                zoom={12}
+              />
+            </div>
+          )}
 
           {/* Active donations */}
           <div className="flex items-center justify-between mb-4">

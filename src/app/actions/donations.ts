@@ -18,6 +18,8 @@ export async function createDonation(formData: FormData) {
     estimated_servings: parseInt(formData.get('estimated_servings') as string) || 1,
     pickup_address: formData.get('pickup_address') as string,
     pickup_deadline: formData.get('pickup_deadline') as string,
+    latitude: formData.get('latitude') ? parseFloat(formData.get('latitude') as string) : undefined,
+    longitude: formData.get('longitude') ? parseFloat(formData.get('longitude') as string) : undefined,
   }
 
   if (!donation.title || !donation.description || !donation.food_type || !donation.quantity_text || !donation.pickup_deadline) {

@@ -2,10 +2,11 @@ import { redirect } from 'next/navigation'
 import { requireAuth } from '@/lib/api/auth-helper'
 import { api } from '@/lib/api/client'
 import Link from 'next/link'
-import { Leaf, Package, Shield, LogOut, TrendingUp, Calendar, MapPin, Store, Building2 } from 'lucide-react'
+import { Leaf, Package, Shield, LogOut, TrendingUp, Calendar, MapPin, Store, Building2, Map } from 'lucide-react'
 import { logout } from '@/app/actions/auth'
 import { deleteDonation } from '@/app/actions/admin'
 import DonationRow from './donation-row'
+import DonationMap from '@/components/DonationMap'
 
 export default async function AdminDonationsPage() {
   const user = await requireAuth()
@@ -31,6 +32,27 @@ export default async function AdminDonationsPage() {
       <main className="md:ml-64 pt-14 md:pt-0">
         <div className="max-w-5xl mx-auto p-4 md:p-8">
           <h1 className="text-2xl font-bold mb-6">Donaciones ({(donations || []).length})</h1>
+
+          {(donations || []).length > 0 && (
+            <div className="mb-6">
+              <h2 className="text-lg font-semibold mb-3 flex items-center gap-1.5">
+                <Map className="w-4 h-4 text-emerald-400" /> Mapa de todas las donaciones
+              </h2>
+              <DonationMap
+                donations={(donations || []).map((d: any) => ({
+                  id: d.id,
+                  commerce_name: d.commerces?.business_name || '',
+                  commerce_city: d.commerces?.city || d.commerces?.address || '',
+                  commerce_address: d.pickup_address || '',
+                  food_type: d.food_type || '',
+                  amount: d.estimated_servings || 0,
+                  created_at: d.created_at,
+                }))}
+                height="300px"
+                zoom={6}
+              />
+            </div>
+          )}
 
           <div className="space-y-2">
             {(donations || []).map((d: any) => (

@@ -8,6 +8,7 @@ import {
 import { logout } from '@/app/actions/auth'
 import { reserveDonation } from '@/app/actions/reservations'
 import NgoActions from '../dashboard/ngo-actions'
+import DonationMap from '@/components/DonationMap'
 
 export default async function NgoDonationsPage() {
   const user = await requireAuth()
@@ -60,6 +61,22 @@ export default async function NgoDonationsPage() {
               <h1 className="text-2xl font-bold">Donaciones disponibles</h1>
               <p className="text-sm text-zinc-500 mt-1">{availableList.length} donaciones ahora mismo</p>
             </div>
+          </div>
+
+          <div className="mb-6">
+            <DonationMap
+              donations={availableList.map((d: any) => ({
+                id: d.id,
+                commerce_name: d.commerces?.business_name || '',
+                commerce_city: d.commerces?.city || '',
+                commerce_address: d.pickup_address || '',
+                food_type: d.food_type || '',
+                amount: d.estimated_servings || 0,
+                created_at: d.created_at,
+              }))}
+              height="320px"
+              zoom={6}
+            />
           </div>
 
           {availableList.length === 0 ? (
