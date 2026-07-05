@@ -1,63 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
+    <!-- Leaf gradient - deeper, richer -->
     <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#047857;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
     </linearGradient>
+    
+    <!-- Heart gradient - bright gold/amber -->
     <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fde047;stop-opacity:0.4" />
-      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:0.6" />
+      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#eab308;stop-opacity:1" />
     </linearGradient>
+    
+    <!-- Connection dot glow -->
+    <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#eab308;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#a16207;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Heart glow filter -->
+    <filter id="heartGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
 
-  <!-- Background circle (optional, for app icon style) -->
-  <!-- <rect width="512" height="512" rx="112" fill="#0a0a0a"/> -->
+  <!-- === MAIN LEAF SHAPE === -->
+  <!-- Smoother, more elegant leaf curve -->
+  <path d="M256 60 
+           C 160 60, 70 140, 70 256 
+           C 70 350, 140 420, 185 448 
+           C 210 463, 235 468, 256 460 
+           C 277 468, 302 463, 327 448 
+           C 372 420, 442 350, 442 256 
+           C 442 140, 352 60, 256 60 Z" 
+        fill="url(#leafGrad)" />
 
-  <!-- Main leaf shape -->
-  <path d="M256 80 
-           C 180 80, 80 140, 80 256 
-           C 80 340, 140 400, 180 430 
-           C 200 445, 220 450, 240 448 
-           C 248 447, 252 445, 256 440 
-           C 260 445, 264 447, 272 448 
-           C 292 450, 312 445, 332 430 
-           C 372 400, 432 340, 432 256 
-           C 432 140, 332 80, 256 80 Z" 
-        fill="url(#leafGrad)" 
-        opacity="0.95"/>
+  <!-- Leaf vein - subtle, thin -->
+  <path d="M256 80 C 256 80, 256 200, 256 450" 
+        stroke="#065f46" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
 
-  <!-- Leaf center vein -->
-  <path d="M256 120 
-           C 256 120, 256 200, 256 440" 
-        stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <!-- === BIG PROMINENT HEART === -->
+  <!-- Much larger, brighter, right in the center with glow -->
+  <g filter="url(#heartGlow)">
+    <path d="M256 195 
+             C 256 165, 235 140, 210 140 
+             C 180 140, 160 165, 160 195 
+             C 160 235, 190 265, 256 310 
+             C 322 265, 352 235, 352 195 
+             C 352 165, 332 140, 302 140 
+             C 277 140, 256 165, 256 195 Z" 
+          fill="url(#heartGrad)" />
+  </g>
 
-  <!-- Heart inside the leaf -->
-  <path d="M256 200 
-           C 256 180, 240 160, 220 160 
-           C 195 160, 180 185, 180 205 
-           C 180 240, 220 270, 256 300 
-           C 292 270, 332 240, 332 205 
-           C 332 185, 317 160, 292 160 
-           C 272 160, 256 180, 256 200 Z" 
-        fill="url(#heartGrad)" 
-        opacity="0.5"/>
+  <!-- Subtle heart outline for depth -->
+  <path d="M256 195 
+           C 256 165, 235 140, 210 140 
+           C 180 140, 160 165, 160 195 
+           C 160 235, 190 265, 256 310 
+           C 322 265, 352 235, 352 195 
+           C 352 165, 332 140, 302 140 
+           C 277 140, 256 165, 256 195 Z" 
+        stroke="#a16207" stroke-width="1" fill="none" opacity="0.2"/>
 
-  <!-- Connecting dots -->
-  <!-- Dot 1 (commerce) - left side -->
-  <circle cx="175" cy="340" r="12" fill="#fde047" opacity="0.9"/>
-  <!-- Dot 2 (ONG) - right side -->
-  <circle cx="337" cy="340" r="12" fill="#fde047" opacity="0.9"/>
+  <!-- === CONNECTION DOTS === -->
+  <!-- Left dot (commerce) - bigger and brighter -->
+  <circle cx="180" cy="380" r="18" fill="url(#dotGlow)" />
+  <circle cx="180" cy="380" r="11" fill="#fef08a" />
+  
+  <!-- Right dot (ONG) -->
+  <circle cx="332" cy="380" r="18" fill="url(#dotGlow)" />
+  <circle cx="332" cy="380" r="11" fill="#fef08a" />
 
-  <!-- Connection line between dots -->
-  <path d="M187 340 C 210 330, 256 325, 256 340 C 256 355, 302 350, 325 340" 
-        stroke="#fde047" stroke-width="2.5" fill="none" opacity="0.6" stroke-dasharray="6,4"/>
+  <!-- Connection arc between dots - solid, visible -->
+  <path d="M191 380 C 220 365, 256 358, 256 380 C 256 402, 292 395, 321 380" 
+        stroke="#fef08a" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/>
 
-  <!-- Dot glows -->
-  <circle cx="175" cy="340" r="18" fill="#fde047" opacity="0.15"/>
-  <circle cx="337" cy="340" r="18" fill="#fde047" opacity="0.15"/>
+  <!-- Small arrow tip indicators on the arc -->
+  <polygon points="310,376 321,380 310,384" fill="#fef08a" opacity="0.6"/>
+  <polygon points="202,376 191,380 202,384" fill="#fef08a" opacity="0.6"/>
 
-  <!-- Tiny highlight on leaf -->
-  <path d="M200 130 C 220 120, 250 110, 280 115" 
-        stroke="#a7f3d0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.3"/>
+  <!-- === BRAND MARK at bottom === -->
+  <!-- Subtle glow behind the whole leaf -->
+  <path d="M256 60 C 160 60, 70 140, 70 256 C 70 350, 140 420, 185 448 C 210 463, 235 468, 256 460 C 277 468, 302 463, 327 448 C 372 420, 442 350, 442 256 C 442 140, 352 60, 256 60 Z" 
+        fill="none" stroke="#10b981" stroke-width="1" opacity="0.15"/>
 </svg>
