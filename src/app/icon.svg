@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+    <linearGradient id="leftLeaf" x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#047857;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#eab308;stop-opacity:1" />
+    <linearGradient id="rightLeaf" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#065f46;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6ee7b7;stop-opacity:1" />
     </linearGradient>
     <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
-      <stop offset="60%" style="stop-color:#eab308;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#eab308;stop-opacity:0.6" />
       <stop offset="100%" style="stop-color:#a16207;stop-opacity:0" />
     </radialGradient>
-    <filter id="heartGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/>
     </filter>
   </defs>
-  <path d="M256 60 C 160 60, 70 140, 70 256 C 70 350, 140 420, 185 448 C 210 463, 235 468, 256 460 C 277 468, 302 463, 327 448 C 372 420, 442 350, 442 256 C 442 140, 352 60, 256 60 Z" fill="url(#leafGrad)" />
-  <path d="M256 80 C 256 80, 256 200, 256 450" stroke="#065f46" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
-  <g filter="url(#heartGlow)">
-    <path d="M256 195 C 256 165, 235 140, 210 140 C 180 140, 160 165, 160 195 C 160 235, 190 265, 256 310 C 322 265, 352 235, 352 195 C 352 165, 332 140, 302 140 C 277 140, 256 165, 256 195 Z" fill="url(#heartGrad)" />
-  </g>
-  <circle cx="180" cy="380" r="18" fill="url(#dotGlow)" />
-  <circle cx="180" cy="380" r="11" fill="#fef08a" />
-  <circle cx="332" cy="380" r="18" fill="url(#dotGlow)" />
-  <circle cx="332" cy="380" r="11" fill="#fef08a" />
-  <path d="M191 380 C 220 365, 256 358, 256 380 C 256 402, 292 395, 321 380" stroke="#fef08a" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <path d="M256 60 C 160 60, 60 140, 60 256 C 60 340, 120 410, 200 448 C 230 463, 250 465, 256 460 C 256 380, 256 220, 256 60 Z" fill="url(#leftLeaf)" filter="url(#shadow)"/>
+  <path d="M256 60 C 352 60, 452 140, 452 256 C 452 340, 392 410, 312 448 C 282 463, 262 465, 256 460 C 256 380, 256 220, 256 60 Z" fill="url(#rightLeaf)" filter="url(#shadow)"/>
+  <path d="M256 80 C 230 140, 190 200, 150 260 C 130 290, 110 330, 100 380" stroke="#065f46" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <path d="M256 80 C 282 140, 322 200, 362 260 C 382 290, 402 330, 412 380" stroke="#064e3b" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <circle cx="180" cy="390" r="22" fill="url(#dotGlow)" />
+  <circle cx="180" cy="390" r="13" fill="#fef08a" />
+  <circle cx="332" cy="390" r="22" fill="url(#dotGlow)" />
+  <circle cx="332" cy="390" r="13" fill="#fef08a" />
+  <path d="M193 390 C 220 372, 256 365, 256 390 C 256 415, 292 408, 319 390" stroke="#fef08a" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.9"/>
 </svg>
