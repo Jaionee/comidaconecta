@@ -134,18 +134,18 @@ export default function ColaboraPage() {
               </p>
 
               <a
-                href="https://www.paypal.com/donate/?hosted_button_id=TU_BOTON"
+                href="https://paypal.me/ComidaConecta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/30 hover:shadow-blue-700/30 transition-all duration-200"
-              >
+                >
                 <CreditCard className="w-5 h-5" />
                 Donar con PayPal
-              </a>
+                </a>
 
-              <p className="text-xs text-zinc-500 mt-4 text-center leading-relaxed">
-                Se abre una ventana segura de PayPal. No guardamos tus datos de pago.
-              </p>
+                <p className="text-xs text-zinc-500 mt-4 text-center leading-relaxed">
+                Se abre PayPal en una ventana segura. No guardamos tus datos de pago.
+                </p>
             </div>
 
           </div>

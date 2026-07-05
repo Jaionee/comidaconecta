@@ -81,7 +81,7 @@ export default function PrivacidadPage() {
               <li><strong>Oposición:</strong> oponerte al tratamiento de tus datos.</li>
             </ul>
             <p className="mt-4">
-              Para ejercer tus derechos, escribe a [email de contacto] indicando el derecho que
+              Para ejercer tus derechos, escribe a hola@comidaconecta.org indicando el derecho que
               deseas ejercer. También puedes presentar una reclamación ante la Agencia Española de
               Protección de Datos (AEPD).
             </p>

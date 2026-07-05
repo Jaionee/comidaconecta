@@ -92,7 +92,7 @@ export default function CondicionesPage() {
           <section>
             <h2 className="text-xl font-semibold text-zinc-100 mb-3">9. Contacto</h2>
             <p>
-              Para cualquier consulta sobre estas condiciones, puedes escribirnos a [email de contacto].
+              Para cualquier consulta sobre estas condiciones, puedes escribirnos a hola@comidaconecta.org.
             </p>
           </section>
         </div>

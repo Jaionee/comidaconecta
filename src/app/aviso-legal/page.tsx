@@ -22,12 +22,12 @@ export default function AvisoLegalPage() {
             </p>
             <ul className="list-disc pl-5 space-y-1 text-zinc-400">
               <li><strong>Denominación:</strong> ComidaConecta</li>
-              <li><strong>Titular:</strong> [Nombre del titular / entidad responsable]</li>
-              <li><strong>NIF/CIF:</strong> [NIF del titular]</li>
-              <li><strong>Domicilio:</strong> [Dirección física]</li>
-              <li><strong>Correo electrónico:</strong> [email de contacto]</li>
-              <li><strong>Teléfono:</strong> [teléfono de contacto]</li>
-              <li><strong>Registro:</strong> [Datos de inscripción registral, si procede]</li>
+              <li><strong>Titular:</strong> ComidaConecta</li>
+              <li><strong>NIF/CIF:</strong> Pendiente de registro formal</li>
+              <li><strong>Domicilio:</strong> A efectos de notificaciones, contactar vía email</li>
+              <li><strong>Correo electrónico:</strong> hola@comidaconecta.org</li>
+              <li><strong>Teléfono:</strong> Contactar vía email</li>
+              <li><strong>Registro:</strong> Pendiente de inscripción</li>
             </ul>
           </section>
 
