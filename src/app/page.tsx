@@ -192,7 +192,7 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 z-40 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.svg" alt="ComidaConecta" className="w-7 h-7" />
+            <img src="/icon-mark.svg" alt="ComidaConecta" className="w-9 h-9" />
             <span className="font-bold text-lg">ComidaConecta</span>
           </Link>
 

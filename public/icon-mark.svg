@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
-  <!-- Left figure green -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 120 340 300" width="340" height="300">
   <circle cx="140" cy="150" r="22" fill="#2F8F2F"/>
   <path d="M140 172 C 85 200, 70 280, 90 345 C 110 385, 165 395, 235 378" stroke="#2F8F2F" stroke-width="26" fill="none" stroke-linecap="round"/>
-  <!-- Right figure orange -->
   <circle cx="360" cy="150" r="22" fill="#FF8800"/>
   <path d="M360 172 C 415 200, 430 280, 410 345 C 390 385, 335 395, 265 378" stroke="#FF8800" stroke-width="26" fill="none" stroke-linecap="round"/>
-  <!-- Bowl -->
   <path d="M195 280 L195 325 C195 370, 305 370, 305 325 L305 280" stroke="#2F8F2F" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M188 280 L312 280" stroke="#2F8F2F" stroke-width="10" fill="none" stroke-linecap="round"/>
-  <!-- Bread -->
   <rect x="214" y="295" width="40" height="28" rx="6" fill="#FF8800"/>
   <line x1="222" y1="308" x2="246" y2="308" stroke="#E07000" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Fruit -->
   <circle cx="268" cy="308" r="14" fill="#FF6600"/>
   <path d="M268 294 C 272 288, 280 288, 278 296" fill="#2F8F2F"/>
-  <!-- Leaves -->
   <path d="M240 316 C 226 312, 220 322, 230 330 C 224 338, 232 348, 242 340" fill="#2F8F2F" opacity="0.8"/>
   <path d="M242 318 C 248 308, 260 312, 255 325" fill="#2F8F2F" opacity="0.7"/>
   <path d="M240 318 C 238 330, 242 340, 250 345" stroke="#2F8F2F" stroke-width="3" fill="none" stroke-linecap="round"/>

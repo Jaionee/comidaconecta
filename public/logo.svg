@@ -1,103 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <defs>
-    <!-- Leaf gradient -->
-    <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#047857;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6ee7b7;stop-opacity:1" />
-    </linearGradient>
-    <!-- Heart gold -->
-    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#eab308;stop-opacity:1" />
-    </linearGradient>
-    <!-- Dot glow -->
-    <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
-      <stop offset="60%" style="stop-color:#facc15;stop-opacity:0.7" />
-      <stop offset="100%" style="stop-color:#a16207;stop-opacity:0" />
-    </radialGradient>
-    <!-- Heart glow -->
-    <filter id="glow" x="-30%" y="-20%" width="160%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-    <!-- Leaf shadow -->
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.25"/>
-    </filter>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 580" width="500" height="580">
+  <!-- 
+    ComidaConecta Logo
+    Two abstract figures (green + orange) embracing a central food bowl
+    Minimalist, flat, no shadows/gradients/3D
+  -->
 
-  <!-- === CLEAR LEAF SHAPE === -->
-  <!-- Classic leaf: pointed top, wide middle, tapers to stem -->
-  <path d="M256 30
-           C 120 30, 60 120, 60 220
-           C 60 290, 90 340, 130 377
-           C 160 405, 190 422, 220 440
-           C 235 449, 248 455, 256 460
-           C 264 455, 277 449, 292 440
-           C 322 422, 352 405, 382 377
-           C 422 340, 452 290, 452 220
-           C 452 120, 392 30, 256 30 Z"
-        fill="url(#leafGrad)" filter="url(#shadow)"/>
+  <!-- === LEFT FIGURE (Green #2F8F2F - Commerce) === -->
+  <!-- Head -->
+  <circle cx="140" cy="150" r="22" fill="#2F8F2F"/>
+  <!-- Arm reaching toward center -->
+  <path d="M140 172 C 85 200, 70 280, 90 345 C 110 385, 165 395, 235 378"
+        stroke="#2F8F2F" stroke-width="26" fill="none" stroke-linecap="round"/>
 
-  <!-- === MAIN VEIN (center line) === -->
-  <path d="M256 40 C 256 120, 256 250, 256 455"
-        stroke="#065f46" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <!-- === RIGHT FIGURE (Orange #FF8800 - ONG) === -->
+  <!-- Head -->
+  <circle cx="360" cy="150" r="22" fill="#FF8800"/>
+  <!-- Arm reaching toward center -->
+  <path d="M360 172 C 415 200, 430 280, 410 345 C 390 385, 335 395, 265 378"
+        stroke="#FF8800" stroke-width="26" fill="none" stroke-linecap="round"/>
 
-  <!-- === SECONDARY VEINS (left side) === -->
-  <path d="M256 120 C 220 115, 180 118, 145 135"
-        stroke="#065f46" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.25"/>
-  <path d="M256 180 C 215 175, 170 180, 130 205"
-        stroke="#065f46" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.25"/>
-  <path d="M256 240 C 220 235, 185 240, 150 260"
-        stroke="#065f46" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.25"/>
+  <!-- === BOWL (Green #2F8F2F) === -->
+  <!-- Bowl body - U-shape -->
+  <path d="M195 280 L195 325 C195 370, 305 370, 305 325 L305 280"
+        stroke="#2F8F2F" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bowl rim -->
+  <path d="M188 280 L312 280"
+        stroke="#2F8F2F" stroke-width="10" fill="none" stroke-linecap="round"/>
 
-  <!-- === SECONDARY VEINS (right side) === -->
-  <path d="M256 120 C 292 115, 332 118, 367 135"
-        stroke="#064e3b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.25"/>
-  <path d="M256 180 C 297 175, 342 180, 382 205"
-        stroke="#064e3b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.25"/>
-  <path d="M256 240 C 292 235, 327 240, 362 260"
-        stroke="#064e3b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.25"/>
+  <!-- === FOOD INSIDE BOWL === -->
 
-  <!-- === STEM === -->
-  <path d="M256 460 C 248 480, 244 495, 256 500"
-        stroke="#065f46" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- 1. Bread (Orange #FF8800) - small rounded rect -->
+  <rect x="214" y="295" width="40" height="28" rx="6" fill="#FF8800"/>
+  <!-- Bread crust detail -->
+  <line x1="222" y1="308" x2="246" y2="308" stroke="#E07000" stroke-width="1.5" stroke-linecap="round"/>
 
-  <!-- === HEART === -->
-  <!-- Big, bright, unmistakable heart right in the center -->
-  <g filter="url(#glow)">
-    <path d="M256 185
-             C 256 150, 230 125, 198 125
-             C 162 125, 140 152, 140 190
-             C 140 235, 175 270, 256 320
-             C 337 270, 372 235, 372 190
-             C 372 152, 350 125, 314 125
-             C 282 125, 256 150, 256 185 Z"
-          fill="url(#heartGrad)"/>
-  </g>
+  <!-- 2. Fruit (Orange/Red circle with green leaf) -->
+  <circle cx="268" cy="308" r="14" fill="#FF6600"/>
+  <!-- Fruit leaf -->
+  <path d="M268 294 C 272 288, 280 288, 278 296"
+        fill="#2F8F2F"/>
+  <!-- Fruit highlight -->
+  <circle cx="263" cy="304" r="3" fill="#FFB366" opacity="0.6"/>
 
-  <!-- === TWO CONNECTION DOTS === -->
-  <!-- Left dot (Commerce) -->
-  <circle cx="200" cy="390" r="24" fill="url(#dotGlow)" />
-  <circle cx="200" cy="390" r="14" fill="#fef08a" />
-  <circle cx="200" cy="390" r="5" fill="#a16207" opacity="0.4"/>
+  <!-- 3. Leafy vegetable (Green) -->
+  <!-- Stem -->
+  <path d="M240 318 C 238 330, 242 340, 250 345"
+        stroke="#2F8F2F" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Leaves -->
+  <path d="M240 316 C 226 312, 220 322, 230 330 C 224 338, 232 348, 242 340"
+        fill="#2F8F2F" opacity="0.8"/>
+  <path d="M242 318 C 248 308, 260 312, 255 325"
+        fill="#2F8F2F" opacity="0.7"/>
 
-  <!-- Right dot (ONG) -->
-  <circle cx="312" cy="390" r="24" fill="url(#dotGlow)" />
-  <circle cx="312" cy="390" r="14" fill="#fef08a" />
-  <circle cx="312" cy="390" r="5" fill="#a16207" opacity="0.4"/>
-
-  <!-- Connection arc between dots -->
-  <path d="M214 390 C 240 375, 256 370, 256 390 C 256 410, 272 405, 298 390"
-        stroke="#fef08a" stroke-width="4" fill="none" stroke-linecap="round"/>
-
-  <!-- Arrow tips on arc -->
-  <polygon points="288,384 300,390 288,396" fill="#fef08a"/>
-  <polygon points="224,384 212,390 224,396" fill="#fef08a"/>
+  <!-- === TEXT "ComidaConecta" === -->
+  <text x="250" y="480" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" letter-spacing="1">
+    <tspan fill="#2F8F2F">Comida</tspan><tspan fill="#FF8800">Conecta</tspan>
+  </text>
 </svg>
