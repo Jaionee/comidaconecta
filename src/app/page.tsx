@@ -424,7 +424,7 @@ export default function LandingPage() {
             <T k="stats.subtitle" />
           </p>
           <div className="grid md:grid-cols-3 gap-6">
-            { [0, 1, 2, 3].map((i) => (
+            { [0, 1, 2].map((i) => (
               <div key={i} className="bg-zinc-800/40 border border-zinc-700/30 rounded-xl p-6 text-center">
                 <div className="text-3xl font-bold text-emerald-400 mb-2"><T k={`stats.items.${i}.number`} /></div>
                 <p className="text-sm text-zinc-400"><T k={`stats.items.${i}.text`} /></p>
