@@ -55,34 +55,34 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "Organization",
-                  "@id": "https://comidaconecta.vercel.app/#organization",
+                  "@id": "https://comidaconecta.org/#organization",
                   "name": "ComidaConecta",
-                  "url": "https://comidaconecta.vercel.app",
+                  "url": "https://comidaconecta.org",
                   "description": "Plataforma gratuita que conecta comercios con excedente alimentario y entidades sociales para reducir el desperdicio de alimentos.",
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://comidaconecta.vercel.app/#website",
-                  "url": "https://comidaconecta.vercel.app",
+                  "@id": "https://comidaconecta.org/#website",
+                  "url": "https://comidaconecta.org",
                   "name": "ComidaConecta",
                   "description": "Plataforma gratuita que conecta comercios con excedente alimentario y entidades sociales.",
-                  "publisher": { "@id": "https://comidaconecta.vercel.app/#organization" },
+                  "publisher": { "@id": "https://comidaconecta.org/#organization" },
                   "inLanguage": "es",
                   "isAccessibleForFree": true,
                   "potentialAction": [
                     {
                       "@type": "RegisterAction",
-                      "target": "https://comidaconecta.vercel.app/register",
+                      "target": "https://comidaconecta.org/register",
                     },
                   ],
                 },
                 {
                   "@type": "WebPage",
-                  "@id": "https://comidaconecta.vercel.app/#webpage",
-                  "url": "https://comidaconecta.vercel.app",
+                  "@id": "https://comidaconecta.org/#webpage",
+                  "url": "https://comidaconecta.org",
                   "name": "ComidaConecta — Donación de excedente alimentario",
                   "description": "Reduce el desperdicio alimentario. Plataforma gratuita que conecta comercios donantes con entidades sociales receptoras.",
-                  "isPartOf": { "@id": "https://comidaconecta.vercel.app/#website" },
+                  "isPartOf": { "@id": "https://comidaconecta.org/#website" },
                   "about": {
                     "@type": "Thing",
                     "name": "Reducción del desperdicio alimentario",
@@ -98,7 +98,7 @@ export default function RootLayout({
                 },
                 {
                   "@type": "FAQPage",
-                  "@id": "https://comidaconecta.vercel.app/#faq",
+                  "@id": "https://comidaconecta.org/#faq",
                   "mainEntity": [
                     {
                       "@type": "Question",
@@ -121,7 +121,7 @@ export default function RootLayout({
                       "name": "¿Cómo me registro como comercio?",
                       "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Entra en comidaconecta.vercel.app/register, selecciona 'Soy comercio', completa tus datos y empieza a publicar tu excedente.",
+                        "text": "Entra en comidaconecta.org/register, selecciona 'Soy comercio', completa tus datos y empieza a publicar tu excedente.",
                       },
                     },
                     {
@@ -129,14 +129,14 @@ export default function RootLayout({
                       "name": "¿Cómo me registro como entidad social?",
                       "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Entra en comidaconecta.vercel.app/register, selecciona 'Soy entidad social' y ya puedes ver donaciones disponibles en tiempo real.",
+                        "text": "Entra en comidaconecta.org/register, selecciona 'Soy entidad social' y ya puedes ver donaciones disponibles en tiempo real.",
                       },
                     },
                   ],
                 },
                 {
                   "@type": "HowTo",
-                  "@id": "https://comidaconecta.vercel.app/#howto",
+                  "@id": "https://comidaconecta.org/#howto",
                   "name": "Cómo donar excedente alimentario en ComidaConecta",
                   "description": "Tres pasos simples: publica, conecta y recoge.",
                   "estimatedCost": { "@type": "MonetaryAmount", "currency": "EUR", "value": "0" },
@@ -146,21 +146,21 @@ export default function RootLayout({
                       "position": 1,
                       "name": "Publica",
                       "text": "El comercio publica el excedente disponible: tipo, cantidad, horario.",
-                      "url": "https://comidaconecta.vercel.app/register?role=commerce",
+                      "url": "https://comidaconecta.org/register?role=commerce",
                     },
                     {
                       "@type": "HowToStep",
                       "position": 2,
                       "name": "Conecta",
                       "text": "Las entidades ven donaciones en tiempo real y reservan recogida.",
-                      "url": "https://comidaconecta.vercel.app",
+                      "url": "https://comidaconecta.org",
                     },
                     {
                       "@type": "HowToStep",
                       "position": 3,
                       "name": "Recoge",
                       "text": "La entidad recoge, el comercio confirma, todo queda registrado.",
-                      "url": "https://comidaconecta.vercel.app",
+                      "url": "https://comidaconecta.org",
                     },
                   ],
                   "inLanguage": "es",

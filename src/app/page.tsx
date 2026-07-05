@@ -370,11 +370,11 @@ export default function LandingPage() {
               },
               {
                 q: '¿Cómo funciona el registro para comercios?',
-                a: 'Entra en comidaconecta.vercel.app/register, selecciona «Soy comercio» y completa tus datos básicos: nombre, email, ubicación y tipo de comercio. En menos de 5 minutos puedes empezar a publicar tu primer excedente. En esta primera versión tendrás acceso al historial de donaciones registradas. Más adelante podremos añadir informes mensuales de impacto y un sello de comercio colaborador.',
+                a: 'Entra en comidaconecta.org/register, selecciona «Soy comercio» y completa tus datos básicos: nombre, email, ubicación y tipo de comercio. En menos de 5 minutos puedes empezar a publicar tu primer excedente. En esta primera versión tendrás acceso al historial de donaciones registradas. Más adelante podremos añadir informes mensuales de impacto y un sello de comercio colaborador.',
               },
               {
                 q: '¿Cómo funciona el registro para entidades sociales?',
-                a: 'Entra en comidaconecta.vercel.app/register, selecciona «Soy entidad social» y completa los datos de tu organización. Una vez registrado, verás todas las donaciones disponibles cerca de ti en tiempo real y podrás reservar recogidas al instante. Sin límites, sin costes.',
+                a: 'Entra en comidaconecta.org/register, selecciona «Soy entidad social» y completa los datos de tu organización. Una vez registrado, verás todas las donaciones disponibles cerca de ti en tiempo real y podrás reservar recogidas al instante. Sin límites, sin costes.',
               },
               {
                 q: '¿La contribución voluntaria es obligatoria?',
