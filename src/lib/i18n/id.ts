@@ -47,7 +47,7 @@ const id: Translations = {
       { title: '🚚 ONG ambil', desc: 'Lembaga mendatangi tempat usaha, mengambil pangan, dan menandai pengambilan sebagai selesai.' },
       { title: '✅ Tempat usaha konfirmasi', desc: 'Tempat usaha memverifikasi bahwa pengambilan berjalan lancar dan mengonfirmasi pengantaran.' },
     ],
-    matchComplete: '✅ Kecocokan selesai — donasi masuk ke riwayatmu dengan semua data tercatat untuk dilihat dan diunduh.',
+    matchComplete: '✅ Kecocokan selesai — donasi masuk ke riwayatmu dengan semua data tercatat.',
   },
   benefits: {
     title: 'Manfaat untuk semua: tempat usaha, ONG, dan planet',
@@ -55,12 +55,12 @@ const id: Translations = {
     commerce: {
       title: 'Untuk tempat usaha',
       subtitle: 'Kurangi biaya dan ciptakan dampak sosial',
-      items: ['Mengurangi limbah dan biaya pengelolaan sampah','Riwayat donasi yang bisa diakses, berguna untuk pemantauan internal','Lencana tempat usaha mitra ComidaConecta','Kontribusi sukarela — pilih sendiri apakah ingin berkontribusi'],
+      items: ['Mengurangi limbah dan biaya pengelolaan sampah','Riwayat donasi yang bisa diakses, berguna untuk pemantauan internal','Donasi tercatat dengan ketertelusuran penuh','Kontribusi sukarela — pilih sendiri apakah ingin berkontribusi'],
     },
     ngo: {
       title: 'Untuk lembaga sosial',
       subtitle: 'Akses gratis dan tak terbatas ke donasi tercatat',
-      items: ['Akses gratis tanpa batas — tanpa iuran atau restriksi','Donasi dipublikasikan oleh tempat usaha terverifikasi','Pengelolaan mudah dari ponsel — pencatatan digital','Lihat donasi tersedia yang diperbarui secara langsung','Riwayat lengkap untuk pertanggungjawaban ke donor'],
+      items: ['Akses gratis tanpa batas — tanpa iuran atau restriksi','Donasi dipublikasikan oleh tempat usaha terverifikasi','Pengelolaan mudah dari ponsel — pencatatan digital','Lihat donasi tersedia yang diperbarui secara langsung','Ketertelusuran penuh setiap donasi'],
     },
     planet: {
       title: 'Untuk planet',
@@ -87,9 +87,9 @@ const id: Translations = {
     subtitle: 'Kami tidak menerapkan batasan, tidak memungut komisi, dan menawarkan ketertelusuran penuh sejak hari pertama.',
     items: [
       { title: 'Tanpa batas donasi', desc: 'Berbeda dengan solusi lain, kamu bisa donasi sebanyak apa pun saat punya surplus. Tanpa batas bulanan, tanpa restriksi.' },
-      { title: 'Ketertelusuran penuh', desc: 'Setiap donasi tercatat: sejak dipublikasikan hingga pengambilan dikonfirmasi. Riwayat dapat dilihat dan diunduh.' },
+      { title: 'Ketertelusuran penuh', desc: 'Setiap donasi tercatat: sejak dipublikasikan hingga pengambilan dikonfirmasi. Riwayat dapat dilihat setiap saat.' },
       { title: 'Pesan instan', desc: 'Lembaga sosial melihat donasi secara waktu nyata dan memesan dengan satu klik. Tanpa menunggu, tanpa birokrasi.' },
-      { title: 'Sistem relawan', desc: 'Lembaga tidak bisa menjemput? Relawan bisa mengambil alih. Kami memfasilitasi pengambilan agar tidak ada yang terbuang.' },
+      { title: 'Sepenuhnya gratis', desc: 'ComidaConecta gratis untuk lembaga sosial. Untuk tempat usaha, penggunaan gratis dan kontribusi bersifat sukarela.' },
     ],
   },
   faq: {
@@ -102,7 +102,6 @@ const id: Translations = {
       { q: 'Bagaimana cara pendaftaran untuk lembaga sosial?', a: 'Kunjungi comidaconecta.org/register, pilih "Saya lembaga sosial" dan lengkapi data organisasimu. Setelah terdaftar, kamu akan melihat semua donasi yang tersedia di sekitarmu secara waktu nyata.' },
       { q: 'Apakah kontribusi sukarela itu wajib?', a: 'Tidak, ini bersifat sukarela. Tidak ada kontrak atau ikatan. Setiap tempat usaha memutuskan apakah akan berkontribusi dan berapa jumlahnya. Kontribusi membantu menjaga platform tetap aktif.' },
       { q: 'Apakah ada kewajiban atau ikatan?', a: 'Tidak ada sama sekali. Tidak ada kontrak, ikatan, atau komitmen jangka panjang. Kamu bisa mempublikasikan donasi saat memiliki surplus, tanpa kewajiban.' },
-      { q: 'Bagaimana cara kerja sistem relawan?', a: 'Jika lembaga sosial tidak bisa menjemput donasi, mereka bisa meminta relawan. Siapa pun yang terdaftar sebagai relawan dapat menerima tugas pengambilan dan melakukannya atas nama lembaga tersebut.' },
       { q: 'Apa dampak lingkungan dari donasi pangan?', a: 'Setiap donasi yang tercatat mencegah pangan berakhir di tempat pembuangan, mengurangi emisi CO₂ yang terkait dengan pembusukan. Selain itu, ini mendorong ekonomi sirkular dengan mendistribusikan sumber daya secara lokal.' },
       { q: 'Siapa yang bertanggung jawab atas transportasi?', a: 'ComidaConecta tidak mengatur atau melakukan transportasi pangan. Pengambilan, transportasi, penyimpanan, dan penyerahan harus diatur langsung antara tempat usaha donor dan lembaga penerima. Platform hanya memfasilitasi kontak dan pencatatan digital donasi.' },
       { q: 'Apakah ComidaConecta menjamin keamanan pangan?', a: 'Tidak. Tempat usaha donor bertanggung jawab untuk mempublikasikan hanya pangan yang layak konsumsi dan disimpan dengan benar. Lembaga penerima bertanggung jawab untuk menilai donasi, mengambil, mengangkut, dan menanganinya sesuai peraturan yang berlaku. ComidaConecta memfasilitasi kontak dan pencatatan, tetapi tidak menangani, memeriksa, mengangkut, atau menyimpan pangan.' },

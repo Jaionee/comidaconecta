@@ -47,7 +47,7 @@ const en: Translations = {
       { title: '🚚 NGO picks up', desc: 'The organization goes to the business, collects the food, and marks the pickup as completed.' },
       { title: '✅ Business confirms', desc: 'The business verifies the pickup was correct and confirms the delivery.' },
     ],
-    matchComplete: '✅ Match completed — the donation is added to your history with all data recorded for review and download.',
+    matchComplete: '✅ Match completed — the donation is added to your history with all data recorded.',
   },
   benefits: {
     title: 'Benefits for everyone: businesses, NGOs, and the planet',
@@ -55,12 +55,12 @@ const en: Translations = {
     commerce: {
       title: 'For businesses',
       subtitle: 'Reduce costs and create social impact',
-      items: ['Reduce waste and waste management costs','Searchable donation history for internal tracking','ComidaConecta partner business badge','Voluntary contribution — you choose whether to contribute'],
+      items: ['Reduce waste and waste management costs','Searchable donation history for internal tracking','Donations recorded with full traceability','Voluntary contribution — you choose whether to contribute'],
     },
     ngo: {
       title: 'For social organizations',
       subtitle: 'Free and unlimited access to tracked donations',
-      items: ['Free unlimited access — no fees or restrictions','Donations posted by verified businesses','Easy management from your phone — digital records','Browse donations updated in real time','Full history for reporting to funders'],
+      items: ['Free unlimited access — no fees or restrictions','Donations posted by verified businesses','Easy management from your phone — digital records','Browse donations updated in real time','Full traceability of every donation'],
     },
     planet: {
       title: 'For the planet',
@@ -87,9 +87,9 @@ const en: Translations = {
     subtitle: 'We don\'t impose limits, we don\'t charge fees, and we offer full traceability from day one.',
     items: [
       { title: 'No donation limits', desc: 'Unlike other solutions, you can donate as often as you have surplus. No monthly cap, no restrictions.' },
-      { title: 'Full traceability', desc: 'Every donation is logged — from when it\'s posted until pickup is confirmed. Viewable and downloadable history.' },
+      { title: 'Full traceability', desc: 'Every donation is logged — from when it\'s posted until pickup is confirmed. History viewable at any time.' },
       { title: 'Instant reservation', desc: 'Social organizations see donations in real time and reserve with one click. No waiting, no paperwork.' },
-      { title: 'Volunteer system', desc: 'Can\'t the organization make the trip? A volunteer can pick up on their behalf. We make sure nothing goes to waste.' },
+      { title: 'Completely free', desc: 'ComidaConecta is free for social organizations. For businesses, usage is free and contributions are voluntary.' },
     ],
   },
   faq: {
@@ -102,7 +102,6 @@ const en: Translations = {
       { q: 'How does social organization registration work?', a: 'Go to comidaconecta.org/register, select "I\'m a social organization" and fill in your organization\'s details. Once registered, you\'ll see all available donations near you in real time.' },
       { q: 'Is the voluntary contribution mandatory?', a: 'No, it is entirely voluntary. There is no contract or commitment. Each business decides whether to contribute and how much. Contributions help keep the platform active and continue connecting donations.' },
       { q: 'Is there any commitment or minimum term?', a: 'None at all. No contracts, minimum terms, or long-term commitments. You can post donations whenever you have surplus, with no obligations.' },
-      { q: 'How does the volunteer system work?', a: 'If a social organization can\'t travel to pick up a donation, they can request a volunteer. Anyone registered as a volunteer can accept the pickup and carry it out on behalf of the organization.' },
       { q: 'What environmental impact does food donation have?', a: 'Every registered donation prevents food from ending up in landfills, reducing the CO₂ emissions associated with its decomposition. It also promotes the circular economy by redistributing resources locally.' },
       { q: 'Who is responsible for transportation?', a: 'ComidaConecta does not organize or carry out food transportation. Collection, transport, conservation, and delivery must be agreed upon directly between the donating business and the receiving organization. The platform only facilitates contact and digital donation registration.' },
       { q: 'Does ComidaConecta guarantee food safety?', a: 'No. The donating business is responsible for posting only food fit for consumption that has been properly stored. The receiving organization is responsible for assessing the donation, collecting it, transporting it, and handling it in accordance with applicable regulations. ComidaConecta facilitates contact and registration but does not handle, inspect, transport, or store food.' },

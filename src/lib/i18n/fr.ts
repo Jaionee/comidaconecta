@@ -47,7 +47,7 @@ const fr: Translations = {
       { title: '🚚 L\'ONG récupère', desc: 'L\'association se rend au commerce, récupère les aliments et marque la collecte comme terminée.' },
       { title: '✅ Le commerce confirme', desc: 'Le commerce vérifie que la collecte s\'est bien déroulée et confirme la remise.' },
     ],
-    matchComplete: '✅ Match terminé — le don passe dans votre historique avec toutes les données enregistrées pour consultation et téléchargement.',
+    matchComplete: '✅ Match terminé — le don passe dans votre historique avec toutes les données enregistrées.',
   },
   benefits: {
     title: 'Des avantages pour tous : commerces, ONG et la planète',
@@ -55,12 +55,12 @@ const fr: Translations = {
     commerce: {
       title: 'Pour les commerces',
       subtitle: 'Réduisez vos coûts et générez un impact social',
-      items: ['Réduire le gaspillage et les coûts de gestion des déchets','Historique des dons consultable, utile pour le suivi interne','Badge de commerce partenaire ComidaConecta','Contribution volontaire — choisissez si vous voulez contribuer'],
+      items: ['Réduire le gaspillage et les coûts de gestion des déchets','Historique des dons consultable, utile pour le suivi interne','Dons enregistrés avec traçabilité complète','Contribution volontaire — choisissez si vous voulez contribuer'],
     },
     ngo: {
       title: 'Pour les associations',
       subtitle: 'Accès gratuit et illimité aux dons enregistrés',
-      items: ['Accès gratuit sans limites — sans cotisation ni restriction','Dons publiés par des commerces validés','Gestion simple depuis le mobile — enregistrements numériques','Consultez les dons disponibles mis à jour en temps réel','Historique complet pour justifier auprès des financeurs'],
+      items: ['Accès gratuit sans limites — sans cotisation ni restriction','Dons publiés par des commerces validés','Gestion simple depuis le mobile — enregistrements numériques','Consultez les dons disponibles mis à jour en temps réel','Traçabilité complète de chaque don'],
     },
     planet: {
       title: 'Pour la planète',
@@ -87,9 +87,9 @@ const fr: Translations = {
     subtitle: 'Nous n\'imposons pas de limites, ne prenons pas de commissions et offrons une traçabilité complète dès le premier jour.',
     items: [
       { title: 'Sans limite de dons', desc: 'Contrairement à d\'autres solutions, vous pouvez donner autant de fois que vous avez d\'excédents. Sans plafond mensuel, sans restrictions.' },
-      { title: 'Traçabilité complète', desc: 'Chaque don est enregistré : de sa publication à la confirmation de la collecte. Historique consultable et téléchargeable.' },
+      { title: 'Traçabilité complète', desc: 'Chaque don est enregistré : de sa publication à la confirmation de la collecte. Historique consultable à tout moment.' },
       { title: 'Réservation instantanée', desc: 'Les associations voient les dons en temps réel et réservent en un clic. Sans attente, sans paperasse.' },
-      { title: 'Système de bénévolat', desc: 'L\'association ne peut pas se déplacer ? Un bénévole peut collecter à sa place. Nous facilitons la collecte pour que rien ne soit perdu.' },
+      { title: 'Totalement gratuit', desc: 'ComidaConecta est gratuit pour les entités sociales. Pour les commerces, l\'utilisation est gratuite et les contributions sont volontaires.' },
     ],
   },
   faq: {
@@ -102,7 +102,6 @@ const fr: Translations = {
       { q: 'Comment fonctionne l\'inscription pour les associations ?', a: 'Rendez-vous sur comidaconecta.org/register, sélectionnez « Je suis une association » et complétez les informations de votre organisation. Une fois inscrit, vous verrez tous les dons disponibles près de chez vous en temps réel.' },
       { q: 'La contribution volontaire est-elle obligatoire ?', a: 'Non, elle est entièrement volontaire. Il n\'y a ni contrat ni engagement. Chaque commerce décide s\'il contribue et combien. Les contributions aident à maintenir la plateforme active et à continuer à connecter les dons.' },
       { q: 'Y a-t-il un engagement ou une durée minimale ?', a: 'Aucun. Il n\'y a pas de contrat, d\'engagement ni d\'obligation à long terme. Vous pouvez publier des dons quand vous avez des excédents, sans aucune contrainte.' },
-      { q: 'Comment fonctionne le système de bénévolat ?', a: 'Si une association ne peut pas se déplacer pour récupérer un don, elle peut faire appel à un bénévole. Toute personne inscrite comme bénévole peut accepter la collecte et l\'effectuer au nom de l\'association.' },
       { q: 'Quel est l\'impact environnemental du don alimentaire ?', a: 'Chaque don enregistré évite que les aliments finissent à la décharge, réduisant ainsi les émissions de CO₂ liées à leur décomposition. De plus, cela favorise l\'économie circulaire en redistribuant les ressources localement.' },
       { q: 'Qui est responsable du transport ?', a: 'ComidaConecta n\'organise ni n\'effectue le transport des aliments. La collecte, le transport, la conservation et la livraison doivent être convenus directement entre le commerce donateur et l\'entité réceptrice. La plateforme facilite uniquement le contact et l\'enregistrement numérique du don.' },
       { q: 'ComidaConecta garantit-elle la sécurité des aliments ?', a: 'Non. Le commerce donateur est responsable de publier uniquement des aliments propres à la consommation et correctement conservés. L\'entité réceptrice est responsable d\'évaluer le don, de le collecter, de le transporter et de le manipuler conformément à la réglementation applicable. ComidaConecta facilite le contact et l\'enregistrement mais ne manipule, n\'inspecte, ne transporte ni ne stocke les aliments.' },

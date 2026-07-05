@@ -47,7 +47,7 @@ const es: Translations = {
       { title: '🚚 ONG recoge', desc: 'La entidad acude al comercio, recoge los alimentos y marca la recogida como completada.' },
       { title: '✅ Comercio confirma', desc: 'El comercio verifica que la recogida fue correcta y confirma la entrega.' },
     ],
-    matchComplete: '✅ Match completado — la donación pasa a tu historial con todos los datos registrados para consulta y descarga.',
+    matchComplete: '✅ Match completado — la donación pasa a tu historial con todos los datos registrados.',
   },
   benefits: {
     title: 'Beneficios para todos: comercios, ONGs y el planeta',
@@ -55,12 +55,12 @@ const es: Translations = {
     commerce: {
       title: 'Para comercios',
       subtitle: 'Reduce costes y genera impacto social',
-      items: ['Reducir desperdicio y costes de gestión de residuos','Historial de donaciones consultable, útil para seguimiento interno','Sello de comercio colaborador de ComidaConecta','Contribución voluntaria — elige si quieres aportar'],
+      items: ['Reducir desperdicio y costes de gestión de residuos','Historial de donaciones consultable, útil para seguimiento interno','Donaciones registradas con trazabilidad completa','Contribución voluntaria — elige si quieres aportar'],
     },
     ngo: {
       title: 'Para entidades sociales',
       subtitle: 'Acceso gratuito e ilimitado a donaciones registradas',
-      items: ['Acceso gratuito sin límites — sin cuotas ni restricciones','Donaciones publicadas por comercios validados','Gestión sencilla desde el móvil — registros digitales','Consulta donaciones disponibles actualizadas al momento','Historial completo para justificación ante financiadores'],
+      items: ['Acceso gratuito sin límites — sin cuotas ni restricciones','Donaciones publicadas por comercios validados','Gestión sencilla desde el móvil — registros digitales','Consulta donaciones disponibles actualizadas al momento','Trazabilidad completa de cada donación'],
     },
     planet: {
       title: 'Para el planeta',
@@ -87,9 +87,9 @@ const es: Translations = {
     subtitle: 'No imponemos límites, no cobramos comisiones y ofrecemos trazabilidad completa desde el primer día.',
     items: [
       { title: 'Sin límite de donaciones', desc: 'A diferencia de otras soluciones, puedes donar tantas veces como tengas excedente. Sin tope mensual, sin restricciones.' },
-      { title: 'Trazabilidad completa', desc: 'Cada donación queda registrada: desde que se publica hasta que se confirma la recogida. Historial consultable y descargable.' },
+      { title: 'Trazabilidad completa', desc: 'Cada donación queda registrada: desde que se publica hasta que se confirma la recogida. Historial consultable en todo momento.' },
       { title: 'Reserva al instante', desc: 'Las entidades sociales ven las donaciones en tiempo real y reservan con un clic. Sin esperas, sin papeleo.' },
-      { title: 'Sistema de voluntariado', desc: '¿La entidad no puede desplazarse? Un voluntario puede recoger en su lugar. Facilitamos la recogida para que nada se pierda.' },
+      { title: 'Totalmente gratuito', desc: 'ComidaConecta es gratuita para entidades sociales. Para comercios, el uso es gratuito y las contribuciones son voluntarias.' },
     ],
   },
   faq: {
@@ -102,7 +102,6 @@ const es: Translations = {
       { q: '¿Cómo funciona el registro para entidades sociales?', a: 'Entra en comidaconecta.org/register, selecciona «Soy entidad social» y completa los datos de tu organización. Una vez registrado, verás todas las donaciones disponibles cerca de ti en tiempo real.' },
       { q: '¿La contribución voluntaria es obligatoria?', a: 'No, es totalmente voluntaria. No hay contrato ni permanencia. Cada comercio decide si contribuye y cuánto. Las contribuciones ayudan a mantener la plataforma activa y a seguir conectando donaciones.' },
       { q: '¿Hay algún compromiso o permanencia?', a: 'Ninguno. No hay contratos, permanencias ni compromisos a largo plazo. Puedes publicar donaciones cuando tengas excedente, sin obligaciones.' },
-      { q: '¿Cómo funciona el sistema de voluntariado?', a: 'Si una entidad social no puede desplazarse a recoger una donación, puede solicitar un voluntario. Cualquier persona registrada como voluntaria puede aceptar la recogida y realizarla en nombre de la entidad.' },
       { q: '¿Qué impacto ambiental tiene donar alimentos?', a: 'Cada donación registrada evita que los alimentos acaben en vertederos, reduciendo las emisiones de CO₂ asociadas a su descomposición. Además, fomenta la economía circular al redistribuir recursos localmente.' },
       { q: '¿Quién se encarga del transporte?', a: 'ComidaConecta no organiza ni realiza el transporte de alimentos. La recogida, transporte, conservación y entrega deberán ser acordados directamente entre el comercio donante y la entidad receptora. La plataforma solo facilita el contacto y el registro digital de la donación.' },
       { q: '¿ComidaConecta garantiza la seguridad de los alimentos?', a: 'No. El comercio donante es responsable de publicar únicamente alimentos aptos para el consumo y correctamente conservados. La entidad receptora es responsable de valorar la donación, recogerla, transportarla y manipularla conforme a la normativa aplicable. ComidaConecta facilita el contacto y el registro, pero no manipula, revisa, transporta ni almacena alimentos.' },

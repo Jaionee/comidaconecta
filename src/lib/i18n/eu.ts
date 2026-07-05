@@ -47,7 +47,7 @@ const eu: Translations = {
       { title: '🚚 GKEk jasotzen du', desc: 'Erakundea dendara joaten da, janaria jasotzen du eta jasotzea osatu gisa markatzen du.' },
       { title: '✅ Dendak baieztatzen du', desc: 'Dendak jasotzea zuzena izan dela egiaztatzen du eta entrega baieztatzen du.' },
     ],
-    matchComplete: '✅ Match-a osatuta — dohaintza zure historiara pasatzen da, erregistratutako datu guztiekin kontsultatu eta deskargatzeko.',
+    matchComplete: '✅ Match-a osatuta — dohaintza zure historiara pasatzen da, erregistratutako datu guztiekin.',
   },
   benefits: {
     title: 'Onurak guztientzat: dendak, GKEak eta planeta',
@@ -55,12 +55,12 @@ const eu: Translations = {
     commerce: {
       title: 'Dendendako',
       subtitle: 'Kostuak murriztu eta gizarte-eragina sortu',
-      items: ['Xahuketa eta hondakin kudeaketaren kostuak murriztu','Dohaintzen historia kontsultagarria, barne jarraipenerako baliagarria','ComidaConecta-ren denda kolaboratzaile zigilua','Borondatezko ekarpena — aukeratu ekarpena egin nahi duzun'],
+      items: ['Xahuketa eta hondakin kudeaketaren kostuak murriztu','Dohaintzen historia kontsultagarria, barne jarraipenerako baliagarria','Dohaintza bakoitzaren trazabilitate osoa','Borondatezko ekarpena — aukeratu ekarpena egin nahi duzun'],
     },
     ngo: {
       title: 'Gizarte-erakundeentzako',
       subtitle: 'Dohaintza erregistratuetarako sarbide doakoa eta mugagabea',
-      items: ['Sarbide doakoa mugarik gabe — kuota edo murrizketarik gabe','Balioztatutako dendek argitaratutako dohaintzak','Mugikorretik kudeaketa erraza — erregistro digitalak','Denbora errealean eguneratutako dohaintzak kontsultatu','Historia osoa finantzatzaileen aurrean justifikatzeko'],
+      items: ['Sarbide doakoa mugarik gabe — kuota edo murrizketarik gabe','Balioztatutako dendek argitaratutako dohaintzak','Mugikorretik kudeaketa erraza — erregistro digitalak','Denbora errealean eguneratutako dohaintzak kontsultatu','Dohaintza bakoitzaren trazabilitate osoa'],
     },
     planet: {
       title: 'Planetarentzako',
@@ -87,9 +87,9 @@ const eu: Translations = {
     subtitle: 'Ez dugu mugarik jartzen, ez dugu komisiorik kobratzen eta trazabilitate osoa eskaintzen dugu lehen egunetik.',
     items: [
       { title: 'Dohaintza mugarik gabe', desc: 'Beste irtenbide batzuek ez bezala, soberakina duzun bakoitzean dohaintzan eman dezakezu. Hileko mugarik gabe, murrizketarik gabe.' },
-      { title: 'Trazabilitate osoa', desc: 'Dohaintza bakoitza erregistratuta geratzen da: argitaratzen denetik jasotzea baieztatzen den arte. Historia kontsultagarria eta deskargagarria.' },
+      { title: 'Trazabilitate osoa', desc: 'Dohaintza bakoitza erregistratuta geratzen da: argitaratzen denetik jasotzea baieztatzen den arte. Edonoiz kontsulta daitekeen historia.' },
       { title: 'Berehalako erreserba', desc: 'Gizarte-erakundeek denbora errealean ikusten dituzte dohaintzak eta klik batekin erreserbatzen dituzte. Itxaronaldirik edo paperik gabe.' },
-      { title: 'Boluntariotza sistema', desc: 'Erakundeak ezin badu joan jasotzera? Boluntario batek jaso dezake bere ordez. Jasotzea errazten dugu ezer galdu ez dadin.' },
+      { title: 'Erabat doakoa', desc: 'ComidaConecta doakoa da gizarte-erakundeentzat. Enpresentzat, erabilera doakoa da eta ekarpenak borondatezkoak dira.' },
     ],
   },
   faq: {
@@ -102,7 +102,6 @@ const eu: Translations = {
       { q: 'Nola funtzionatzen du gizarte-erakundeentzako erregistroak?', a: 'Sartu comidaconecta.org/register helbidean, hautatu "Gizarte-erakundea naiz" eta bete zure erakundearen datuak. Behin erregistratuta, zure ondoan dauden dohaintza guztiak ikusiko dituzu denbora errealean.' },
       { q: 'Borondatezko ekarpena derrigorrezkoa al da?', a: 'Ez, borondatezkoa da. Ez dago kontraturik edo iraupenik. Denda bakoitzak erabakitzen du ematen duen eta zenbat. Ekarpenek plataforma aktibo mantentzen laguntzen dute.' },
       { q: 'Ba al dago konpromiso edo iraupenik?', a: 'Bat ere ez. Ez dago kontraturik, iraupenik edo epe luzerako konpromisorik. Soberakina duzunean argitaratu dezakezu, betebeharrik gabe.' },
-      { q: 'Nola funtzionatzen du boluntariotza sistemak?', a: 'Gizarte-erakunde batek ezin badu dohaintza jasotzera joan, boluntario bat eska dezake. Boluntario gisa erregistratutako edozeinek jaso dezake erakundearen izenean.' },
       { q: 'Zein ingurumen-eragin du elikagaiak dohaintzan emateak?', a: 'Erregistratutako dohaintza bakoitzak elikagaiak zabortegietan bukatzea saihesten du, deskonposizioarekin lotutako CO₂ isurketak murriztuz. Gainera, ekonomia zirkularra sustatzen du baliabideak lokalki birbanatuz.' },
       { q: 'Nor da garraioaren arduraduna?', a: 'ComidaConectak ez du janarien garraioa antolatu edo egiten. Jasotzea, garraioa, kontserbazioa eta entrega zuzenean adostu behar dira dohaintza egiten duen dendaren eta jasotzaile den erakundearen artean. Plataformak dohaintzaren kontaktu eta erregistro digitala baino ez du errazten.' },
       { q: 'ComidaConectak bermatzen al du elikagaien segurtasuna?', a: 'Ez. Dohaintza egiten duen dendaren erantzukizuna da kontsumorako egokiak eta behar bezala kontserbatutako elikagaiak argitaratzea. Jasotzaile den erakundea da dohaintza ebaluatu, jaso, garraiatu eta manipulatu behar duena, aplikatzeko den araudiaren arabera. ComidaConectak kontaktua eta erregistroa errazten ditu, baina ez du janaria manipulatu, ikuskatu, garraiatu edo biltegiratzen.' },
