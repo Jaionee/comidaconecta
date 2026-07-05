@@ -134,7 +134,7 @@ export default function ColaboraPage() {
               </p>
 
               <a
-                href="https://paypal.me/ComidaConecta"
+                href="https://www.paypal.com/ncp/payment/A3AFSXGDR3UE6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/30 hover:shadow-blue-700/30 transition-all duration-200"
