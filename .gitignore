@@ -20,6 +20,9 @@
 # production
 /build
 
+# secrets
+.new_github_token
+
 # misc
 .DS_Store
 *.pem

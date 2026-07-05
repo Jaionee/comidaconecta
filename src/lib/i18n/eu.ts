@@ -1,0 +1,136 @@
+import type { Translations } from './types'
+
+const eu: Translations = {
+  meta: {
+    title: 'ComidaConecta — Elikagai soberakinak dohaintzan ematea | Plataforma doakoa',
+    description: 'Zure dendan janari soberakina duzu? Dohaintzan eman GKE eta gizarte-jantokiei. Dohaintzaileak eta gizarte-erakundeak konektatzen dituen plataforma doakoa. Burokrazia gabe.',
+    keywords: ['janari soberakina dohaintzan eman','jatetxeetako elikagai dohaintza','janari xahuketa murriztu','elikagai dohaintza plataforma doakoa','gizarte jantokiak','GKE elikagai dohaintza','ekonomia zirkularra','ogia soberakina dohaintzan'],
+    ogTitle: 'ComidaConecta — Elikagai soberakinak dohaintzan ematea',
+    ogDescription: 'Plataforma doakoa, elikagai soberakina duten dendak eta gizarte-erakundeak konektatzen dituena. Komisiorik gabe.',
+  },
+  nav: {
+    howItWorks: 'Nola funtzionatzen du',
+    faq: 'Maiz egiten diren galderak',
+    about: 'Nor gara',
+    collaborate: 'Kolaboratu',
+    dashboard: 'Panelera joan',
+    joinFree: 'Doan batu',
+    login: 'Hasi saioa',
+  },
+  hero: {
+    badge: '🏆 Onena elikagai soberakina dohaintzan emateko — doan, mugarik gabe, komisiorik gabe',
+    title: 'Janari soberakina duzu zure dendan?',
+    titleHighlight: 'Dohaintzan eman doan',
+    subtitle: 'ComidaConecta da',
+    subtitleBold1: 'elikagai soberakina dohaintzan emateko plataforma doakoa',
+    subtitleBold2: 'Komisiorik gabe, kudeaketa errazarekin eta dohaintza bakoitzaren erregistro digitalarekin.',
+    badges: ['✅ Gizarte-erakundeentzat doan','🔓 Kontraturik eta iraupenik gabe','📱 5 minututan argitaratu','📍 Kokapen errealeko geolokalizazioa'],
+    commerceBtn: 'Denda naiz — Dohaintzan eman nahi dut',
+    ngoBtn: 'Gizarte-erakundea naiz — Janaria behar dut',
+    disclaimer: '✅ Konpromisorik gabe. ✅ Gizarte-erakundeentzat doan. ✅ Enpresentzat, doako erabilera hasierako fasean. ✅ Borondatezko ekarpena geroago, beti aurretiaz jakinarazita.',
+    note: 'ComidaConectak ez du janaria manipulatu edo garraiatzen: aldeen arteko konexioa eta erregistro digitala errazten ditu.',
+  },
+  howItWorks: {
+    title: 'Nola funtzionatzen du — 3 urrats',
+    subtitle: 'Zure jatetxe, okindegi edo supermerkatuko janari soberakina gizarte-jantokiei dohaintzan emateko prozesua oso erraza da:',
+    subtitle2: 'Kontraturik, kosturik edo epe luzerako konpromisorik gabe.',
+    steps: [
+      { title: 'Argitaratu', desc: 'Dendak soberakina argitaratzen du: janari mota, kopuru estimatua eta jasotzeko ordutegia. Plataformatik, 2 minututan.', detail: '📱 Mugikorretik egin dezakezu' },
+      { title: 'Konektatu', desc: 'Gizarte-erakundeek denbora errealean ikusten dituzte dohaintza guztiak. Interesatzen zaienean, berehala erreserbatzen dute beren paneltik.', detail: '💰 Berehalako erreserba paneltik' },
+      { title: 'Jaso', desc: 'Dohaintza bakoitza erregistratuta geratzen da dendek eta erakundeek entrega eta jasotzeen historia kontsultatu ahal izateko.', detail: '📄 Dohaintzen historia digitala' },
+    ],
+    cycleTitle: 'Match-aren ziklo osoa',
+    cycleSubtitle: 'Horrela pasatzen da dohaintza bat dendatik gizarte-erakundera',
+    cycleSteps: [
+      { title: '📢 Dendak argitaratzen du', desc: 'Dendak soberakina argitaratzen du. Dohaintza erakunde guztientzat eskuragarri agertzen da.' },
+      { title: '🔍 GKEk aurkitzen eta erreserbatzen du', desc: 'Erakundeek denbora errealean ikusten dituzte dohaintzak. Interesatzen zaienean, "Jasotzea erreserbatu" sakatzen dute.' },
+      { title: '🚚 GKEk jasotzen du', desc: 'Erakundea dendara joaten da, janaria jasotzen du eta jasotzea osatu gisa markatzen du.' },
+      { title: '✅ Dendak baieztatzen du', desc: 'Dendak jasotzea zuzena izan dela egiaztatzen du eta entrega baieztatzen du.' },
+    ],
+    matchComplete: '✅ Match-a osatuta — dohaintza zure historiara pasatzen da, erregistratutako datu guztiekin kontsultatu eta deskargatzeko.',
+  },
+  benefits: {
+    title: 'Onurak guztientzat: dendak, GKEak eta planeta',
+    subtitle: 'Partaide bakoitzarentzat benetako eragina sortzen duen plataforma.',
+    commerce: {
+      title: 'Dendendako',
+      subtitle: 'Kostuak murriztu eta gizarte-eragina sortu',
+      items: ['Xahuketa eta hondakin kudeaketaren kostuak murriztu','Dohaintzen historia kontsultagarria, barne jarraipenerako baliagarria','ComidaConecta-ren denda kolaboratzaile zigilua','Borondatezko ekarpena — aukeratu hilabetean zenbat eman (5-10€)'],
+    },
+    ngo: {
+      title: 'Gizarte-erakundeentzako',
+      subtitle: 'Dohaintza erregistratuetarako sarbide doakoa eta mugagabea',
+      items: ['Sarbide doakoa mugarik gabe — kuota edo murrizketarik gabe','Balioztatutako dendek argitaratutako dohaintzak','Mugikorretik kudeaketa erraza — erregistro digitalak','Denbora errealean eguneratutako dohaintzak kontsultatu','Historia osoa finantzatzaileen aurrean justifikatzeko'],
+    },
+    planet: {
+      title: 'Planetarentzako',
+      subtitle: 'Xahuketa gutxiago, ekonomia zirkular gehiago',
+      items: ['Janari xahuketa gutxiago zabortegietan','Tokiko ekonomia zirkularrari laguntza','Hondakinekin lotutako CO₂ isurketen murrizketa','Komunitatearen indartzea eta gizarte-kohesioa'],
+    },
+    transparency: {
+      title: 'Gardentasunarekiko konpromisoa',
+      text: 'ComidaConectak dohaintza egiten duten denden eta hartzaile diren gizarte-erakundeen arteko kontaktua eta erregistro digitala errazten ditu. Plataformak ez du janaria manipulatu edo garraiatzen. Denda bakoitzak argitaratutako janariak kontsumorako egokiak direla adierazten du eta hartzaile den erakunde bakoitzak bere gain hartzen du jasotze, garraio eta ondorengo manipulazioaren erantzukizuna, aplikatzeko den araudiaren arabera.',
+    },
+  },
+  stats: {
+    title: 'Elikagai xahuketa zifratan',
+    subtitle: 'Urtero milioika tona elikagai xahutzen dira. ComidaConectak zifra hori murrizten laguntzen du soberakina eta beharra konektatuz.',
+    items: [
+      { number: '1.125M kg', text: 'elikagai xahutzen dira urtero Espainian, Nekazaritza Ministerioaren arabera' },
+      { number: '~%30', text: 'mundu mailan ekoitzitako elikagaien %30 inguru galtzen edo xahutzen da (FAO)' },
+      { number: '~%50', text: 'ostalaritzako elikagai xahuketaren %50 inguru saihestu liteke dohaintza antolatuarekin' },
+    ],
+    sources: 'Iturriak: Nekazaritza, Arrantza eta Elikadura Ministerioa • FAO • Eurostat',
+  },
+  differentiation: {
+    title: 'Zergatik da ComidaConecta desberdina?',
+    subtitle: 'Ez dugu mugarik jartzen, ez dugu komisiorik kobratzen eta trazabilitate osoa eskaintzen dugu lehen egunetik.',
+    items: [
+      { title: 'Dohaintza mugarik gabe', desc: 'Beste irtenbide batzuek ez bezala, soberakina duzun bakoitzean dohaintzan eman dezakezu. Hileko mugarik gabe, murrizketarik gabe.' },
+      { title: 'Trazabilitate osoa', desc: 'Dohaintza bakoitza erregistratuta geratzen da: argitaratzen denetik jasotzea baieztatzen den arte. Historia kontsultagarria eta deskargagarria.' },
+      { title: 'Berehalako erreserba', desc: 'Gizarte-erakundeek denbora errealean ikusten dituzte dohaintzak eta klik batekin erreserbatzen dituzte. Itxaronaldirik edo paperik gabe.' },
+      { title: 'Boluntariotza sistema', desc: 'Erakundeak ezin badu joan jasotzera? Boluntario batek jaso dezake bere ordez. Jasotzea errazten dugu ezer galdu ez dadin.' },
+    ],
+  },
+  faq: {
+    title: 'Maiz egiten diren galderak',
+    subtitle: 'Dohaintzan ematen edo elikagai soberakina jasotzen hasteko jakin behar duzun guztia.',
+    items: [
+      { q: 'Benetan doakoa al da? Ezkutuko kosturik ba al dago?', a: 'Gizarte-erakundeentzat %100 doakoa da betiko, muga edo ezkutuko kosturik gabe. Enpresentzat, erabilera doakoa da hasierako fasean; borondatezko ekarpen bat ezarri ahal izango da geroago, beti aurretiaz jakinarazita. Kontraturik edo behin betiko konpromisorik gabe.' },
+      { q: 'Zein janari mota eman dezaket dohaintzan?', a: 'Egoera onean dauden elikagai soberakinak eman ditzakezu: produktu freskoak (fruta, barazkiak), ontziratutako iraungigaitzak, okindegia eta gozogintza, esnekiak eta prestaturiko produktuak. Janari izoztuak ere onartzen dira hotz-katea mantentzen bada.' },
+      { q: 'Nola funtzionatzen du dendentzako erregistroak?', a: 'Sartu comidaconecta.org/register helbidean, hautatu "Denda naiz" eta bete zure oinarrizko datuak. 5 minutu baino gutxiagotan zure lehen soberakina argitaratzen has zaitezke.' },
+      { q: 'Nola funtzionatzen du gizarte-erakundeentzako erregistroak?', a: 'Sartu comidaconecta.org/register helbidean, hautatu "Gizarte-erakundea naiz" eta bete zure erakundearen datuak. Behin erregistratuta, zure ondoan dauden dohaintza guztiak ikusiko dituzu denbora errealean.' },
+      { q: 'Borondatezko ekarpena derrigorrezkoa al da?', a: 'Ez, borondatezkoa da. Ez dago kontraturik edo iraupenik. Denda bakoitzak erabakitzen du ematen duen eta zenbat. Gomendatutako 5-10€ plataforma aktibo mantentzen laguntzen dute.' },
+      { q: 'Ba al dago konpromiso edo iraupenik?', a: 'Bat ere ez. Ez dago kontraturik, iraupenik edo epe luzerako konpromisorik. Soberakina duzunean argitaratu dezakezu, betebeharrik gabe.' },
+      { q: 'Nola funtzionatzen du boluntariotza sistemak?', a: 'Gizarte-erakunde batek ezin badu dohaintza jasotzera joan, boluntario bat eska dezake. Boluntario gisa erregistratutako edozeinek jaso dezake erakundearen izenean.' },
+      { q: 'Zein ingurumen-eragin du elikagaiak dohaintzan emateak?', a: 'Erregistratutako dohaintza bakoitzak elikagaiak zabortegietan bukatzea saihesten du, deskonposizioarekin lotutako CO₂ isurketak murriztuz. Gainera, ekonomia zirkularra sustatzen du baliabideak lokalki birbanatuz.' },
+    ],
+  },
+  about: {
+    title: 'Nor gara',
+    p1: 'ComidaConecta helburu argi batekin jaiotzen den projektu digitala da: elikagai xahuketa murriztea, teknologia erabiliz janari soberakina duten eta gehien behar dutenen arteko zubi gisa.',
+    p2: 'Ekonomia zirkularrean, jasangarritasunean eta gizarte-eraginean sinesten dugu. Keinu txikiek —atzo geratu den ogia dohaintzan ematea bezala— aldaketa handiak sor ditzakete benetan behar dutenekin konektatzen direnean.',
+    tags: ['🌍 Ekonomia zirkularra', '🤝 Gizarte-eragina'],
+  },
+  cta: {
+    badge: 'Hasi gaur — doan eta konpromisorik gabe',
+    title: 'Egunero tona janari xahutzen dira.',
+    titleHighlight: 'Gaur alda dezakezu.',
+    subtitle: 'Argitaratu zure lehen soberakina edo erreserbatu zure lehen dohaintza 5 minutu baino gutxiagotan.',
+    quote: '"Elikagaiak xahutu beharrean, konektatu ditzagun."',
+    commerceBtn: 'Erregistratu denda gisa',
+    ngoBtn: 'Erregistratu gizarte-erakunde gisa',
+  },
+  footer: {
+    terms: 'Baldintza legalak',
+    collaborate: 'Kolaboratu',
+    legal: 'Lege-oharra',
+    privacy: 'Pribatutasuna',
+    cookies: 'Cookie-ak',
+    login: 'Hasi saioa',
+    copyright: 'Xahuketa murrizten, dohaintza bat aldi berean.',
+    name: 'ComidaConecta',
+  },
+}
+
+export default eu

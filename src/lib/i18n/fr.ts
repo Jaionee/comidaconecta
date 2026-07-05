@@ -1,0 +1,136 @@
+import type { Translations } from './types'
+
+const fr: Translations = {
+  meta: {
+    title: 'ComidaConecta — Don d\'excédents alimentaires | Plateforme gratuite',
+    description: 'Vous avez des excédents alimentaires dans votre commerce ? Donnez-les gratuitement à des ONG et des restaurants sociaux. Plateforme gratuite qui connecte donateurs et associations. Sans bureaucratie.',
+    keywords: ['donner nourriture excédentaire','don alimentaire restaurants','réduire gaspillage alimentaire','plateforme don nourriture gratuit','restaurants sociaux','ONG dons alimentaires','économie circulaire','donner pain invendu'],
+    ogTitle: 'ComidaConecta — Don d\'excédents alimentaires',
+    ogDescription: 'Plateforme gratuite qui connecte commerces ayant des excédents alimentaires et associations. Sans commissions.',
+  },
+  nav: {
+    howItWorks: 'Comment ça marche',
+    faq: 'Questions fréquentes',
+    about: 'Qui sommes-nous',
+    collaborate: 'Contribuer',
+    dashboard: 'Aller au tableau de bord',
+    joinFree: 'Rejoindre gratuitement',
+    login: 'Se connecter',
+  },
+  hero: {
+    badge: '🏆 Meilleur pour donner ses excédents alimentaires — gratuit, sans limites, sans commissions',
+    title: 'Vous avez des excédents alimentaires dans votre commerce ?',
+    titleHighlight: 'Donnez-les gratuitement',
+    subtitle: 'ComidaConecta est la',
+    subtitleBold1: 'plateforme gratuite pour donner vos excédents alimentaires',
+    subtitleBold2: 'Sans commissions, gestion simple et enregistrement numérique de chaque don.',
+    badges: ['✅ Gratuit pour les associations','🔓 Sans contrat ni engagement','📱 Publiez en moins de 5 minutes','📍 Géolocalisation en temps réel'],
+    commerceBtn: 'Je suis un commerce — je veux donner',
+    ngoBtn: 'Je suis une association — j\'ai besoin d\'aliments',
+    disclaimer: '✅ Gratuit pour les associations. ✅ Pour les commerces, usage gratuit en phase initiale. ✅ Contribution volontaire plus tard, toujours avec préavis.',
+    note: 'ComidaConecta ne manipule ni ne transporte les aliments : elle facilite la mise en relation et l\'enregistrement numérique entre les parties.',
+  },
+  howItWorks: {
+    title: 'Comment ça marche — 3 étapes',
+    subtitle: 'Le processus pour donner les invendus de votre restaurant, boulangerie ou supermarché à des restaurants sociaux est très simple :',
+    subtitle2: 'Sans contrat, sans frais, sans engagement à long terme.',
+    steps: [
+      { title: 'Publiez', desc: 'Le commerce publie l\'excédent disponible : type d\'aliment, quantité estimée et horaire de retrait. Le tout depuis la plateforme, en moins de 2 minutes.', detail: '📱 Faites-le depuis votre mobile' },
+      { title: 'Connectez', desc: 'Les associations voient toutes les donations disponibles en temps réel. Quand l\'une les intéresse, elles la réservent instantanément depuis leur tableau de bord.', detail: '💰 Réservation immédiate depuis le tableau de bord' },
+      { title: 'Récupérez', desc: 'Chaque don est enregistré pour que commerces et associations puissent consulter leur historique de dons et de collectes.', detail: '📄 Historique numérique des dons' },
+    ],
+    cycleTitle: 'Le cycle complet du match',
+    cycleSubtitle: 'Voici comment un don passe du commerce à l\'association',
+    cycleSteps: [
+      { title: '📢 Le commerce publie', desc: 'Le commerce publie son excédent. Le don apparaît comme disponible pour toutes les associations.' },
+      { title: '🔍 L\'ONG trouve et réserve', desc: 'Les associations voient les dons en temps réel. Quand l\'un les intéresse, elles cliquent sur "Réserver la collecte".' },
+      { title: '🚚 L\'ONG récupère', desc: 'L\'association se rend au commerce, récupère les aliments et marque la collecte comme terminée.' },
+      { title: '✅ Le commerce confirme', desc: 'Le commerce vérifie que la collecte s\'est bien déroulée et confirme la remise.' },
+    ],
+    matchComplete: '✅ Match terminé — le don passe dans votre historique avec toutes les données enregistrées pour consultation et téléchargement.',
+  },
+  benefits: {
+    title: 'Des avantages pour tous : commerces, ONG et la planète',
+    subtitle: 'Une plateforme qui génère un impact réel pour chaque participant.',
+    commerce: {
+      title: 'Pour les commerces',
+      subtitle: 'Réduisez vos coûts et générez un impact social',
+      items: ['Réduire le gaspillage et les coûts de gestion des déchets','Historique des dons consultable, utile pour le suivi interne','Label de commerce partenaire de ComidaConecta','Contribution volontaire — choisissez votre montant mensuel (5-10€)'],
+    },
+    ngo: {
+      title: 'Pour les associations',
+      subtitle: 'Accès gratuit et illimité aux dons enregistrés',
+      items: ['Accès gratuit sans limites — sans cotisation ni restriction','Dons publiés par des commerces validés','Gestion simple depuis le mobile — enregistrements numériques','Consultez les dons disponibles mis à jour en temps réel','Historique complet pour justifier auprès des financeurs'],
+    },
+    planet: {
+      title: 'Pour la planète',
+      subtitle: 'Moins de gaspillage, plus d\'économie circulaire',
+      items: ['Moins de gaspillage alimentaire dans les décharges','Soutien à l\'économie circulaire locale','Réduction des émissions de CO₂ liées aux déchets','Renforcement des liens communautaires et de la cohésion sociale'],
+    },
+    transparency: {
+      title: 'Engagement pour la transparence',
+      text: 'ComidaConecta facilite la mise en relation et l\'enregistrement numérique entre commerces donateurs et associations bénéficiaires. La plateforme ne manipule ni ne transporte les aliments. Chaque commerce déclare que les aliments publiés sont propres à la consommation et chaque association bénéficiaire est responsable de leur collecte, transport et manipulation ultérieure conformément à la réglementation en vigueur.',
+    },
+  },
+  stats: {
+    title: 'Le gaspillage alimentaire en chiffres',
+    subtitle: 'Chaque année, des millions de tonnes d\'aliments sont gaspillées. ComidaConecta aide à réduire ce chiffre en connectant excédents et besoins.',
+    items: [
+      { number: '1,125 Md kg', text: 'd\'aliments gaspillés chaque année en Espagne selon le Ministère de l\'Agriculture' },
+      { number: '~30 %', text: 'des aliments produits dans le monde sont perdus ou gaspillés (FAO)' },
+      { number: '~50 %', text: 'du gaspillage alimentaire dans la restauration pourrait être évité avec des dons organisés' },
+    ],
+    sources: 'Sources : Ministère de l\'Agriculture, de la Pêche et de l\'Alimentation • FAO • Eurostat',
+  },
+  differentiation: {
+    title: 'Pourquoi ComidaConecta est différent ?',
+    subtitle: 'Nous n\'imposons pas de limites, ne prenons pas de commissions et offrons une traçabilité complète dès le premier jour.',
+    items: [
+      { title: 'Sans limite de dons', desc: 'Contrairement à d\'autres solutions, vous pouvez donner autant de fois que vous avez d\'excédents. Sans plafond mensuel, sans restrictions.' },
+      { title: 'Traçabilité complète', desc: 'Chaque don est enregistré : de sa publication à la confirmation de la collecte. Historique consultable et téléchargeable.' },
+      { title: 'Réservation instantanée', desc: 'Les associations voient les dons en temps réel et réservent en un clic. Sans attente, sans paperasse.' },
+      { title: 'Système de bénévolat', desc: 'L\'association ne peut pas se déplacer ? Un bénévole peut collecter à sa place. Nous facilitons la collecte pour que rien ne soit perdu.' },
+    ],
+  },
+  faq: {
+    title: 'Questions fréquentes',
+    subtitle: 'Tout ce que vous devez savoir pour commencer à donner ou recevoir des excédents alimentaires.',
+    items: [
+      { q: 'Est-ce vraiment gratuit ? Y a-t-il des frais cachés ?', a: 'Pour les associations, c\'est 100 % gratuit pour toujours, sans limites ni frais cachés. Pour les commerces, l\'usage est gratuit en phase initiale ; une contribution volontaire pourra être introduite plus tard, toujours avec préavis. Sans contrat, sans engagement.' },
+      { q: 'Quels types d\'aliments puis-je donner ?', a: 'Vous pouvez donner des excédents alimentaires en parfait état : produits frais (fruits, légumes), emballés non périssables, boulangerie et pâtisserie, produits laitiers, et plats préparés. Les aliments surgelés sont également acceptés à condition que la chaîne du froid soit respectée.' },
+      { q: 'Comment fonctionne l\'inscription pour les commerces ?', a: 'Rendez-vous sur comidaconecta.org/register, sélectionnez « Je suis un commerce » et remplissez vos informations de base. En moins de 5 minutes, vous pouvez commencer à publier votre premier excédent.' },
+      { q: 'Comment fonctionne l\'inscription pour les associations ?', a: 'Rendez-vous sur comidaconecta.org/register, sélectionnez « Je suis une association » et complétez les informations de votre organisation. Une fois inscrit, vous verrez tous les dons disponibles près de chez vous en temps réel.' },
+      { q: 'La contribution volontaire est-elle obligatoire ?', a: 'Non, elle est volontaire. Il n\'y a ni contrat ni engagement. Chaque commerce décide s\'il contribue et combien. Les 5-10€ recommandés aident à maintenir la plateforme active.' },
+      { q: 'Y a-t-il un engagement ou une durée minimale ?', a: 'Aucun. Il n\'y a pas de contrat, d\'engagement ni d\'obligation à long terme. Vous pouvez publier des dons quand vous avez des excédents, sans aucune contrainte.' },
+      { q: 'Comment fonctionne le système de bénévolat ?', a: 'Si une association ne peut pas se déplacer pour récupérer un don, elle peut faire appel à un bénévole. Toute personne inscrite comme bénévole peut accepter la collecte et l\'effectuer au nom de l\'association.' },
+      { q: 'Quel est l\'impact environnemental du don alimentaire ?', a: 'Chaque don enregistré évite que les aliments finissent à la décharge, réduisant ainsi les émissions de CO₂ liées à leur décomposition. De plus, cela favorise l\'économie circulaire en redistribuant les ressources localement.' },
+    ],
+  },
+  about: {
+    title: 'Qui sommes-nous',
+    p1: 'ComidaConecta est un projet numérique né avec une mission claire : réduire le gaspillage alimentaire en utilisant la technologie comme pont entre ceux qui ont des excédents de nourriture et ceux qui en ont le plus besoin.',
+    p2: 'Nous croyons en l\'économie circulaire, la durabilité et l\'impact social. De petits gestes — comme donner le pain invendu de la veille — peuvent générer de grands changements lorsqu\'ils sont connectés à ceux qui en ont vraiment besoin.',
+    tags: ['🌍 Économie circulaire', '🤝 Impact social'],
+  },
+  cta: {
+    badge: 'Commencez aujourd\'hui — c\'est gratuit et sans engagement',
+    title: 'Chaque jour, des tonnes de nourriture sont gaspillées.',
+    titleHighlight: 'Aujourd\'hui, vous pouvez changer cela.',
+    subtitle: 'Publiez votre premier excédent ou réservez votre premier don en moins de 5 minutes.',
+    quote: '« Elikagaiak xahutu beharrean, konektatu ditzagun » — Au lieu de gaspiller de la nourriture, connectons-la.',
+    commerceBtn: 'M\'inscrire comme commerce',
+    ngoBtn: 'M\'inscrire comme association',
+  },
+  footer: {
+    terms: 'Mentions légales',
+    collaborate: 'Contribuer',
+    legal: 'Mentions légales',
+    privacy: 'Confidentialité',
+    cookies: 'Cookies',
+    login: 'Se connecter',
+    copyright: 'Réduire le gaspillage, un don à la fois.',
+    name: 'ComidaConecta',
+  },
+}
+
+export default fr

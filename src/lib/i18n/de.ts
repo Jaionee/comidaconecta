@@ -1,0 +1,136 @@
+import type { Translations } from './types'
+
+const de: Translations = {
+  meta: {
+    title: 'ComidaConecta — Lebensmittelspenden leicht gemacht | Kostenlose Plattform',
+    description: 'Haben Sie überschüssige Lebensmittel in Ihrem Geschäft? Spenden Sie sie kostenlos an NGOs und soziale Einrichtungen. Kostenlose Plattform, die Spender mit sozialen Organisationen verbindet. Ohne Bürokratie.',
+    keywords: ['überschüssige Lebensmittel spenden','Lebensmittelspenden Restaurants','Lebensmittelverschwendung reduzieren','kostenlose Plattform Lebensmittel spenden','Suppenküchen','NGO Lebensmittelspende','Kreislaufwirtschaft','übriges Brot spenden'],
+    ogTitle: 'ComidaConecta — Lebensmittelspenden leicht gemacht',
+    ogDescription: 'Kostenlose Plattform, die Unternehmen mit Lebensmittelüberschüssen und soziale Einrichtungen verbindet. Ohne Gebühren.',
+  },
+  nav: {
+    howItWorks: 'So funktioniert\'s',
+    faq: 'Häufige Fragen',
+    about: 'Über uns',
+    collaborate: 'Mitmachen',
+    dashboard: 'Zum Dashboard',
+    joinFree: 'Kostenlos registrieren',
+    login: 'Anmelden',
+  },
+  hero: {
+    badge: '🏆 Bester Weg, Lebensmittel zu spenden — kostenlos, ohne Limits, ohne Gebühren',
+    title: 'Haben Sie Lebensmittelüberschüsse in Ihrem Geschäft?',
+    titleHighlight: 'Spenden Sie sie kostenlos',
+    subtitle: 'ComidaConecta ist die',
+    subtitleBold1: 'kostenlose Plattform für Lebensmittelspenden',
+    subtitleBold2: 'Ohne Gebühren, einfach zu handhaben, mit digitaler Aufzeichnung jeder Spende.',
+    badges: ['✅ Kostenlos für soziale Einrichtungen','🔓 Keine Verträge oder Mindestlaufzeiten','📱 In weniger als 5 Minuten veröffentlichen','📍 Geolokalisierung in Echtzeit'],
+    commerceBtn: 'Ich bin ein Geschäft — ich möchte spenden',
+    ngoBtn: 'Ich bin eine soziale Einrichtung — ich brauche Lebensmittel',
+    disclaimer: '✅ Unverbindlich. ✅ Kostenlos für soziale Einrichtungen. ✅ Für Unternehmen, kostenlose Nutzung in der Anfangsphase. ✅ Freiwilliger Beitrag später, stets mit Vorankündigung.',
+    note: 'ComidaConecta handhabt oder transportiert keine Lebensmittel: Die Plattform erleichtert die Kontaktaufnahme und die digitale Aufzeichnung zwischen den Parteien.',
+  },
+  howItWorks: {
+    title: 'So funktioniert\'s — 3 Schritte',
+    subtitle: 'Der Prozess, überschüssige Lebensmittel aus Ihrem Restaurant, Ihrer Bäckerei oder Ihrem Supermarkt an Suppenküchen zu spenden, ist ganz einfach:',
+    subtitle2: 'Ohne Verträge, ohne Kosten, ohne langfristige Verpflichtung.',
+    steps: [
+      { title: 'Veröffentlichen', desc: 'Das Geschäft veröffentlicht den verfügbaren Überschuss: Art der Lebensmittel, geschätzte Menge und Abholzeit. Alles von der Plattform aus in weniger als 2 Minuten.', detail: '📱 Das geht auch vom Handy aus' },
+      { title: 'Verbinden', desc: 'Die sozialen Einrichtungen sehen alle verfügbaren Spenden in Echtzeit. Wenn eine für sie interessant ist, reservieren sie sie sofort über ihr Dashboard.', detail: '💰 Sofortige Reservierung über das Dashboard' },
+      { title: 'Abholen', desc: 'Jede Spende wird aufgezeichnet, damit Geschäfte und Einrichtungen ihren Liefer- und Abholverlauf jederzeit einsehen können.', detail: '📄 Digitaler Spendenverlauf' },
+    ],
+    cycleTitle: 'Der gesamte Match-Zyklus',
+    cycleSubtitle: 'So gelangt eine Spende vom Geschäft zur sozialen Einrichtung',
+    cycleSteps: [
+      { title: '📢 Geschäft veröffentlicht', desc: 'Das Geschäft veröffentlicht den Überschuss. Die Spende erscheint als verfügbar für alle Einrichtungen.' },
+      { title: '🔍 NGO findet und reserviert', desc: 'Die Einrichtungen sehen Spenden in Echtzeit. Wenn eine interessant ist, klicken sie auf „Abholung reservieren".' },
+      { title: '🚚 NGO holt ab', desc: 'Die Einrichtung sucht das Geschäft auf, holt die Lebensmittel ab und markiert die Abholung als abgeschlossen.' },
+      { title: '✅ Geschäft bestätigt', desc: 'Das Geschäft überprüft, ob die Abholung korrekt war, und bestätigt die Übergabe.' },
+    ],
+    matchComplete: '✅ Match abgeschlossen — die Spende wird mit allen erfassten Daten in Ihrem Verlauf gespeichert und kann dort eingesehen und heruntergeladen werden.',
+  },
+  benefits: {
+    title: 'Vorteile für alle: Geschäfte, NGOs und den Planeten',
+    subtitle: 'Eine Plattform, die für jeden Teilnehmer echte Wirkung entfaltet.',
+    commerce: {
+      title: 'Für Geschäfte',
+      subtitle: 'Kosten senken und soziale Wirkung erzielen',
+      items: ['Weniger Verschwendung und geringere Abfallentsorgungskosten','Einsehbarer Spendenverlauf, nützlich für internes Reporting','Siegel als ComidaConecta-Partnerbetrieb','Freiwilliger Beitrag — Sie entscheiden, wie viel Sie monatlich beisteuern (5–10 €)'],
+    },
+    ngo: {
+      title: 'Für soziale Einrichtungen',
+      subtitle: 'Kostenloser und unbegrenzter Zugang zu registrierten Spenden',
+      items: ['Kostenloser Zugang ohne Limits — keine Gebühren oder Einschränkungen','Spenden von geprüften Geschäften','Einfache Verwaltung per Handy — digitale Aufzeichnungen','Aktuelle, jederzeit einsehbare verfügbare Spenden','Vollständiger Verlauf zur Dokumentation gegenüber Geldgebern'],
+    },
+    planet: {
+      title: 'Für den Planeten',
+      subtitle: 'Weniger Verschwendung, mehr Kreislaufwirtschaft',
+      items: ['Weniger Lebensmittelabfälle auf Deponien','Förderung der lokalen Kreislaufwirtschaft','Reduzierung von CO₂-Emissionen durch Abfallvermeidung','Stärkung der Gemeinschaft und des sozialen Zusammenhalts'],
+    },
+    transparency: {
+      title: 'Unser Engagement für Transparenz',
+      text: 'ComidaConecta erleichtert den Kontakt und die digitale Aufzeichnung zwischen spendenden Geschäften und empfangenden sozialen Einrichtungen. Die Plattform handhabt oder transportiert keine Lebensmittel. Jedes Geschäft erklärt, dass die veröffentlichten Lebensmittel zum Verzehr geeignet sind, und jede empfangende Einrichtung ist für deren Abholung, Transport und anschließende Handhabung gemäß den geltenden Vorschriften verantwortlich.',
+    },
+  },
+  stats: {
+    title: 'Lebensmittelverschwendung in Zahlen',
+    subtitle: 'Jedes Jahr werden Millionen Tonnen Lebensmittel verschwendet. ComidaConecta hilft, diese Zahl zu reduzieren, indem es Überschüsse mit Bedarf verbindet.',
+    items: [
+      { number: '1,125 Mio. kg', text: 'Lebensmittel werden jährlich in Deutschland verschwendet (BMEL)' },
+      { number: '~30 %', text: 'der weltweit produzierten Lebensmittel gehen verloren oder werden verschwendet (FAO)' },
+      { number: '~50 %', text: 'der Lebensmittelabfälle in der Gastronomie ließen sich durch organisierte Spenden vermeiden' },
+    ],
+    sources: 'Quellen: BMEL • FAO • Eurostat',
+  },
+  differentiation: {
+    title: 'Was macht ComidaConecta anders?',
+    subtitle: 'Wir setzen keine Limits, erheben keine Gebühren und bieten von Anfang an vollständige Rückverfolgbarkeit.',
+    items: [
+      { title: 'Keine Spendenbegrenzung', desc: 'Anders als bei anderen Lösungen können Sie so oft spenden, wie Sie Überschüsse haben. Ohne monatliches Limit, ohne Einschränkungen.' },
+      { title: 'Vollständige Rückverfolgbarkeit', desc: 'Jede Spende wird aufgezeichnet: von der Veröffentlichung bis zur Bestätigung der Abholung. Verlauf einsehbar und herunterladbar.' },
+      { title: 'Sofortige Reservierung', desc: 'Soziale Einrichtungen sehen die Spenden in Echtzeit und reservieren mit einem Klick. Keine Wartezeiten, kein Papierkram.' },
+      { title: 'Freiwilligensystem', desc: 'Kann die Einrichtung nicht selbst abholen? Ein Freiwilliger kann für sie abholen. Wir erleichtern die Abholung, damit nichts verloren geht.' },
+    ],
+  },
+  faq: {
+    title: 'Häufig gestellte Fragen',
+    subtitle: 'Alles, was Sie wissen müssen, um mit dem Spenden oder Empfangen von Lebensmittelüberschüssen zu beginnen.',
+    items: [
+      { q: 'Ist das wirklich kostenlos? Gibt es versteckte Kosten?', a: 'Für soziale Einrichtungen ist es dauerhaft zu 100 % kostenlos, ohne Limits oder versteckte Kosten. Für Geschäfte ist die Nutzung in der Anfangsphase kostenlos; später kann ein freiwilliger Beitrag eingeführt werden, stets mit Vorankündigung. Keine Verträge, keine Mindestlaufzeit.' },
+      { q: 'Welche Lebensmittel kann ich spenden?', a: 'Sie können einwandfreie Lebensmittelüberschüsse spenden: frische Produkte (Obst, Gemüse), haltbar Verpacktes, Backwaren, Milchprodukte und zubereitete Speisen. Auch tiefgekühlte Lebensmittel sind möglich, solange die Kühlkette eingehalten wird.' },
+      { q: 'Wie funktioniert die Registrierung für Geschäfte?', a: 'Gehen Sie auf comidaconecta.org/register, wählen Sie „Ich bin ein Geschäft" und geben Sie Ihre grundlegenden Daten ein. In weniger als 5 Minuten können Sie Ihren ersten Überschuss veröffentlichen.' },
+      { q: 'Wie funktioniert die Registrierung für soziale Einrichtungen?', a: 'Gehen Sie auf comidaconecta.org/register, wählen Sie „Ich bin eine soziale Einrichtung" und geben Sie die Daten Ihrer Organisation ein. Nach der Registrierung sehen Sie alle verfügbaren Spenden in Ihrer Nähe in Echtzeit.' },
+      { q: 'Ist der freiwillige Beitrag verpflichtend?', a: 'Nein, er ist freiwillig. Es gibt keinen Vertrag oder Mindestlaufzeit. Jedes Geschäft entscheidet selbst, ob und wie viel es beiträgt. Die empfohlenen 5–10 € helfen, die Plattform am Laufen zu halten.' },
+      { q: 'Gibt es eine Verpflichtung oder Mindestlaufzeit?', a: 'Überhaupt nicht. Es gibt keine Verträge, Mindestlaufzeiten oder langfristigen Verpflichtungen. Sie können Spenden veröffentlichen, wann immer Sie Überschüsse haben, ganz ohne Verpflichtungen.' },
+      { q: 'Wie funktioniert das Freiwilligensystem?', a: 'Wenn eine soziale Einrichtung eine Spende nicht selbst abholen kann, kann sie einen Freiwilligen anfordern. Jede als Freiwilliger registrierte Person kann die Abholung übernehmen und im Namen der Einrichtung durchführen.' },
+      { q: 'Welche Umweltwirkung hat das Spenden von Lebensmitteln?', a: 'Jede registrierte Spende verhindert, dass Lebensmittel auf der Deponie landen, und reduziert die mit der Zersetzung verbundenen CO₂-Emissionen. Darüber hinaus fördert es die Kreislaufwirtschaft, indem Ressourcen lokal umverteilt werden.' },
+    ],
+  },
+  about: {
+    title: 'Über uns',
+    p1: 'ComidaConecta ist ein digitales Projekt mit einer klaren Mission: Lebensmittelverschwendung zu reduzieren, indem Technologie als Brücke zwischen denen, die Lebensmittelüberschüsse haben, und denen, die sie am dringendsten brauchen, eingesetzt wird.',
+    p2: 'Wir glauben an Kreislaufwirtschaft, Nachhaltigkeit und soziale Wirkung. Kleine Gesten — wie das Spenden von übrig gebliebenem Brot von gestern — können große Veränderungen bewirken, wenn sie mit denen verbunden werden, die sie wirklich brauchen.',
+    tags: ['🌍 Kreislaufwirtschaft', '🤝 Soziale Wirkung'],
+  },
+  cta: {
+    badge: 'Noch heute starten — kostenlos und unverbindlich',
+    title: 'Täglich werden Tonnen von Lebensmitteln verschwendet.',
+    titleHighlight: 'Heute kannst du das ändern.',
+    subtitle: 'Veröffentlichen Sie Ihren ersten Überschuss oder reservieren Sie Ihre erste Spende in weniger als 5 Minuten.',
+    quote: '„Elikagaiak xahutu beharrean, konektatu ditzagun" — Statt Lebensmittel zu verschwenden, verbinden wir sie.',
+    commerceBtn: 'Als Geschäft registrieren',
+    ngoBtn: 'Als soziale Einrichtung registrieren',
+  },
+  footer: {
+    terms: 'Rechtliche Hinweise',
+    collaborate: 'Mitmachen',
+    legal: 'Impressum',
+    privacy: 'Datenschutz',
+    cookies: 'Cookies',
+    login: 'Anmelden',
+    copyright: 'Verschwendung reduzieren, eine Spende nach der anderen.',
+    name: 'ComidaConecta',
+  },
+}
+
+export default de

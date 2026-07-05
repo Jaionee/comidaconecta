@@ -1,0 +1,136 @@
+import type { Translations } from './types'
+
+const id: Translations = {
+  meta: {
+    title: 'ComidaConecta — Donasi surplus pangan | Platform gratis',
+    description: 'Punya kelebihan makanan di tempat usahamu? Donasikan gratis ke ONG dan dapur sosial. Platform gratis yang menghubungkan donor dengan lembaga sosial. Tanpa birokrasi.',
+    keywords: ['donasi makanan surplus','donasi makanan restoran','kurangi limbah makanan','platform donasi makanan gratis','dapur sosial','ONG donasi makanan','ekonomi sirkular','donasi roti sisa'],
+    ogTitle: 'ComidaConecta — Donasi surplus pangan',
+    ogDescription: 'Platform gratis yang menghubungkan tempat usaha dengan surplus pangan dan lembaga sosial. Tanpa komisi.',
+  },
+  nav: {
+    howItWorks: 'Cara kerja',
+    faq: 'FAQ',
+    about: 'Tentang kami',
+    collaborate: 'Berkolaborasi',
+    dashboard: 'Buka panel',
+    joinFree: 'Gabung gratis',
+    login: 'Masuk',
+  },
+  hero: {
+    badge: '🏆 Terbaik untuk donasi surplus pangan — gratis, tanpa batas, tanpa komisi',
+    title: 'Punya kelebihan makanan di tempat usahamu?',
+    titleHighlight: 'Donasikan gratis',
+    subtitle: 'ComidaConecta adalah',
+    subtitleBold1: 'platform gratis untuk mendonasikan surplus pangan',
+    subtitleBold2: 'Tanpa komisi, dengan pengelolaan mudah dan pencatatan digital setiap donasi.',
+    badges: ['✅ Gratis untuk lembaga sosial','🔓 Tanpa kontrak atau ikatan','📱 Publikasikan dalam waktu kurang dari 5 menit','📍 Geolokasi waktu nyata'],
+    commerceBtn: 'Saya tempat usaha — ingin donasi',
+    ngoBtn: 'Saya lembaga sosial — butuh pangan',
+    disclaimer: '✅ Gratis untuk lembaga sosial. ✅ Untuk tempat usaha, gratis di fase awal. ✅ Kontribusi sukarela nanti, selalu dengan pemberitahuan sebelumnya.',
+    note: 'ComidaConecta tidak menangani atau mengangkut pangan: kami memfasilitasi koneksi dan pencatatan digital antar pihak.',
+  },
+  howItWorks: {
+    title: 'Cara kerja — 3 langkah',
+    subtitle: 'Proses mendonasikan sisa makanan dari restoran, toko roti, atau supermarket ke dapur sosial sangatlah mudah:',
+    subtitle2: 'Tanpa kontrak, tanpa biaya, tanpa ikatan jangka panjang.',
+    steps: [
+      { title: 'Publikasikan', desc: 'Tempat usaha mempublikasikan surplus yang tersedia: jenis pangan, perkiraan jumlah, dan jadwal pengambilan. Semuanya dari platform, dalam waktu kurang dari 2 menit.', detail: '📱 Bisa dilakukan dari ponsel' },
+      { title: 'Hubungkan', desc: 'Lembaga sosial melihat semua donasi yang tersedia secara waktu nyata. Jika ada yang menarik, mereka langsung memesannya dari panel masing-masing.', detail: '💰 Pesan langsung dari panel' },
+      { title: 'Ambil', desc: 'Setiap donasi tercatat sehingga tempat usaha dan lembaga bisa meninjau riwayat pengantaran dan pengambilan.', detail: '📄 Riwayat donasi digital' },
+    ],
+    cycleTitle: 'Siklus lengkap kecocokan',
+    cycleSubtitle: 'Begini cara donasi berpindah dari tempat usaha ke lembaga sosial',
+    cycleSteps: [
+      { title: '📢 Tempat usaha publikasikan', desc: 'Tempat usaha mempublikasikan surplus. Donasi muncul sebagai tersedia untuk semua lembaga.' },
+      { title: '🔍 ONG temukan dan pesan', desc: 'Lembaga melihat donasi secara waktu nyata. Jika tertarik, mereka klik "Pesan pengambilan".' },
+      { title: '🚚 ONG ambil', desc: 'Lembaga mendatangi tempat usaha, mengambil pangan, dan menandai pengambilan sebagai selesai.' },
+      { title: '✅ Tempat usaha konfirmasi', desc: 'Tempat usaha memverifikasi bahwa pengambilan berjalan lancar dan mengonfirmasi pengantaran.' },
+    ],
+    matchComplete: '✅ Kecocokan selesai — donasi masuk ke riwayatmu dengan semua data tercatat untuk dilihat dan diunduh.',
+  },
+  benefits: {
+    title: 'Manfaat untuk semua: tempat usaha, ONG, dan planet',
+    subtitle: 'Platform yang memberikan dampak nyata bagi setiap partisipan.',
+    commerce: {
+      title: 'Untuk tempat usaha',
+      subtitle: 'Kurangi biaya dan ciptakan dampak sosial',
+      items: ['Mengurangi limbah dan biaya pengelolaan sampah','Riwayat donasi yang bisa diakses, berguna untuk pemantauan internal','Lencana tempat usaha mitra ComidaConecta','Kontribusi sukarela — pilih sendiri jumlah iuran bulanan (5-10€)'],
+    },
+    ngo: {
+      title: 'Untuk lembaga sosial',
+      subtitle: 'Akses gratis dan tak terbatas ke donasi tercatat',
+      items: ['Akses gratis tanpa batas — tanpa iuran atau restriksi','Donasi dipublikasikan oleh tempat usaha terverifikasi','Pengelolaan mudah dari ponsel — pencatatan digital','Lihat donasi tersedia yang diperbarui secara langsung','Riwayat lengkap untuk pertanggungjawaban ke donor'],
+    },
+    planet: {
+      title: 'Untuk planet',
+      subtitle: 'Lebih sedikit limbah, lebih banyak ekonomi sirkular',
+      items: ['Lebih sedikit limbah pangan di tempat pembuangan','Dukungan terhadap ekonomi sirkular lokal','Pengurangan emisi CO₂ terkait limbah','Penguatan komunitas dan kohesi sosial'],
+    },
+    transparency: {
+      title: 'Komitmen terhadap transparansi',
+      text: 'ComidaConecta memfasilitasi kontak dan pencatatan digital antara tempat usaha donor dan lembaga sosial penerima. Platform tidak menangani atau mengangkut pangan. Setiap tempat usaha menyatakan bahwa pangan yang dipublikasikan layak konsumsi dan setiap lembaga penerima bertanggung jawab atas pengambilan, pengangkutan, dan penanganan selanjutnya sesuai peraturan yang berlaku.',
+    },
+  },
+  stats: {
+    title: 'Limbah pangan dalam angka',
+    subtitle: 'Setiap tahun jutaan ton pangan terbuang sia-sia. ComidaConecta membantu mengurangi angka ini dengan menghubungkan surplus dengan kebutuhan.',
+    items: [
+      { number: '1.125M kg', text: 'pangan terbuang sia-sia setiap tahun di Spanyol menurut Kementerian Pertanian' },
+      { number: '~30%', text: 'pangan yang diproduksi secara global hilang atau terbuang (FAO)' },
+      { number: '~50%', text: 'limbah pangan di sektor restoran bisa dicegah dengan donasi terorganisir' },
+    ],
+    sources: 'Sumber: Kementerian Pertanian, Perikanan, dan Pangan • FAO • Eurostat',
+  },
+  differentiation: {
+    title: 'Mengapa ComidaConecta berbeda?',
+    subtitle: 'Kami tidak menerapkan batasan, tidak memungut komisi, dan menawarkan ketertelusuran penuh sejak hari pertama.',
+    items: [
+      { title: 'Tanpa batas donasi', desc: 'Berbeda dengan solusi lain, kamu bisa donasi sebanyak apa pun saat punya surplus. Tanpa batas bulanan, tanpa restriksi.' },
+      { title: 'Ketertelusuran penuh', desc: 'Setiap donasi tercatat: sejak dipublikasikan hingga pengambilan dikonfirmasi. Riwayat dapat dilihat dan diunduh.' },
+      { title: 'Pesan instan', desc: 'Lembaga sosial melihat donasi secara waktu nyata dan memesan dengan satu klik. Tanpa menunggu, tanpa birokrasi.' },
+      { title: 'Sistem relawan', desc: 'Lembaga tidak bisa menjemput? Relawan bisa mengambil alih. Kami memfasilitasi pengambilan agar tidak ada yang terbuang.' },
+    ],
+  },
+  faq: {
+    title: 'Pertanyaan yang sering diajukan',
+    subtitle: 'Semua yang perlu kamu ketahui untuk mulai mendonasikan atau menerima surplus pangan.',
+    items: [
+      { q: 'Apakah benar-benar gratis? Ada biaya tersembunyi?', a: 'Untuk lembaga sosial, 100% gratis selamanya, tanpa batas atau biaya tersembunyi. Untuk tempat usaha, penggunaan gratis selama fase awal; kontribusi sukarela dapat diperkenalkan nanti, selalu dengan pemberitahuan sebelumnya. Tanpa kontrak, tanpa ikatan.' },
+      { q: 'Jenis pangan apa saja yang bisa didonasikan?', a: 'Kamu bisa mendonasikan surplus pangan dalam kondisi baik: produk segar (buah, sayur), kemasan non-kadaluwarsa, roti dan kue kering, produk susu, serta makanan siap saji. Makanan beku juga diterima selama rantai dingin tetap terjaga.' },
+      { q: 'Bagaimana cara pendaftaran untuk tempat usaha?', a: 'Kunjungi comidaconecta.org/register, pilih "Saya tempat usaha" dan lengkapi data dasar. Dalam waktu kurang dari 5 menit kamu bisa mulai mempublikasikan surplus pertamamu.' },
+      { q: 'Bagaimana cara pendaftaran untuk lembaga sosial?', a: 'Kunjungi comidaconecta.org/register, pilih "Saya lembaga sosial" dan lengkapi data organisasimu. Setelah terdaftar, kamu akan melihat semua donasi yang tersedia di sekitarmu secara waktu nyata.' },
+      { q: 'Apakah kontribusi sukarela itu wajib?', a: 'Tidak, ini bersifat sukarela. Tidak ada kontrak atau ikatan. Setiap tempat usaha memutuskan apakah akan berkontribusi dan berapa jumlahnya. 5–10€ yang disarankan membantu menjaga platform tetap aktif.' },
+      { q: 'Apakah ada kewajiban atau ikatan?', a: 'Tidak ada sama sekali. Tidak ada kontrak, ikatan, atau komitmen jangka panjang. Kamu bisa mempublikasikan donasi saat memiliki surplus, tanpa kewajiban.' },
+      { q: 'Bagaimana cara kerja sistem relawan?', a: 'Jika lembaga sosial tidak bisa menjemput donasi, mereka bisa meminta relawan. Siapa pun yang terdaftar sebagai relawan dapat menerima tugas pengambilan dan melakukannya atas nama lembaga tersebut.' },
+      { q: 'Apa dampak lingkungan dari donasi pangan?', a: 'Setiap donasi yang tercatat mencegah pangan berakhir di tempat pembuangan, mengurangi emisi CO₂ yang terkait dengan pembusukan. Selain itu, ini mendorong ekonomi sirkular dengan mendistribusikan sumber daya secara lokal.' },
+    ],
+  },
+  about: {
+    title: 'Tentang kami',
+    p1: 'ComidaConecta adalah proyek digital yang lahir dengan misi jelas: mengurangi limbah pangan menggunakan teknologi sebagai jembatan antara mereka yang memiliki surplus makanan dan mereka yang paling membutuhkannya.',
+    p2: 'Kami percaya pada ekonomi sirkular, keberlanjutan, dan dampak sosial. Tindakan kecil — seperti mendonasikan roti sisa kemarin — dapat menghasilkan perubahan besar ketika terhubung dengan mereka yang benar-benar membutuhkan.',
+    tags: ['🌍 Ekonomi sirkular', '🤝 Dampak sosial'],
+  },
+  cta: {
+    badge: 'Mulai hari ini — gratis dan tanpa ikatan',
+    title: 'Setiap hari berton-ton makanan terbuang sia-sia.',
+    titleHighlight: 'Hari ini kamu bisa mengubahnya.',
+    subtitle: 'Publikasikan surplus pertamamu atau pesan donasi pertamamu dalam waktu kurang dari 5 menit.',
+    quote: '"Elikagaiak xahutu beharrean, konektatu ditzagun" — Daripada menyia-nyiakan pangan, mari hubungkan.',
+    commerceBtn: 'Daftar sebagai tempat usaha',
+    ngoBtn: 'Daftar sebagai lembaga sosial',
+  },
+  footer: {
+    terms: 'Ketentuan hukum',
+    collaborate: 'Berkolaborasi',
+    legal: 'Pemberitahuan hukum',
+    privacy: 'Privasi',
+    cookies: 'Cookie',
+    login: 'Masuk',
+    copyright: 'Mengurangi limbah, satu donasi pada satu waktu.',
+    name: 'ComidaConecta',
+  },
+}
+
+export default id

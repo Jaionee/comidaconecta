@@ -10,7 +10,9 @@ import {
   Smartphone,
   Copy,
   Check,
-  Shield,
+  ChevronDown,
+  ChevronUp,
+  CreditCard,
 } from 'lucide-react'
 
 const BIZUM_NUMBER = '639175446'
@@ -18,7 +20,7 @@ const BEP20_ADDRESS = '0xd808Ff238e09FFb0243904b444f05d73f2Ce36C6'
 
 export default function ColaboraPage() {
   const [copiedBizum, setCopiedBizum] = useState(false)
-  const [copiedCrypto, setCopiedCrypto] = useState(false)
+  const [cryptoOpen, setCryptoOpen] = useState(false)
 
   const copyBizum = async () => {
     try {
@@ -28,16 +30,6 @@ export default function ColaboraPage() {
     }
     setCopiedBizum(true)
     setTimeout(() => setCopiedBizum(false), 2000)
-  }
-
-  const copyCrypto = async () => {
-    try {
-      await navigator.clipboard.writeText(BEP20_ADDRESS)
-    } catch {
-      // fallback
-    }
-    setCopiedCrypto(true)
-    setTimeout(() => setCopiedCrypto(false), 2000)
   }
 
   return (
@@ -71,9 +63,10 @@ export default function ColaboraPage() {
             <span className="text-emerald-400">ComidaConecta</span> activa
           </h1>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-8">
-            La plataforma es <strong>gratuita para todos</strong>. Si te es útil y
-            quieres contribuir a que siga funcionando, cualquier aportación
-            voluntaria es bienvenida. Sin compromiso, sin suscripciones.
+            La plataforma es <strong>gratuita para entidades sociales</strong> y
+            de uso gratuito para comercios durante la fase inicial.{' '}
+            Si te resulta útil y quieres contribuir a que siga funcionando,
+            cualquier aportación voluntaria es bienvenida.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <span className="px-3 py-1.5 bg-zinc-800/50 border border-zinc-700/30 rounded-full text-xs text-zinc-400">
@@ -126,52 +119,88 @@ export default function ColaboraPage() {
               </button>
 
               <p className="text-xs text-zinc-500 mt-4 text-center leading-relaxed">
-                Abre tu app bancaria → «Enviar dinero» → «A un número» → pega el número
+                Abre tu app bancaria → «Enviar dinero» → «A un número» → pega el número (se copia al hacer clic)
               </p>
             </div>
 
-            {/* CRIPTO BEP20 */}
+            {/* PAYPAL */}
             <div className="bg-zinc-800/30 border border-zinc-700/30 rounded-2xl p-8 hover:border-emerald-700/30 transition-colors flex flex-col">
               <div className="w-14 h-14 rounded-full bg-blue-900/40 border border-blue-700/30 flex items-center justify-center mb-6">
-                <Wallet className="w-7 h-7 text-blue-400" />
+                <CreditCard className="w-7 h-7 text-blue-400" />
               </div>
-              <h2 className="text-2xl font-bold mb-2">Cripto (BEP20)</h2>
+              <h2 className="text-2xl font-bold mb-2">PayPal</h2>
               <p className="text-zinc-400 text-sm mb-6 flex-1">
-                USDT, BNB o cualquier token en <strong>Binance Smart Chain</strong>.
+                Tarjeta o cuenta PayPal. Seguro y rápido.
               </p>
 
-              <button
-                onClick={copyCrypto}
-                className={`w-full flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-xl transition-all duration-200 shadow-lg ${
-                  copiedCrypto
-                    ? 'bg-blue-600 text-white shadow-blue-700/30'
-                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/30 hover:shadow-blue-700/30'
-                }`}
+              <a
+                href="https://www.paypal.com/donate/?hosted_button_id=TU_BOTON"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/30 hover:shadow-blue-700/30 transition-all duration-200"
               >
-                {copiedCrypto ? (
-                  <>
-                    <Check className="w-5 h-5" />
-                    ¡Dirección copiada!
-                  </>
-                ) : (
-                  <>
-                    <Wallet className="w-5 h-5" />
-                    Donar con Cripto
-                  </>
-                )}
-              </button>
+                <CreditCard className="w-5 h-5" />
+                Donar con PayPal
+              </a>
 
-              <div className="mt-4 bg-amber-900/20 border border-amber-700/20 rounded-xl p-4">
-                <div className="flex items-start gap-2">
-                  <Shield className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-amber-300/80 leading-relaxed">
-                    <strong>⚠️ Solo BEP20 (Binance Smart Chain).</strong> Otras redes
-                    pueden resultar en pérdida de fondos.
-                  </p>
-                </div>
-              </div>
+              <p className="text-xs text-zinc-500 mt-4 text-center leading-relaxed">
+                Se abre una ventana segura de PayPal. No guardamos tus datos de pago.
+              </p>
             </div>
 
+          </div>
+
+          {/* CRIPTO — colapsable, secundario */}
+          <div className="mt-8 max-w-2xl mx-auto">
+            <button
+              onClick={() => setCryptoOpen(!cryptoOpen)}
+              className="w-full flex items-center justify-between gap-3 px-6 py-4 bg-zinc-800/20 border border-zinc-700/20 rounded-xl hover:bg-zinc-800/40 transition-colors text-left"
+            >
+              <div className="flex items-center gap-3">
+                <Wallet className="w-5 h-5 text-zinc-500" />
+                <span className="text-sm text-zinc-400 font-medium">
+                  Donar con cripto (BEP20)
+                </span>
+              </div>
+              {cryptoOpen ? (
+                <ChevronUp className="w-5 h-5 text-zinc-500" />
+              ) : (
+                <ChevronDown className="w-5 h-5 text-zinc-500" />
+              )}
+            </button>
+
+            {cryptoOpen && (
+              <div className="mt-3 bg-zinc-800/20 border border-zinc-700/20 rounded-xl p-6 transition-all">
+                <p className="text-sm text-zinc-400 mb-4">
+                  USDT, BNB o cualquier token en <strong>Binance Smart Chain</strong>.
+                </p>
+
+                <div className="bg-zinc-900/50 border border-zinc-700/30 rounded-lg p-4 mb-4">
+                  <p className="text-xs text-zinc-500 mb-2 font-mono truncate" title={BEP20_ADDRESS}>
+                    {BEP20_ADDRESS.slice(0, 12)}...{BEP20_ADDRESS.slice(-6)}
+                  </p>
+                  <button
+                    onClick={() => {
+                      try { navigator.clipboard.writeText(BEP20_ADDRESS) } catch {}
+                    }}
+                    className="flex items-center gap-2 text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
+                  >
+                    <Copy className="w-3.5 h-3.5" />
+                    Copiar dirección
+                  </button>
+                </div>
+
+                <div className="bg-amber-900/20 border border-amber-700/20 rounded-lg p-4">
+                  <div className="flex items-start gap-2">
+                    <Wallet className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
+                    <p className="text-xs text-amber-300/80 leading-relaxed">
+                      <strong>⚠️ Solo BEP20 (Binance Smart Chain).</strong> Otras redes
+                      pueden resultar en pérdida de fondos.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* NOTA INFORMATIVA */}
@@ -179,10 +208,10 @@ export default function ColaboraPage() {
             <Heart className="w-6 h-6 text-emerald-400 mx-auto mb-3" />
             <h3 className="font-semibold mb-2">No olvides que lo esencial es gratis</h3>
             <p className="text-sm text-zinc-500 leading-relaxed">
-              ComidaConecta es y será siempre gratuita para entidades sociales y comercios.
-              Las contribuciones voluntarias nos ayudan a cubrir costes de servidor, dominio
-              y desarrollo. Si hoy no puedes contribuir, no pasa nada —
-              <strong className="text-zinc-400"> lo importante es que sigas conectando excedente con necesidad</strong>.
+              ComidaConecta es <strong>gratuita para entidades sociales</strong> y de uso gratuito
+              para comercios durante la fase inicial. Más adelante podrá establecerse una
+              contribución voluntaria o plan de mantenimiento, siempre avisado previamente.{' '}
+              <strong className="text-zinc-400"> Lo importante es que sigas conectando excedente con necesidad</strong>.
             </p>
           </div>
         </div>
@@ -196,11 +225,17 @@ export default function ColaboraPage() {
             <span className="font-semibold">ComidaConecta</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-zinc-500">
-            <Link href="/terms" className="hover:text-zinc-300 transition-colors">
-              Términos legales
+            <Link href="/aviso-legal" className="hover:text-zinc-300 transition-colors">
+              Aviso Legal
             </Link>
-            <Link href="/" className="hover:text-zinc-300 transition-colors">
-              Inicio
+            <Link href="/privacidad" className="hover:text-zinc-300 transition-colors">
+              Privacidad
+            </Link>
+            <Link href="/cookies" className="hover:text-zinc-300 transition-colors">
+              Cookies
+            </Link>
+            <Link href="/condiciones" className="hover:text-zinc-300 transition-colors">
+              Condiciones
             </Link>
           </div>
           <p className="text-xs text-zinc-600">© 2026 ComidaConecta. Reduciendo el desperdicio, una donación a la vez.</p>

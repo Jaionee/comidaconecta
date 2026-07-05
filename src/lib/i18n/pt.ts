@@ -1,0 +1,136 @@
+import type { Translations } from './types'
+
+const pt: Translations = {
+  meta: {
+    title: 'ComidaConecta — Doação de excedente alimentar | Plataforma gratuita',
+    description: 'Tem excedente de comida no seu comércio? Doe gratuitamente para ONGs e comedores sociais. Plataforma gratuita que conecta doadores com entidades sociais. Sem burocracia.',
+    keywords: ['doar comida excedente','doação alimentos restaurantes','reduzir desperdício comida','plataforma doação alimentos grátis','comedores sociais','ONG alimentos doação','economia circular','doar pão excedente'],
+    ogTitle: 'ComidaConecta — Doação de excedente alimentar',
+    ogDescription: 'Plataforma gratuita que conecta comércios com excedente alimentar e entidades sociais. Sem comissões.',
+  },
+  nav: {
+    howItWorks: 'Como funciona',
+    faq: 'Perguntas frequentes',
+    about: 'Quem somos',
+    collaborate: 'Colabore',
+    dashboard: 'Ir para o painel',
+    joinFree: 'Cadastre-se grátis',
+    login: 'Entrar',
+  },
+  hero: {
+    badge: '🏆 Melhor para doar excedente alimentar — grátis, sem limites, sem comissões',
+    title: 'Tem excedente de comida no seu comércio?',
+    titleHighlight: 'Doe gratuitamente',
+    subtitle: 'ComidaConecta é a',
+    subtitleBold1: 'plataforma gratuita para doar excedente alimentar',
+    subtitleBold2: 'Sem comissões, com gestão simples e registro digital de cada doação.',
+    badges: ['✅ Grátis para entidades sociais','🔓 Sem contratos nem fidelidade','📱 Publique em menos de 5 minutos','📍 Geolocalização em tempo real'],
+    commerceBtn: 'Sou comércio — quero doar',
+    ngoBtn: 'Sou entidade social — preciso de alimentos',
+    disclaimer: '✅ Grátis para entidades sociais. ✅ Para comércios, uso gratuito em fase inicial. ✅ Contribuição voluntária mais tarde, sempre avisado previamente.',
+    note: 'ComidaConecta não manipula nem transporta alimentos: facilita a conexão e o registro digital entre as partes.',
+  },
+  howItWorks: {
+    title: 'Como funciona — 3 passos',
+    subtitle: 'O processo para doar comida excedente do seu restaurante, padaria ou supermercado a comedores sociais é muito simples:',
+    subtitle2: 'Sem contratos, sem custos, sem compromisso a longo prazo.',
+    steps: [
+      { title: 'Publique', desc: 'O comércio publica o excedente disponível: tipo de alimento, quantidade estimada e horário de recolha. Tudo pela plataforma, em menos de 2 minutos.', detail: '📱 Pode fazê-lo pelo telemóvel' },
+      { title: 'Conecte', desc: 'As entidades sociais veem todas as doações disponíveis em tempo real. Quando uma lhes interessa, reservam-na de imediato no seu painel.', detail: '💰 Reserva imediata pelo painel' },
+      { title: 'Recolha', desc: 'Cada doação fica registada para que comércios e entidades possam consultar o seu histórico de entregas e recolhas.', detail: '📄 Histórico digital de doações' },
+    ],
+    cycleTitle: 'O ciclo completo do match',
+    cycleSubtitle: 'Assim é como uma doação vai do comércio para a entidade social',
+    cycleSteps: [
+      { title: '📢 Comércio publica', desc: 'O comércio publica o excedente. A doação aparece como disponível para todas as entidades.' },
+      { title: '🔍 ONG encontra e reserva', desc: 'As entidades veem doações em tempo real. Quando uma interessa, clicam em "Reservar recolha".' },
+      { title: '🚚 ONG recolhe', desc: 'A entidade vai ao comércio, recolhe os alimentos e marca a recolha como concluída.' },
+      { title: '✅ Comércio confirma', desc: 'O comércio verifica que a recolha foi correta e confirma a entrega.' },
+    ],
+    matchComplete: '✅ Match concluído — a doação vai para o seu histórico com todos os dados registados para consulta e download.',
+  },
+  benefits: {
+    title: 'Benefícios para todos: comércios, ONGs e o planeta',
+    subtitle: 'Uma plataforma que gera impacto real para cada participante.',
+    commerce: {
+      title: 'Para comércios',
+      subtitle: 'Reduza custos e gere impacto social',
+      items: ['Reduzir desperdício e custos de gestão de resíduos','Histórico de doações consultável, útil para acompanhamento interno','Selo de comércio colaborador da ComidaConecta','Contribuição voluntária — escolha quanto contribuir por mês (5-10€)'],
+    },
+    ngo: {
+      title: 'Para entidades sociais',
+      subtitle: 'Acesso gratuito e ilimitado a doações registadas',
+      items: ['Acesso gratuito sem limites — sem taxas nem restrições','Doações publicadas por comércios validados','Gestão simples pelo telemóvel — registos digitais','Consulte doações disponíveis atualizadas em tempo real','Histórico completo para prestação de contas a financiadores'],
+    },
+    planet: {
+      title: 'Para o planeta',
+      subtitle: 'Menos desperdício, mais economia circular',
+      items: ['Menos desperdício alimentar em aterros','Apoio à economia circular local','Redução de emissões de CO₂ associadas a resíduos','Fortalecimento comunitário e coesão social'],
+    },
+    transparency: {
+      title: 'Compromisso com a transparência',
+      text: 'ComidaConecta facilita o contacto e o registro digital entre comércios doadores e entidades sociais recetoras. A plataforma não manipula nem transporta alimentos. Cada comércio declara que os alimentos publicados são próprios para consumo e cada entidade recetora é responsável pela sua recolha, transporte e manipulação posterior conforme a regulamentação aplicável.',
+    },
+  },
+  stats: {
+    title: 'O desperdício alimentar em números',
+    subtitle: 'Todos os anos se desperdiçam milhões de toneladas de alimentos. ComidaConecta ajuda a reduzir este número conectando excedente com necessidade.',
+    items: [
+      { number: '1.125M kg', text: 'de alimentos são desperdiçados por ano em Espanha segundo o Ministério da Agricultura' },
+      { number: '~30%', text: 'dos alimentos produzidos globalmente perdem-se ou desperdiçam-se (FAO)' },
+      { number: '~50%', text: 'do desperdício alimentar na restauração poderia ser evitado com doação organizada' },
+    ],
+    sources: 'Fontes: Ministério da Agricultura, Pesca e Alimentação • FAO • Eurostat',
+  },
+  differentiation: {
+    title: 'Por que a ComidaConecta é diferente?',
+    subtitle: 'Não impomos limites, não cobramos comissões e oferecemos rastreabilidade completa desde o primeiro dia.',
+    items: [
+      { title: 'Sem limite de doações', desc: 'Ao contrário de outras soluções, pode doar quantas vezes tiver excedente. Sem teto mensal, sem restrições.' },
+      { title: 'Rastreabilidade completa', desc: 'Cada doação fica registada: desde que é publicada até que a recolha é confirmada. Histórico consultável e descarregável.' },
+      { title: 'Reserva imediata', desc: 'As entidades sociais veem as doações em tempo real e reservam com um clique. Sem esperas, sem papelada.' },
+      { title: 'Sistema de voluntariado', desc: 'A entidade não consegue deslocar-se? Um voluntário pode recolher no seu lugar. Facilitamos a recolha para que nada se perca.' },
+    ],
+  },
+  faq: {
+    title: 'Perguntas frequentes',
+    subtitle: 'Tudo o que precisa de saber para começar a doar ou receber excedente alimentar.',
+    items: [
+      { q: 'É mesmo gratuito? Há custos ocultos?', a: 'Para entidades sociais é 100% gratuito para sempre, sem limites nem custos ocultos. Para comércios, o uso é gratuito durante a fase inicial; mais tarde poderá existir uma contribuição voluntária, sempre avisado previamente. Sem contratos, sem fidelidade.' },
+      { q: 'Que tipos de alimentos posso doar?', a: 'Pode doar excedentes alimentares em perfeito estado: produtos frescos (fruta, legumes), embalados não perecíveis, padaria e pastelaria, laticínios e produtos preparados. Também são aceites alimentos congelados desde que se mantenha a cadeia de frio.' },
+      { q: 'Como funciona o registo para comércios?', a: 'Aceda a comidaconecta.org/register, selecione "Sou comércio" e preencha os seus dados básicos. Em menos de 5 minutos pode começar a publicar o seu primeiro excedente.' },
+      { q: 'Como funciona o registo para entidades sociais?', a: 'Aceda a comidaconecta.org/register, selecione "Sou entidade social" e preencha os dados da sua organização. Após o registo, verá todas as doações disponíveis perto de si em tempo real.' },
+      { q: 'A contribuição voluntária é obrigatória?', a: 'Não, é voluntária. Não há contrato nem fidelidade. Cada comércio decide se contribui e quanto. Os 5-10€ recomendados ajudam a manter a plataforma ativa.' },
+      { q: 'Há algum compromisso ou fidelidade?', a: 'Nenhum. Não há contratos, fidelidades nem compromissos a longo prazo. Pode publicar doações quando tiver excedente, sem obrigações.' },
+      { q: 'Como funciona o sistema de voluntariado?', a: 'Se uma entidade social não puder deslocar-se para recolher uma doação, pode solicitar um voluntário. Qualquer pessoa registada como voluntária pode aceitar a recolha e realizá-la em nome da entidade.' },
+      { q: 'Qual o impacto ambiental de doar alimentos?', a: 'Cada doação registada evita que os alimentos acabem em aterros, reduzindo as emissões de CO₂ associadas à sua decomposição. Além disso, fomenta a economia circular ao redistribuir recursos localmente.' },
+    ],
+  },
+  about: {
+    title: 'Quem somos',
+    p1: 'ComidaConecta é um projeto digital que nasce com uma missão clara: reduzir o desperdício alimentar usando a tecnologia como ponte entre quem tem excedente de comida e quem mais precisa.',
+    p2: 'Acreditamos na economia circular, na sustentabilidade e no impacto social. Pequenos gestos —como doar o pão que sobrou ontem— podem gerar grandes mudanças quando conectados com quem realmente precisa.',
+    tags: ['🌍 Economia circular', '🤝 Impacto social'],
+  },
+  cta: {
+    badge: 'Comece hoje — é grátis e sem compromisso',
+    title: 'Todos os dias se desperdiçam toneladas de comida.',
+    titleHighlight: 'Hoje pode mudar isso.',
+    subtitle: 'Publique o seu primeiro excedente ou reserve a sua primeira doação em menos de 5 minutos.',
+    quote: '"Elikagaiak xahutu beharrean, konektatu ditzagun" — Em vez de desperdiçar alimentos, conectemo-los.',
+    commerceBtn: 'Registar-me como comércio',
+    ngoBtn: 'Registar-me como entidade social',
+  },
+  footer: {
+    terms: 'Termos legais',
+    collaborate: 'Colabore',
+    legal: 'Aviso legal',
+    privacy: 'Privacidade',
+    cookies: 'Cookies',
+    login: 'Entrar',
+    copyright: 'Reduzindo o desperdício, uma doação de cada vez.',
+    name: 'ComidaConecta',
+  },
+}
+
+export default pt

@@ -1,0 +1,136 @@
+import type { Translations } from './types'
+
+const en: Translations = {
+  meta: {
+    title: 'ComidaConecta — Donate surplus food | Free platform',
+    description: 'Have leftover food at your business? Donate it for free to NGOs and community kitchens. A free platform connecting donors with social organizations. No red tape.',
+    keywords: ['donate surplus food','restaurant food donation','reduce food waste','free food donation platform','community kitchens','NGO food donation','circular economy','donate leftover bread'],
+    ogTitle: 'ComidaConecta — Surplus food donation platform',
+    ogDescription: 'Free platform connecting businesses with surplus food to social organizations. No fees.',
+  },
+  nav: {
+    howItWorks: 'How it works',
+    faq: 'FAQ',
+    about: 'About us',
+    collaborate: 'Collaborate',
+    dashboard: 'Go to dashboard',
+    joinFree: 'Join for free',
+    login: 'Log in',
+  },
+  hero: {
+    badge: '🏆 Best for donating surplus food — free, unlimited, no fees',
+    title: 'Got surplus food at your business?',
+    titleHighlight: 'Donate it for free',
+    subtitle: 'ComidaConecta is the',
+    subtitleBold1: 'free platform for donating surplus food',
+    subtitleBold2: 'No fees, simple management, and a digital record of every donation.',
+    badges: ['✅ Free for social organizations','🔓 No contracts, no commitments','📱 Post in under 5 minutes','📍 Real-time geolocation'],
+    commerceBtn: 'I\'m a business — I want to donate',
+    ngoBtn: 'I\'m a social organization — I need food',
+    disclaimer: '✅ Free for social organizations. ✅ Free for businesses during the initial phase. ✅ Voluntary contribution later on, always with prior notice.',
+    note: 'ComidaConecta does not handle or transport food — it facilitates the connection and digital record-keeping between both parties.',
+  },
+  howItWorks: {
+    title: 'How it works — 3 steps',
+    subtitle: 'Donating leftover food from your restaurant, bakery or supermarket to community kitchens is really simple:',
+    subtitle2: 'No contracts, no costs, no long-term commitment.',
+    steps: [
+      { title: 'Post', desc: 'The business posts the available surplus: type of food, estimated quantity, and pickup time. All from the platform, in under 2 minutes.', detail: '📱 You can do it from your phone' },
+      { title: 'Connect', desc: 'Social organizations see all available donations in real time. When one catches their interest, they reserve it instantly from their dashboard.', detail: '💰 Instant reservation from the dashboard' },
+      { title: 'Pick up', desc: 'Every donation is recorded so businesses and organizations can check their delivery and pickup history.', detail: '📄 Digital donation history' },
+    ],
+    cycleTitle: 'The full match cycle',
+    cycleSubtitle: 'Here\'s how a donation goes from the business to the social organization',
+    cycleSteps: [
+      { title: '📢 Business posts', desc: 'The business posts the surplus. The donation shows up as available for all organizations.' },
+      { title: '🔍 NGO finds & reserves', desc: 'Organizations see donations in real time. When one interests them, they click "Reserve pickup".' },
+      { title: '🚚 NGO picks up', desc: 'The organization goes to the business, collects the food, and marks the pickup as completed.' },
+      { title: '✅ Business confirms', desc: 'The business verifies the pickup was correct and confirms the delivery.' },
+    ],
+    matchComplete: '✅ Match completed — the donation is added to your history with all data recorded for review and download.',
+  },
+  benefits: {
+    title: 'Benefits for everyone: businesses, NGOs, and the planet',
+    subtitle: 'A platform that creates real impact for every participant.',
+    commerce: {
+      title: 'For businesses',
+      subtitle: 'Reduce costs and create social impact',
+      items: ['Reduce waste and waste management costs','Searchable donation history for internal tracking','ComidaConecta partner business badge','Voluntary contribution — you choose how much to give per month (€5–10)'],
+    },
+    ngo: {
+      title: 'For social organizations',
+      subtitle: 'Free and unlimited access to tracked donations',
+      items: ['Free unlimited access — no fees or restrictions','Donations posted by verified businesses','Easy management from your phone — digital records','Browse donations updated in real time','Full history for reporting to funders'],
+    },
+    planet: {
+      title: 'For the planet',
+      subtitle: 'Less waste, more circular economy',
+      items: ['Less food waste in landfills','Support for the local circular economy','Reduction of CO₂ emissions associated with waste','Community strengthening and social cohesion'],
+    },
+    transparency: {
+      title: 'Commitment to transparency',
+      text: 'ComidaConecta facilitates the contact and digital record-keeping between donor businesses and recipient social organizations. The platform does not handle or transport food. Each business declares that the food posted is fit for consumption, and each recipient organization is responsible for its collection, transport, and subsequent handling in accordance with applicable regulations.',
+    },
+  },
+  stats: {
+    title: 'Food waste by the numbers',
+    subtitle: 'Millions of tonnes of food are wasted every year. ComidaConecta helps reduce this figure by connecting surplus with need.',
+    items: [
+      { number: '1.125B kg', text: 'of food is wasted in Spain each year, according to the Ministry of Agriculture' },
+      { number: '~30%', text: 'of food produced globally is lost or wasted (FAO)' },
+      { number: '~50%', text: 'of food waste in hospitality could be prevented through organized donation' },
+    ],
+    sources: 'Sources: Ministry of Agriculture, Fisheries and Food • FAO • Eurostat',
+  },
+  differentiation: {
+    title: 'Why is ComidaConecta different?',
+    subtitle: 'We don\'t impose limits, we don\'t charge fees, and we offer full traceability from day one.',
+    items: [
+      { title: 'No donation limits', desc: 'Unlike other solutions, you can donate as often as you have surplus. No monthly cap, no restrictions.' },
+      { title: 'Full traceability', desc: 'Every donation is logged — from when it\'s posted until pickup is confirmed. Viewable and downloadable history.' },
+      { title: 'Instant reservation', desc: 'Social organizations see donations in real time and reserve with one click. No waiting, no paperwork.' },
+      { title: 'Volunteer system', desc: 'Can\'t the organization make the trip? A volunteer can pick up on their behalf. We make sure nothing goes to waste.' },
+    ],
+  },
+  faq: {
+    title: 'Frequently asked questions',
+    subtitle: 'Everything you need to know to start donating or receiving surplus food.',
+    items: [
+      { q: 'Is it really free? Are there hidden costs?', a: 'For social organizations it is 100% free forever, with no limits or hidden costs. For businesses, use is free during the initial phase; a voluntary contribution may be introduced later, always with prior notice. No contracts, no commitment.' },
+      { q: 'What types of food can I donate?', a: 'You can donate surplus food in perfect condition: fresh produce (fruit, vegetables), non-perishable packaged goods, baked goods, dairy, and prepared products. Frozen food is also accepted as long as the cold chain is maintained.' },
+      { q: 'How does business registration work?', a: 'Go to comidaconecta.org/register, select "I\'m a business" and fill in your basic details. In under 5 minutes you can start posting your first surplus.' },
+      { q: 'How does social organization registration work?', a: 'Go to comidaconecta.org/register, select "I\'m a social organization" and fill in your organization\'s details. Once registered, you\'ll see all available donations near you in real time.' },
+      { q: 'Is the voluntary contribution mandatory?', a: 'No, it\'s voluntary. There\'s no contract or commitment. Each business decides whether to contribute and how much. The recommended €5–10 helps keep the platform running.' },
+      { q: 'Is there any commitment or minimum term?', a: 'None at all. No contracts, minimum terms, or long-term commitments. You can post donations whenever you have surplus, with no obligations.' },
+      { q: 'How does the volunteer system work?', a: 'If a social organization can\'t travel to pick up a donation, they can request a volunteer. Anyone registered as a volunteer can accept the pickup and carry it out on behalf of the organization.' },
+      { q: 'What environmental impact does food donation have?', a: 'Every registered donation prevents food from ending up in landfills, reducing the CO₂ emissions associated with its decomposition. It also promotes the circular economy by redistributing resources locally.' },
+    ],
+  },
+  about: {
+    title: 'About us',
+    p1: 'ComidaConecta is a digital project born with a clear mission: to reduce food waste by using technology as a bridge between those who have surplus food and those who need it most.',
+    p2: 'We believe in the circular economy, sustainability, and social impact. Small gestures — like donating yesterday\'s leftover bread — can create big changes when connected with those who truly need them.',
+    tags: ['🌍 Circular economy', '🤝 Social impact'],
+  },
+  cta: {
+    badge: 'Start today — it\'s free and with no commitment',
+    title: 'Every day, tonnes of food go to waste.',
+    titleHighlight: 'Today you can change that.',
+    subtitle: 'Post your first surplus or reserve your first donation in under 5 minutes.',
+    quote: '"Instead of wasting food, let\'s connect it."',
+    commerceBtn: 'Register as a business',
+    ngoBtn: 'Register as a social organization',
+  },
+  footer: {
+    terms: 'Legal terms',
+    collaborate: 'Collaborate',
+    legal: 'Legal notice',
+    privacy: 'Privacy',
+    cookies: 'Cookies',
+    login: 'Log in',
+    copyright: 'Reducing waste, one donation at a time.',
+    name: 'ComidaConecta',
+  },
+}
+
+export default en

@@ -52,12 +52,11 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-zinc-100 mb-3">5. Uso gratuito</h2>
+            <h2 className="text-xl font-semibold text-zinc-100 mb-3">5. Gratuidad</h2>
             <p>
-              El registro y uso de la plataforma es completamente gratuito para entidades
-              sociales. Para comercios, el servicio es gratuito durante la fase inicial.
-              ComidaConecta se reserva el derecho de establecer modelos de suscripción en el
-              futuro, notificando con antelación.
+              ComidaConecta es <strong>gratuita para entidades sociales</strong>. Para comercios,
+              el uso es gratuito durante la fase inicial; más adelante podrá existir una contribución
+              voluntaria o plan de mantenimiento, siempre avisado previamente.
             </p>
           </section>
 
