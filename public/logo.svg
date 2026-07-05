@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fde047;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle (optional, for app icon style) -->
+  <!-- <rect width="512" height="512" rx="112" fill="#0a0a0a"/> -->
+
+  <!-- Main leaf shape -->
+  <path d="M256 80 
+           C 180 80, 80 140, 80 256 
+           C 80 340, 140 400, 180 430 
+           C 200 445, 220 450, 240 448 
+           C 248 447, 252 445, 256 440 
+           C 260 445, 264 447, 272 448 
+           C 292 450, 312 445, 332 430 
+           C 372 400, 432 340, 432 256 
+           C 432 140, 332 80, 256 80 Z" 
+        fill="url(#leafGrad)" 
+        opacity="0.95"/>
+
+  <!-- Leaf center vein -->
+  <path d="M256 120 
+           C 256 120, 256 200, 256 440" 
+        stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Heart inside the leaf -->
+  <path d="M256 200 
+           C 256 180, 240 160, 220 160 
+           C 195 160, 180 185, 180 205 
+           C 180 240, 220 270, 256 300 
+           C 292 270, 332 240, 332 205 
+           C 332 185, 317 160, 292 160 
+           C 272 160, 256 180, 256 200 Z" 
+        fill="url(#heartGrad)" 
+        opacity="0.5"/>
+
+  <!-- Connecting dots -->
+  <!-- Dot 1 (commerce) - left side -->
+  <circle cx="175" cy="340" r="12" fill="#fde047" opacity="0.9"/>
+  <!-- Dot 2 (ONG) - right side -->
+  <circle cx="337" cy="340" r="12" fill="#fde047" opacity="0.9"/>
+
+  <!-- Connection line between dots -->
+  <path d="M187 340 C 210 330, 256 325, 256 340 C 256 355, 302 350, 325 340" 
+        stroke="#fde047" stroke-width="2.5" fill="none" opacity="0.6" stroke-dasharray="6,4"/>
+
+  <!-- Dot glows -->
+  <circle cx="175" cy="340" r="18" fill="#fde047" opacity="0.15"/>
+  <circle cx="337" cy="340" r="18" fill="#fde047" opacity="0.15"/>
+
+  <!-- Tiny highlight on leaf -->
+  <path d="M200 130 C 220 120, 250 110, 280 115" 
+        stroke="#a7f3d0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.3"/>
+</svg>

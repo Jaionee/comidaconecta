@@ -35,6 +35,11 @@ export const metadata: Metadata = {
       "Plataforma gratuita que conecta comercios con excedente alimentario y entidades sociales. Sin comisiones.",
     type: "website",
     locale: "es_ES",
+    images: [{ url: "/logo.svg", width: 512, height: 512, alt: "ComidaConecta" }],
+  },
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
   },
 };
 
