@@ -1,13 +1,13 @@
 'use client'
 
 import { useState, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Leaf, Store, Building2, Eye, EyeOff } from 'lucide-react'
-import { login } from '@/app/actions/auth'
 
 function LoginForm() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const role = searchParams.get('role')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -19,27 +19,34 @@ function LoginForm() {
     setLoading(true)
 
     const form = new FormData(e.currentTarget)
+    const email = form.get('email') as string
+    const password = form.get('password') as string
 
     try {
-      // Use the server action which sets the cookie in the response and does a proper redirect
-      const result = await login(form)
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
+      const data = await res.json()
 
-      // If we get here, login didn't redirect (error case)
-      if (result?.error) {
-        setError(result.error)
-      } else {
-        setError('Error al iniciar sesión')
-      }
-      setLoading(false)
-    } catch (err: any) {
-      // Server action redirect() throws a redirect error — ignore it
-      // If it's a real error, show it
-      if (err?.digest?.startsWith('NEXT_REDIRECT')) {
-        // Successful login — the redirect is handled by Next.js
-        // No need to do anything else
+      if (!res.ok || !data.success) {
+        setError(data.error || 'Email o contraseña incorrectos')
+        setLoading(false)
         return
       }
-      setError('Error de conexión con el servidor. ¿Estás conectado a internet?')
+
+      // Set token cookie
+      document.cookie = `token=${data.data.token};path=/;max-age=${60*60*24*7};sameSite=lax${location.protocol === 'https:' ? ';secure' : ''}`
+
+      // Redirect based on role
+      const role = data.data.user?.role
+      if (role === 'admin') router.push('/admin/dashboard')
+      else if (role === 'commerce') router.push('/comercio/dashboard')
+      else if (role === 'ngo') router.push('/ong/dashboard')
+      else router.push('/')
+    } catch (err) {
+      setError('Error de conexión con el servidor')
       setLoading(false)
     }
   }
