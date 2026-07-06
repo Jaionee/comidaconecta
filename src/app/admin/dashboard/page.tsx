@@ -70,11 +70,11 @@ export default function AdminDashboard() {
 
   const handleVerify = async (userId: string, type: 'commerce' | 'ngo', action: 'approve' | 'reject') => {
     const token = getToken()
-    if (!token || action !== 'approve') return
+    if (!token) return
     setActionLoading(`${userId}-${action}`)
 
     try {
-      const res = await fetch(`${WORKER_URL}/api/admin/${type}s/${userId}/verify`, {
+      const res = await fetch(`${WORKER_URL}/api/admin/${type}s/${userId}/${action}`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -84,14 +84,10 @@ export default function AdminDashboard() {
       if (data.success) {
         setDashboard((prev: any) => {
           if (!prev) return prev
+          const key = type === 'commerce' ? 'pendingCommerces' : 'pendingNgos'
           return {
             ...prev,
-            pendingCommerces: type === 'commerce'
-              ? prev.pendingCommerces.filter((c: any) => c.id !== userId)
-              : prev.pendingCommerces,
-            pendingNgos: type === 'ngo'
-              ? prev.pendingNgos.filter((n: any) => n.id !== userId)
-              : prev.pendingNgos,
+            [key]: prev[key].filter((c: any) => c.id !== userId),
           }
         })
       }
