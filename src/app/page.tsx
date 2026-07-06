@@ -14,7 +14,7 @@ import {
   X,
   ChevronDown,
 } from 'lucide-react'
-import { useT, T, useI18n, LangSelector } from '@/lib/i18n/I18nProvider'
+import { useT, T, TBr, useI18n, LangSelector } from '@/lib/i18n/I18nProvider'
 
 export default function LandingPage() {
   const [user, setUser] = useState<any>(null)
@@ -302,7 +302,7 @@ export default function LandingPage() {
               className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3.5 rounded-xl font-semibold text-lg transition-all hover:scale-105"
             >
               <Store className="w-5 h-5" />
-              <T k="hero.commerceBtn" />
+              <TBr k="hero.commerceBtn" />
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
@@ -310,7 +310,7 @@ export default function LandingPage() {
               className="flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border border-zinc-700 px-8 py-3.5 rounded-xl font-semibold text-lg transition-all hover:scale-105"
             >
               <Building2 className="w-5 h-5" />
-              <T k="hero.ngoBtn" />
+              <TBr k="hero.ngoBtn" />
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

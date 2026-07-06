@@ -163,6 +163,33 @@ export function T({ k, as: Tag = 'span', className, ...rest }: TProps) {
   )
 }
 
+/**
+ * TBr component - Renders translation with HTML line breaks.
+ * Splits the translation string on the "||" marker and inserts a <br /> element
+ * between the two parts. Useful for buttons that need text on two lines.
+ */
+type TBrProps = {
+  k: string
+  as?: React.ElementType
+  className?: string
+} & Omit<React.HTMLAttributes<HTMLElement>, 'children'>
+
+export function TBr({ k, as: Tag = 'span', className, ...rest }: TBrProps) {
+  const t = useT()
+  const raw = t(k)
+  const parts = raw.split('||')
+  return (
+    <Tag className={className} {...rest}>
+      {parts.map((part, i) => (
+        <React.Fragment key={i}>
+          {part}
+          {i < parts.length - 1 && <br />}
+        </React.Fragment>
+      ))}
+    </Tag>
+  )
+}
+
 /* ==============================
    LANGUAGE SELECTOR
    ============================== */
