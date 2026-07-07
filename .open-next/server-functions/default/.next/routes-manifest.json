@@ -1,0 +1,219 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [
+      {
+        "source": "/api/:path*",
+        "destination": "https://comidaconecta-worker.jaione-garay.workers.dev/api/:path*",
+        "regex": "^/api(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+      }
+    ],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/dashboard",
+      "regex": "^/admin/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/dashboard(?:/)?$"
+    },
+    {
+      "page": "/admin/donaciones",
+      "regex": "^/admin/donaciones(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/donaciones(?:/)?$"
+    },
+    {
+      "page": "/admin/usuarios",
+      "regex": "^/admin/usuarios(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/usuarios(?:/)?$"
+    },
+    {
+      "page": "/api/me",
+      "regex": "^/api/me(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/me(?:/)?$"
+    },
+    {
+      "page": "/auth/callback",
+      "regex": "^/auth/callback(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/callback(?:/)?$"
+    },
+    {
+      "page": "/aviso-legal",
+      "regex": "^/aviso\\-legal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/aviso\\-legal(?:/)?$"
+    },
+    {
+      "page": "/colabora",
+      "regex": "^/colabora(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/colabora(?:/)?$"
+    },
+    {
+      "page": "/comercio/dashboard",
+      "regex": "^/comercio/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/comercio/dashboard(?:/)?$"
+    },
+    {
+      "page": "/comercio/donar",
+      "regex": "^/comercio/donar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/comercio/donar(?:/)?$"
+    },
+    {
+      "page": "/comercio/historial",
+      "regex": "^/comercio/historial(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/comercio/historial(?:/)?$"
+    },
+    {
+      "page": "/comercio/informe",
+      "regex": "^/comercio/informe(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/comercio/informe(?:/)?$"
+    },
+    {
+      "page": "/comercio/perfil",
+      "regex": "^/comercio/perfil(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/comercio/perfil(?:/)?$"
+    },
+    {
+      "page": "/condiciones",
+      "regex": "^/condiciones(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/condiciones(?:/)?$"
+    },
+    {
+      "page": "/cookies",
+      "regex": "^/cookies(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cookies(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/icon.svg",
+      "regex": "^/icon\\.svg(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/icon\\.svg(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/ong/dashboard",
+      "regex": "^/ong/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ong/dashboard(?:/)?$"
+    },
+    {
+      "page": "/ong/donaciones",
+      "regex": "^/ong/donaciones(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ong/donaciones(?:/)?$"
+    },
+    {
+      "page": "/ong/historial",
+      "regex": "^/ong/historial(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ong/historial(?:/)?$"
+    },
+    {
+      "page": "/ong/perfil",
+      "regex": "^/ong/perfil(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ong/perfil(?:/)?$"
+    },
+    {
+      "page": "/privacidad",
+      "regex": "^/privacidad(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/privacidad(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/terms",
+      "regex": "^/terms(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/terms(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}
