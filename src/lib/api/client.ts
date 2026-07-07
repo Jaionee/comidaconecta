@@ -1,7 +1,7 @@
 // Client-side API client for ComidaConecta Worker API
 // Works in both server and browser contexts
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://comidaconecta.org'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
 
 interface ApiResponse<T = any> {
   success: boolean

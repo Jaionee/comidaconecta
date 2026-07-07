@@ -8,7 +8,7 @@ import {
   AlertCircle, TrendingUp, Store, Building2, Loader2
 } from 'lucide-react'
 
-const WORKER_URL = 'https://comidaconecta-worker.jaione-garay.workers.dev'
+const WORKER_URL = process.env.NEXT_PUBLIC_API_URL || ''
 
 function getToken(): string | null {
   const m = document.cookie.match(/(?:^|;\s*)token=([^;]*)/)
@@ -47,6 +47,7 @@ export default function AdminDashboard() {
     try {
       const res = await fetch(`${WORKER_URL}/api/admin/dashboard`, {
         headers: { Authorization: `Bearer ${token}` },
+        credentials: 'include',
       })
       const data = await res.json()
       if (data.success && data.data) {
@@ -79,6 +80,7 @@ export default function AdminDashboard() {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        credentials: 'include',
       })
       const data = await res.json()
       if (data.success) {

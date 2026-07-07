@@ -24,11 +24,17 @@ export default function LandingPage() {
   const { lang } = useI18n()
 
   useEffect(() => {
-    try {
-      fetch('/api/me').then(r => r.json()).then(({ user }) => setUser(user))
-    } catch {
-      // API not configured yet
-    }
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 5000)
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
+    fetch(`${API_URL}/api/auth/me`, { signal: controller.signal, credentials: 'include' })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        const user = data?.data?.user ?? data?.user ?? data?.data ?? null
+        setUser(user)
+      })
+      .catch(() => setUser(null))
+      .finally(() => clearTimeout(timeout))
   }, [])
 
   // Schema JSON-LD in current language
