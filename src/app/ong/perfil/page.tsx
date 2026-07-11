@@ -1,8 +1,7 @@
-import { redirect } from 'next/navigation'
 import { requireAuth } from '@/lib/api/auth-helper'
 import { api } from '@/lib/api/client'
 import Link from 'next/link'
-import { Leaf, ArrowLeft, Building2 } from 'lucide-react'
+import { ArrowLeft, Building2 } from 'lucide-react'
 import NgoProfileForm from './ngo-profile-form'
 
 export default async function NgoProfilePage() {
