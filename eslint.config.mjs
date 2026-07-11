@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Build output directories that should not be linted
+    ".open-next/**",
   ]),
 ]);
 
