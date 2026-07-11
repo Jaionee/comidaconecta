@@ -23,8 +23,11 @@ export default function NewDonationPage() {
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null)
 
   // Default pickup deadline to tomorrow at closing time
+  // Build local datetime string without using toISOString() (which converts to UTC)
   const tomorrow = new Date(Date.now() + 86400000)
-  const defaultDeadline = tomorrow.toISOString().slice(0, 16)
+  const localDate = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 18, 0)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  const defaultDeadline = `${localDate.getFullYear()}-${pad(localDate.getMonth() + 1)}-${pad(localDate.getDate())}T${pad(localDate.getHours())}:${pad(localDate.getMinutes())}`
 
   async function detectLocation() {
     if (!navigator.geolocation) {

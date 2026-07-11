@@ -21,6 +21,22 @@ const BEP20_ADDRESS = '0xd808Ff238e09FFb0243904b444f05d73f2Ce36C6'
 export default function ColaboraPage() {
   const [copiedBizum, setCopiedBizum] = useState(false)
   const [cryptoOpen, setCryptoOpen] = useState(false)
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null)
+  const [customAmount, setCustomAmount] = useState('')
+
+  const SUGGESTED_AMOUNTS = [5, 10, 20, 50]
+
+  const getPaypalAmount = (): number | null => {
+    if (selectedAmount) return selectedAmount
+    const custom = parseFloat(customAmount)
+    if (!isNaN(custom) && custom >= 1) return custom
+    return null
+  }
+
+  const paypalAmount = getPaypalAmount()
+  const paypalUrl = paypalAmount
+    ? `https://www.paypal.com/ncp/payment/A3AFSXGDR3UE6?amount=${paypalAmount}`
+    : 'https://www.paypal.com/ncp/payment/A3AFSXGDR3UE6'
 
   const copyBizum = async () => {
     try {
@@ -130,19 +146,51 @@ export default function ColaboraPage() {
                 <CreditCard className="w-7 h-7 text-blue-400" />
               </div>
               <h2 className="text-2xl font-bold mb-2">PayPal</h2>
-              <p className="text-zinc-400 text-sm mb-6 flex-1">
+              <p className="text-zinc-400 text-sm mb-4 flex-1">
                 Tarjeta o cuenta PayPal. Seguro y rápido.
               </p>
 
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2 text-zinc-300">Cantidad (€)</label>
+                <div className="grid grid-cols-4 gap-2 mb-2">
+                  {SUGGESTED_AMOUNTS.map(amount => (
+                    <button
+                      key={amount}
+                      type="button"
+                      onClick={() => { setSelectedAmount(amount); setCustomAmount('') }}
+                      className={`px-2 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        selectedAmount === amount
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700 border border-zinc-700'
+                      }`}
+                    >
+                      {amount}€
+                    </button>
+                  ))}
+                </div>
+                <input
+                  type="number"
+                  min="1"
+                  step="1"
+                  value={customAmount}
+                  onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(null) }}
+                  placeholder="Otra cantidad"
+                  className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50"
+                />
+                {customAmount && !isNaN(parseFloat(customAmount)) && parseFloat(customAmount) < 1 && (
+                  <p className="text-xs text-red-400 mt-1">Cantidad mínima: 1€</p>
+                )}
+              </div>
+
               <a
-                href="https://www.paypal.com/ncp/payment/A3AFSXGDR3UE6"
+                href={paypalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/30 hover:shadow-blue-700/30 transition-all duration-200"
-                >
+              >
                 <CreditCard className="w-5 h-5" />
-                Donar con PayPal
-                </a>
+                {paypalAmount ? `Donar ${paypalAmount}€ con PayPal` : 'Donar con PayPal'}
+              </a>
 
                 <p className="text-xs text-zinc-500 mt-4 text-center leading-relaxed">
                 Se abre PayPal en una ventana segura. No guardamos tus datos de pago.
