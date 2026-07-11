@@ -56,8 +56,13 @@ export async function createNgoProfile(formData: FormData) {
     description: (formData.get('description') as string) || null,
   }
 
-  if (!profile.organization_name || !profile.organization_type || !profile.address || !profile.city) {
-    return { error: 'Completa todos los campos obligatorios' }
+  const missing: string[] = []
+  if (!profile.organization_name) missing.push('Nombre de la entidad')
+  if (!profile.organization_type) missing.push('Tipo de entidad')
+  if (!profile.address) missing.push('Dirección')
+  if (!profile.city) missing.push('Municipio')
+  if (missing.length > 0) {
+    return { error: `Campos obligatorios: ${missing.join(', ')}` }
   }
 
   const result = await api.ngos.create(profile, token)

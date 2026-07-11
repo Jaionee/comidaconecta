@@ -3,6 +3,15 @@
 import { useState } from 'react'
 import { createNgoProfile } from '@/app/actions/profiles'
 
+const ORGANIZATION_TYPES = [
+  { value: 'ngo', label: 'ONG' },
+  { value: 'soup-kitchen', label: 'Comedor social' },
+  { value: 'association', label: 'Asociación' },
+  { value: 'food-bank', label: 'Banco de alimentos' },
+  { value: 'social-resource', label: 'Recurso social' },
+  { value: 'other', label: 'Otro' },
+]
+
 const FOOD_NEEDS = [
   'Pan y bollería',
   'Frutas y verduras',
@@ -14,7 +23,20 @@ const FOOD_NEEDS = [
   'Otros',
 ]
 
-export default function NgoProfileForm({ profile }: { profile: any }) {
+interface NgoProfile {
+  organization_name?: string
+  organization_type?: string
+  address?: string
+  city?: string
+  contact_person?: string
+  phone?: string
+  email?: string
+  accepted_food_types?: string[]
+  pickup_hours?: string
+  description?: string
+}
+
+export default function NgoProfileForm({ profile }: { profile: NgoProfile | null }) {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -37,9 +59,12 @@ export default function NgoProfileForm({ profile }: { profile: any }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1 text-zinc-300">CIF / NIF</label>
-        <input name="tax_id" type="text" defaultValue={profile?.tax_id || ''}
-          className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-600/50" />
+        <label className="block text-sm font-medium mb-1 text-zinc-300">Tipo de entidad *</label>
+        <select name="organization_type" required defaultValue={profile?.organization_type || ''}
+          className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-600/50">
+          <option value="">Seleccionar...</option>
+          {ORGANIZATION_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
+        </select>
       </div>
 
       <div>
@@ -77,10 +102,10 @@ export default function NgoProfileForm({ profile }: { profile: any }) {
         <label className="block text-sm font-medium mb-1 text-zinc-300">Tipos de alimentos que necesitáis</label>
         <div className="grid grid-cols-2 gap-2">
           {FOOD_NEEDS.map(type => {
-            const checked = profile?.food_needs?.includes(type)
+            const checked = profile?.accepted_food_types?.includes(type)
             return (
               <label key={type} className="flex items-center gap-2 text-sm text-zinc-300">
-                <input type="checkbox" name="food_needs" value={type} defaultChecked={checked}
+                <input type="checkbox" name="accepted_food_types" value={type} defaultChecked={checked}
                   className="accent-amber-500" />
                 {type}
               </label>
