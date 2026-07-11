@@ -34,7 +34,7 @@ export default async function NgoDashboard() {
             <span className="font-bold">ComidaConecta</span>
           </Link>
         </div>
-        <nav className="flex-1 p-3 space-y-1">
+        <nav className="flex-1 min-h-0 overflow-y-auto p-3 space-y-1">
           <Link href="/ong/dashboard" className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-amber-900/20 text-amber-300 text-sm font-medium">
             <Package className="w-4 h-4" /> Dashboard
           </Link>

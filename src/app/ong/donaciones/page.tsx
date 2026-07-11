@@ -43,7 +43,7 @@ export default async function NgoDonationsPage() {
         <div className="p-5 border-b border-zinc-800">
           <Link href="/" className="flex items-center gap-2"><Leaf className="w-5 h-5 text-emerald-400" /><span className="font-bold">ComidaConecta</span></Link>
         </div>
-        <nav className="flex-1 p-3 space-y-1">
+        <nav className="flex-1 min-h-0 overflow-y-auto p-3 space-y-1">
           <Link href="/ong/dashboard" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-400 hover:text-zinc-100 text-sm">Dashboard</Link>
           <Link href="/ong/donaciones" className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-amber-900/20 text-amber-300 text-sm font-medium">Donaciones disponibles</Link>
           <Link href="/ong/historial" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-400 hover:text-zinc-100 text-sm">Mi historial</Link>
