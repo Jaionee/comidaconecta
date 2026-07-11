@@ -19,7 +19,7 @@ export default async function AdminUsersPage() {
     <div className="min-h-svh bg-zinc-950 text-zinc-100">
       <aside className="fixed left-0 top-0 bottom-0 w-64 bg-zinc-900/50 border-r border-zinc-800 hidden md:flex flex-col">
         <div className="p-5 border-b border-zinc-800"><div className="flex items-center gap-2"><Shield className="w-5 h-5 text-emerald-400" /><span className="font-bold">Admin</span></div></div>
-        <nav className="flex-1 p-3 space-y-1">
+        <nav className="flex-1 min-h-0 overflow-y-auto p-3 space-y-1">
           <Link href="/admin/dashboard" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-400 hover:text-zinc-100 text-sm">Dashboard</Link>
           <Link href="/admin/usuarios" className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-emerald-900/20 text-emerald-300 text-sm font-medium">Usuarios</Link>
           <Link href="/admin/donaciones" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-400 hover:text-zinc-100 text-sm">Donaciones</Link>

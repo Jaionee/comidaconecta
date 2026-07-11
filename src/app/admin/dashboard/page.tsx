@@ -7,6 +7,7 @@ import {
   Leaf, Users, Package, Shield, LogOut, CheckCircle, XCircle,
   AlertCircle, TrendingUp, Store, Building2, Loader2
 } from 'lucide-react'
+import { logout } from '@/app/actions/auth'
 
 const WORKER_URL = process.env.NEXT_PUBLIC_API_URL || ''
 
@@ -99,11 +100,6 @@ export default function AdminDashboard() {
     setActionLoading(null)
   }
 
-  const handleLogout = () => {
-    document.cookie = 'token=; path=/; max-age=0'
-    router.push('/login')
-  }
-
   if (loading) {
     return (
       <div className="min-h-svh bg-zinc-950 flex items-center justify-center">
@@ -133,7 +129,7 @@ export default function AdminDashboard() {
             <span className="font-bold">Admin</span>
           </div>
         </div>
-        <nav className="flex-1 p-3 space-y-1">
+        <nav className="flex-1 min-h-0 overflow-y-auto p-3 space-y-1">
           <Link href="/admin/dashboard" className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-emerald-900/20 text-emerald-300 text-sm font-medium">
             <TrendingUp className="w-4 h-4" /> Dashboard
           </Link>
@@ -150,9 +146,11 @@ export default function AdminDashboard() {
               <Leaf className="w-3.5 h-3.5" /> Volver a la web
             </Link>
           </div>
-          <button onClick={handleLogout} className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-500 hover:text-red-400 hover:bg-zinc-800/50 text-sm w-full transition-colors">
-            <LogOut className="w-4 h-4" /> Cerrar sesión
-          </button>
+          <form action={logout}>
+            <button type="submit" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-500 hover:text-red-400 hover:bg-zinc-800/50 text-sm w-full transition-colors">
+              <LogOut className="w-4 h-4" /> Cerrar sesión
+            </button>
+          </form>
         </div>
       </aside>
 
@@ -161,7 +159,9 @@ export default function AdminDashboard() {
           {/* Mobile header */}
           <div className="flex items-center justify-between mb-6 md:hidden">
             <h1 className="text-xl font-bold">Panel de admin</h1>
-            <button onClick={handleLogout} className="text-sm text-zinc-500 hover:text-red-400">Cerrar sesión</button>
+            <form action={logout}>
+              <button type="submit" className="text-sm text-zinc-500 hover:text-red-400">Cerrar sesión</button>
+            </form>
           </div>
           <h1 className="text-2xl font-bold mb-6 hidden md:block">Panel de administración</h1>
 
