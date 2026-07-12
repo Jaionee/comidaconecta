@@ -18,11 +18,16 @@ function RegisterForm() {
     e.preventDefault()
     setError('')
     setLoading(true)
-    const form = new FormData(e.currentTarget)
-    form.set('role', role)
-    const result = await signup(form)
-    setLoading(false)
-    if (result?.error) setError(result.error)
+    try {
+      const form = new FormData(e.currentTarget)
+      form.set('role', role)
+      const result = await signup(form)
+      if (result?.error) setError(result.error)
+    } catch {
+      setError('Error al crear la cuenta. Inténtalo de nuevo.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

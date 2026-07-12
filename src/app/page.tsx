@@ -225,12 +225,20 @@ export default function LandingPage() {
                 <T k="nav.dashboard" />
               </Link>
             ) : (
-              <Link
-                href="/register"
-                className="text-sm bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-              >
-                <T k="nav.joinFree" />
-              </Link>
+              <>
+                <Link
+                  href="/login"
+                  className="text-sm text-zinc-400 hover:text-zinc-100 transition-colors"
+                >
+                  <T k="nav.login" />
+                </Link>
+                <Link
+                  href="/register"
+                  className="text-sm bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                >
+                  <T k="nav.joinFree" />
+                </Link>
+              </>
             )}
           </div>
 
