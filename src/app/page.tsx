@@ -30,8 +30,8 @@ export default function LandingPage() {
     fetch(`${API_URL}/api/auth/me`, { signal: controller.signal, credentials: 'include' })
       .then(r => r.ok ? r.json() : null)
       .then(data => {
-        const user = data?.data?.user ?? data?.user ?? data?.data ?? null
-        setUser(user)
+        const user = data?.data?.user ?? data?.user ?? null
+        setUser(user && typeof user === 'object' && 'id' in user ? user : null)
       })
       .catch(() => setUser(null))
       .finally(() => clearTimeout(timeout))

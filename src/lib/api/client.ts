@@ -29,13 +29,20 @@ export async function apiRequest<T = any>(
   if (token) headers['Authorization'] = `Bearer ${token}`
 
   try {
-    const res = await fetch(`${baseUrl}${path}`, {
-      method,
-      headers,
-      body: data ? JSON.stringify(data) : undefined,
-    })
-    const json = await res.json()
-    return json as ApiResponse<T>
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 15000)
+    try {
+      const res = await fetch(`${baseUrl}${path}`, {
+        method,
+        headers,
+        body: data ? JSON.stringify(data) : undefined,
+        signal: controller.signal,
+      })
+      const json = await res.json()
+      return json as ApiResponse<T>
+    } finally {
+      clearTimeout(timeout)
+    }
   } catch (err: any) {
     return { success: false, error: err.message || 'Error de conexión con el servidor' }
   }
