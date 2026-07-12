@@ -113,8 +113,8 @@ function RegisterForm() {
               name="password"
               type="password"
               required
-              minLength={6}
-              placeholder="Mínimo 6 caracteres"
+              minLength={8}
+              placeholder="Mínimo 8 caracteres"
               className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-600/50 text-sm"
             />
           </div>
