@@ -39,19 +39,26 @@ export async function signup(formData: FormData) {
     return { error: 'Todos los campos obligatorios deben completarse' }
   }
 
-  if (password.length < 6) {
-    return { error: 'La contraseña debe tener al menos 6 caracteres' }
+  if (password.length < 8) {
+    return { error: 'La contraseña debe tener al menos 8 caracteres' }
   }
 
   const { api } = await import('@/lib/api/client')
   const result = await api.auth.register(email, password, name, phone, role)
 
   if (!result.success) {
-    const msg = result.error || ''
-    if (msg.toLowerCase().includes('already') || msg.toLowerCase().includes('exist')) {
-      return { error: 'Este email ya está registrado' }
+    const raw = result.error as any
+    // ZodError object from Worker API validation
+    if (raw && typeof raw === 'object' && raw.name === 'ZodError' && Array.isArray(raw.issues) && raw.issues.length > 0) {
+      return { error: raw.issues[0].message }
     }
-    return { error: msg }
+    if (typeof raw === 'string') {
+      if (raw.toLowerCase().includes('already') || raw.toLowerCase().includes('exist')) {
+        return { error: 'Este email ya está registrado' }
+      }
+      return { error: raw }
+    }
+    return { error: 'Error al crear la cuenta. Inténtalo de nuevo.' }
   }
 
   // Auto-login after signup
